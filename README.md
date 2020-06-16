@@ -1,4 +1,4 @@
-#Animal Stay Cadogs
+# Animal Stay Cadogs
 
 ## サイト概要
 大切な家族の一員であるペット専用のホテルサイトがあったらなと思ったことはありませんか？
