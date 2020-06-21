@@ -1,0 +1,2 @@
+class HotelComment < ApplicationRecord
+end
