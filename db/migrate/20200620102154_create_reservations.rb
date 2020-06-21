@@ -1,0 +1,13 @@
+class CreateReservations < ActiveRecord::Migration[5.2]
+  def change
+    create_table :reservations do |t|
+      t.integer :user_id, null: false
+      t.integer :hotel_id, null: false
+      t.string  :start_date, null: false
+      t.string  :end_date, null: false
+      t.integer :total_price, null: false
+      t.text    :request
+      t.timestamps
+    end
+  end
+end

@@ -1,0 +1,2 @@
+class PetGenre < ApplicationRecord
+end

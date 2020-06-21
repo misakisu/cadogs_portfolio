@@ -1,0 +1,10 @@
+<h4>登録情報</h4>
+<table class="table table-inverse">
+    <tr><th>氏名</th><td><%= @user.family_name %><%= @user.given_name %></td></tr>
+    <tr><th>カナ</th><td><%= @user.family_name_kana %><%= @user.given_name_kana %></td></tr>
+    <tr><th>電話番号</th><td><%= @user.phone_number %></td></tr>
+    <tr><th>メールアドレス</th><td><%= @user.email %></td></tr>
+    <tr><th><button><%= link_to "編集", edit_user_registration_path %></button></td></tr>
+</table>
+
+

@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+/*bootstrapを読み込ませる*/
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+table {
+    border-style: none;
+}
