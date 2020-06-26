@@ -1,0 +1,25 @@
+<%= form_with model:@hotel, url:owner_hotel_path, method: :put, local:true do |form| %>
+
+  <%= form.label :image, "ホテル画像" %>
+  <%= form.attachment_field :image %>
+
+  <%= form.label :name, "ホテル名" %>
+  <%= form.text_field :name, class: "form-control bg-gradient" %>
+
+  <%= form.label :price, "1泊の金額" %>
+  <%= form.number_field :price, class: "form-control bg-gradient" %>
+
+  <%= form.label :address, "住所" %>
+  <%= form.text_field :address, autofocus: true, class: "form-control bg-gradient" %>
+
+  <%= form.label :phone_number, "電話番号" %>
+  <%= form.number_field :phone_number, autofocus: true, class: "form-control bg-gradient" %>
+
+  <%= form.label :introduction, "紹介文" %>
+  <%= form.text_area :introduction, size: "20x10", class: "form-control bg-gradient" %>
+
+  <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
+
+<% end %>
+
+<%= link_to 'ホテル情報を削除する', owner_hotel_path(@hotel), method: :delete, class: "btn btn-danger" %>

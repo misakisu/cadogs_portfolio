@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   }
   #userのルート petsとreservationsネスト
   resource :user, only: [:show], shallow: true do
-    resources :pets, only: [:new, :create, :edit, :update, :destroy]
+    resources :pets, only: [:index, :create, :edit, :update, :destroy]
     resources :reservations, only: [:new, :create, :index] do
     post 'confirm', on: :member
     get 'finish', on: :member
@@ -21,9 +21,9 @@ Rails.application.routes.draw do
     put 'hide', on: :collection
   end
 
-  #hotelのルート commentsとfavoritesネスト,customer/:idがurlへ含まれないため懸念必要
-  resources :hotel, only: [:show, :index], shallow: true do
-    resources :comments, only: [:create, :destroy]
+  #hotelのルート(User以外にも閲覧可能) commentsとfavoritesネスト
+  resources :hotels, only: [:show, :index], shallow: true do
+    resources :hotel_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
 
@@ -34,13 +34,11 @@ Rails.application.routes.draw do
     passwords: "owner_devises/passwords"
   }
 
+  #on: :collectionでグループ化
   resource :owner, only: [:show, :edit, :update] do
     get 'confirm', on: :collection
     put 'hide', on: :collection
   end
-  #on: :collectionで上記へまとめた
-  #get 'owner/confirm' => 'owners#confirm'
-  #put 'owner/hide' => 'owners#hide'
 
   namespace :owner do
     get 'home' => 'home#top'
