@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_21_050305) do
+ActiveRecord::Schema.define(version: 2020_06_26_074149) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_06_21_050305) do
   end
 
   create_table "hotel_genre_relations", force: :cascade do |t|
-    t.integer "pet_genre_id"
     t.integer "hotel_id"
+    t.integer "pet_genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hotel_id"], name: "index_hotel_genre_relations_on_hotel_id"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_06_21_050305) do
 
   create_table "hotel_images", force: :cascade do |t|
     t.integer "hotel_id", null: false
-    t.string "image_id", null: false
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
