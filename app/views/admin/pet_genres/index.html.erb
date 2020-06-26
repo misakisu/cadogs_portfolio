@@ -1,0 +1,22 @@
+ <%= form_with model: @pet_genre, url: admin_pet_genres_path, method: :post, local:true do |form| %>
+ <%= form.label :name, "ジャンル名" %>
+ <%= form.text_field :name, autofocus: true %>
+ <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
+ <% end %>
+
+<table class="table">
+  <thead class="thead-lignt">
+    <tr>
+      <th class="col-xs-4">名前</th>
+      <th class="col-xs-3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pet_genres.each do |pet_genre| %>
+    <tr>
+      <td class="col-xs-4"><%= pet_genre.name %></td>
+      <td><%= link_to '削除する', admin_pet_genre_path(pet_genre), method: :delete, class:"btn btn-danger" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

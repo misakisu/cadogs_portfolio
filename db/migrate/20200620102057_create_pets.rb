@@ -5,7 +5,7 @@ class CreatePets < ActiveRecord::Migration[5.2]
       t.integer :pet_genre_id, null: false
       t.string  :name, null: false
       t.string  :image_id
-      t.boolean :gender, null: false, default: true
+      t.integer :gender, null: false
       t.timestamps
     end
   end
