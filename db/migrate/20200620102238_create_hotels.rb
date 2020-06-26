@@ -8,6 +8,7 @@ class CreateHotels < ActiveRecord::Migration[5.2]
       t.string  :phone_number, null: false
       t.string  :image_id
       t.text    :introduction
+      t.boolean  :is_valid, null: false, default: false
       t.timestamps
     end
   end
