@@ -1,0 +1,18 @@
+<%= flash[:notice] %>
+<div class="row">
+    <%= image_tag 'pets.jpg', class:"owner_top_img" %>
+</div>
+<div class="row">
+  <h1 class="col-xs-8"><u>ホテル掲載までのSTEP</u></h1>
+</div>
+<div class="row">
+  <ul class="owner_top">
+  	<li><i class="far fa-lightbulb faa-ring animated"></i> <span> 無料で利用可能</span></li>
+  	<li><i class="far fa-lightbulb faa-ring animated"></i> <span> ホテルご申請後、Cadogが2～3日で審査</span></li>
+  	<li><i class="far fa-lightbulb faa-ring animated"></i> <span> 予約一覧確認も可能です</span></li>
+  </ul>
+</div>
+<div class="row">
+  <h2 class="col-xs-6"><u><%= link_to " ホテルの登録の申請はこちらから", new_owner_registration_path %></u></h2>
+  <h2 class="col-xs-6"><u><%= link_to " 既に登録済みの方はこちらから", new_owner_session_path %></u></h2>
+</div>
