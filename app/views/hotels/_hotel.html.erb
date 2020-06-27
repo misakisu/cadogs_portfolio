@@ -27,5 +27,13 @@
   <p><%= hotel.phone_number %></p>
   <h4><strong>紹介文</strong></h4>
   <p><%= hotel.introduction %></p>
+  <h4><strong>詳細写真</strong></h4>
+  <% if @hotel.hotel_images.present? %>
+    <% @hotel.hotel_images.each do |image| %>
+    <%= attachment_image_tag image, :image, format: 'jpg', size: "300x200", fallback: "no_image.jpg" %>
+    <% end %>
+  <% else %>
+    <%= image_tag 'no_image.jpg', size: '200x200' %>
+  <% end %>
 </div>
 

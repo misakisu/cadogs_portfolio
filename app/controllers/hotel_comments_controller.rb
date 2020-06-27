@@ -15,8 +15,8 @@ class HotelCommentsController < ApplicationController
     @hotel = Hotel.find(params[:hotel_id])
     @hotel_comment = HotelComment.find(params[:id])
     if @hotel_comment.user == current_user
-    @hotel_comment.destroy
-    redirect_to hotel_path(@hotel)
+      @hotel_comment.destroy
+      redirect_to hotel_path(@hotel)
     end
   end
 
