@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_with model:@pet, url:pet_path(@pet), method: :put, local:true do |form| %>
 
   <%= form.label :image, "プロフィール画像" %>
@@ -20,3 +21,4 @@
   <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
 
 <% end %>
+</div>

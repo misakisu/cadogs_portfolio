@@ -2,6 +2,7 @@ class Owner::HotelsController < ApplicationController
   def new
     @hotel = Hotel.new
     @owner = current_owner
+    @hotel.hotel_images.build#関連するモデルを生成するときはbuild
   end
 
   def create
@@ -40,6 +41,6 @@ class Owner::HotelsController < ApplicationController
 
 private
   def hotel_params
-    params.require(:hotel).permit(:owner_id, :name, :image, :price, :address, :phone_number, :image, :introduction, :is_valid, pet_genre_ids: [])
+    params.require(:hotel).permit(:owner_id, :name, :image, :price, :address, :phone_number, :image, :introduction, :is_valid, hotel_images_images: [])
   end
 end

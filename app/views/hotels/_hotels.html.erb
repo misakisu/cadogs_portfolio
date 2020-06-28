@@ -5,21 +5,6 @@
     <!--hotel一覧右側-->
     <div class="col-xs-7">
     <h2><%= hotel.name %></h2>
-      <!--いいねはUserのみが可能、Ownerと管理者は合計数の閲覧のみ-->
-  　<% if user_signed_in? %>
-      <% if hotel.favorited_by?(current_user) %>
-        <%= link_to hotel_favorites_path(hotel), method: :delete do %>
-        <i class="fa fa-star" aria-hidden="true"></i>
-        <% end %>
-      <% else %>
-        <%= link_to hotel_favorites_path(hotel), method: :post do %>
-        <i class="fa fa-star-o" aria-hidden="true"></i>
-        <%= hotel.favorites.count %>
-        <% end %>
-      <% end %>
- 　 <% elsif owner_signed_in? || admin_signed_in? %>
-      <%= hotel.favorites.count %>
-    <% end %>
       <h5><strong>　<%= link_to "ホテル詳細をみる", hotel_path(hotel) %></strong></h5><hr>
       <table class="table-inverse">
       <tr class="row">

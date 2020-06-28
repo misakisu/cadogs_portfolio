@@ -61,6 +61,7 @@ class OwnerDevises::RegistrationsController < Devise::RegistrationsController
   # end
   before_action :configure_permitted_parameters,if: :devise_controller?
   def after_sign_up_path_for(resource)
+    flash[:notice] = "ご登録ありがとうございます！"
     owner_home_path
   end
   protected

@@ -27,7 +27,7 @@
         <% if user_signed_in? %>
         <li><%= link_to "ホテル一覧", hotels_path, class:"glyphicon glyphicon-home"%></li>
         <li><%= link_to "マイページ", user_path, class:"glyphicon glyphicon-user"%></li>
-        <li><%= link_to " マイペット", user_pets_path, method: :get, class:" fas fa-paw" %></li>
+        <li><%= link_to " マイペット", user_pets_path, method: :get, class:"fas fa-paw" %></li>
         <li><%= link_to " サインアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
         <!--Owner用ヘッダー-->
         <% elsif owner_signed_in? %>
@@ -53,9 +53,8 @@
     </div>
   </nav>
 
-  <div class="container">
-    <%= yield %>
-  </div>
+  <%= yield %>
+
 
   </body>
 </html>
