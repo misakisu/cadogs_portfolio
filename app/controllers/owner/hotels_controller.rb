@@ -40,6 +40,6 @@ class Owner::HotelsController < ApplicationController
 
 private
   def hotel_params
-    params.require(:hotel).permit(:owner_id, :name, :image, :price, :address, :phone_number, :image, :introduction, :is_valid, hotel_genre_relation_ids: [])
+    params.require(:hotel).permit(:owner_id, :name, :image, :price, :address, :phone_number, :image, :introduction, :is_valid, pet_genre_ids: [])
   end
 end
