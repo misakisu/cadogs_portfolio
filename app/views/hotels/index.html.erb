@@ -1,3 +1,5 @@
 <div class="container">
-<%= render 'hotels', hotels: @hotels %>
+<% @hotels.each do |hotel| %>
+  <%= render partial: 'hotels', locals: {hotel: hotel} %>
+<% end %>
 </div>

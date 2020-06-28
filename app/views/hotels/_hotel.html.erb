@@ -1,6 +1,6 @@
+<h2><%= hotel.name %></h2>
 <%= attachment_image_tag hotel, :image, format: 'jpg', size: "600x500", class: "col-xs-12 hotel_image", fallback: "no_image.jpg" %>
 <div class="hotel_profile">
-  <h2><%= hotel.name %></h2>
   <!--いいねはUserのみが可能、Ownerと管理者は合計数の閲覧のみ-->
   <% if user_signed_in? %>
     <% if hotel.favorited_by?(current_user) %>
@@ -28,6 +28,12 @@
   <h4><strong>紹介文</strong></h4>
   <p><%= hotel.introduction %></p>
   <h4><strong>詳細写真</strong></h4>
+  <!--ホテルのペットジャンルを中間テーブルから-->
+  <h4><strong>ご利用可能なペット一覧</strong></h4>
+  <% hotel.pet_genres.each do |pet_genre| %>
+  <p><%= pet_genre.name %></p>
+  <% end %>
+  <!--ホテルの詳細写真をeachで回す-->
   <% if @hotel.hotel_images.present? %>
     <% @hotel.hotel_images.each do |image| %>
     <%= attachment_image_tag image, :image, format: 'jpg', size: "300x200", fallback: "no_image.jpg" %>
@@ -36,4 +42,3 @@
     <%= image_tag 'no_image.jpg', size: '200x200' %>
   <% end %>
 </div>
-
