@@ -1,3 +1,4 @@
+<h2><%= hotel.name %></h2>
 <%= attachment_image_tag hotel, :image, format: 'jpg', size: "600x500", class: "col-xs-12 hotel_image", fallback: "no_image.jpg" %>
 <div class="hotel_profile">
   <h2><%= hotel.name %></h2>
@@ -27,5 +28,8 @@
   <p><%= hotel.phone_number %></p>
   <h4><strong>紹介文</strong></h4>
   <p><%= hotel.introduction %></p>
+  <% hotel.pet_genres.each do |pet_genre| %>
+  <p><%= pet_genre.name %></p>
+  <% end %>
 </div>
 

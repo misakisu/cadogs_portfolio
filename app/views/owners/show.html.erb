@@ -7,21 +7,6 @@
 </table>
 <h4>登録済みホテル（一覧)</h4>
   <% @hotels.each do |hotel| %>
-    <%= attachment_image_tag hotel, :image, format: 'jpg', size: "600x500", class: "col-xs-12 hotel_image", fallback: "no_image.jpg" %>
-    <h2><%= hotel.name %></h2>
-    <div class="hotel_profile">
-      <h3><strong>ホテル詳細</strong></h3><hr>
-      <h4><strong>一室一泊</strong></h4>
-      <p><strong><%= hotel.price %><strong>
-      <h4><strong>住所</strong></h4>
-      <p><%= hotel.address %></p>
-      <h4><strong>一室一泊</strong></h4>
-      <p><%= hotel.phone_number %></p>
-      <h4><strong>電話番号</strong></h4>
-      <p><%= hotel.phone_number %></p>
-      <h4><strong>紹介文</strong></h4>
-      <p><%= hotel.introduction %></p>
-      <p><%= hotel.pet_genres %></p>
-      <%= link_to '登録情報編集', edit_owner_hotel_path(hotel), class: "btn btn-success" %>
-    </div>
+  <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
+  <div><%= link_to '登録情報編集', edit_owner_hotel_path(hotel), class: "btn btn-success" %></div>
   <% end %>

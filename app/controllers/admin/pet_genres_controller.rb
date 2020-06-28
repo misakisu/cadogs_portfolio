@@ -7,9 +7,9 @@ class Admin::PetGenresController < ApplicationController
   def create
   @pet_genre = PetGenre.new(pet_genre_params)
   @pet_genres = PetGenre.all
-    if @pet_genre.save
-      redirect_to admin_pet_genres_path
+    if @pet_genre.save!
       flash[:notice] = "登録しました"
+      redirect_to admin_pet_genres_path
     else
       render :index
     end
