@@ -17,6 +17,116 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-table {
-    border-style: none;
+/*全体*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.profile {
+margin-bottom:30px;
+}
+
+.profile-name {
+  font-size:30px;
+}
+
+p {
+  font-weight:400px;
+}
+
+
+/*Userのtop画面のCSS*/
+.sns {
+  margin:40px 0px;
+  padding:2rem;
+}
+
+.fab {
+  font-size:50px;
+}
+
+.fa-instagram {
+  color: #FF3366;
+}
+
+.fa-facebook {
+  color: #000066;
+}
+
+.fa-twitter {
+  color:#0099FF;
+}
+
+.fa-youtube {
+  color: #FF3300;
+}
+
+/*Ownerのtop画面のCSS*/
+.jumbotron{
+  background-color:white;
+}
+
+.owner_main{
+  padding:2rem;
+}
+.step{
+ padding:2rem;
+}
+
+.owner_main_img {
+ width:500px;
+ heigth:500px;
+}
+
+.owner_step {
+  font-size:25px;
+  list-style: none;
+}
+
+.owner_top li {
+  margin-bottom:20px;
+}
+
+.owner_top li span {
+  font-weight:bold;
+  background: linear-gradient(transparent 70%, orange 10%);
+}
+
+.owner_top li span:hover {
+  font-weight:bold;
+  background: linear-gradient(transparent 70%, orange);
+}
+
+/*hotel一覧と詳細ページのCSS*/
+.hotel_box {
+  border: solid 1px gray;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  padding:20px;
+}
+
+.hotel_box:hover {
+  background-color:rgba(255,248,38,0.3);
+}
+
+.price_data {
+  font-weight:bold;
+  font-size:20px;
+  color:red;
+  background: linear-gradient(transparent 70%, orange 10%);
+}
+
+.hotel_profile {
+ padding:10px;
+}
+
+/*おきにいりのCSS*/
+.fa-star {
+  color:yellow;
+  font-size:30px;
+}
+.fa-star-o {
+  color:yellow;
+  font-size:30px;
 }
