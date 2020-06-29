@@ -24,9 +24,9 @@
 
   <!--hotelジャンルの追加、include_hidden:falseでは配列作成時の空白を排除。bはbuilderのb-->
   <%= form.label :pet_genres %>
-  <%= collection_check_boxes(:hotel, :pet_genre_ids, PetGenre.all, :id, :name, include_hidden: false) do |b| %>
-  <%= b.label { b.check_box + b.text } %>
-  <% end %>
+    <%= collection_check_boxes(:hotel, :pet_genre_ids, PetGenre.all, :id, :name, include_hidden: false) do |b| %>
+    <%= b.label { b.check_box + b.text } %>
+    <% end %>
 
   <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
 
