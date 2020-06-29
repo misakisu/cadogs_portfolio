@@ -1,10 +1,17 @@
-<h4>管理者画面</h4>
-<table class="table table-inverse">
-    <tr><th>氏名</th><td><%= @owner.name %></td></tr>
-    <tr><th>電話番号</th><td><%= @owner.phone_number %></td></tr>
-    <tr><th>メールアドレス</th><td><%= @owner.email %></td></tr>
-    <tr><th><button><%= link_to "編集", edit_owner_registration_path %></button></td></tr>
-</table>
+<h5>管理者画面</h5>
+<div class="row profile">
+  <div class="col-xs-12 col-sm-4">
+    <div class="profile-name"><%= @owner.name %></div>
+    <div><i class="fas fa-phone"></i> <%= @owner.phone_number %></div>
+    <div><i class="fas fa-envelope"></i> </th><td><%= @owner.email %></div>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+  　<%= link_to edit_owner_registration_path do %>
+    <button class="btn btn-success">登録情報編集</button>
+  　<% end %>
+  </div>
+</div>
+
 <h4>登録済みホテル（一覧)</h4>
   <% @hotels.each do |hotel| %>
   <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
