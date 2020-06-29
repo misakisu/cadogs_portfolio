@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HotelGenreRelationTest < ActiveSupport::TestCase
+class HotelImageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

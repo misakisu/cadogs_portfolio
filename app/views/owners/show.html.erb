@@ -1,0 +1,19 @@
+<h5>管理者画面</h5>
+<div class="row profile">
+  <div class="col-xs-12 col-sm-4">
+    <div class="profile-name"><%= @owner.name %></div>
+    <div><i class="fas fa-phone"></i> <%= @owner.phone_number %></div>
+    <div><i class="fas fa-envelope"></i> </th><td><%= @owner.email %></div>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+  　<%= link_to edit_owner_registration_path do %>
+    <button class="btn btn-success">登録情報編集</button>
+  　<% end %>
+  </div>
+</div>
+
+<h4>登録済みホテル（一覧)</h4>
+  <% @hotels.each do |hotel| %>
+  <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
+  <div><%= link_to '登録情報編集', edit_owner_hotel_path(hotel), class: "btn btn-success" %></div>
+  <% end %>

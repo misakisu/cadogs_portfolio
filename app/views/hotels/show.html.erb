@@ -1,0 +1,12 @@
+<div class="container">
+  <%= render 'hotel', hotel: @hotel %>
+  <div class="col-xs-12">
+    <%= form_with model:@hotel_comment, url:hotel_hotel_comments_path(@hotel), method: :post, local:true do |f| %>
+    <%= f.text_area :comment, rows:'5', class: "form-control" %>
+    <%= f.submit "送信", class: "btn" %>
+    <% end %>
+    <% @hotel_comments.each do |hotel_comment| %>
+    <p><%= hotel_comment.comment %></p>
+    <% end %>
+  </div>
+</div>
