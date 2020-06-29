@@ -1,8 +1,8 @@
 class PetsController < ApplicationController
   def index
     @pet = Pet.new
-    @user = current_user
-    @pets = @user.pets
+    #現在のユーザーのペットを表示
+    @pets = current_user.pets
   end
 
   def create

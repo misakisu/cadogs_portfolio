@@ -7,6 +7,7 @@ class HotelsController < ApplicationController
   @hotel = Hotel.find(params[:id])
   @hotel_comment = HotelComment.new
   @hotel_comments = @hotel.hotel_comments #hotelのidに紐づいたhotels全部
+  @reservation = Reservation.new
   end
 
 private
