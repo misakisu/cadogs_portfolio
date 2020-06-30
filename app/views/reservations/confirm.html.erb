@@ -1,0 +1,20 @@
+<%= form_with model:@reservation, url:user_reservations_path, method: :post, local:true do |form| %>
+  <!--@reservation.user.nameでは表示できないため、下記で対応-->
+  <%= @user.family_name %><%= @user.given_name %>
+
+  <!--@reservation.hotel.nameでは表示できない-->
+
+  <!--hotelのidは簡潔にuserがfindしたidをviewから送信-->
+  <%= form.hidden_field :hotel_id, value: params[:hotel_id] %>
+
+  <%= @reservation.start_date %>
+
+  <%= @reservation.end_date %>
+
+  <div class="actions">
+    <%= form.submit '投稿画面に戻る', name: 'back' %>
+  </div>
+  <div class="actions">
+    <%= form.submit '投稿する' %>
+  </div>
+<% end %>

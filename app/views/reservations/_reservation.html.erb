@@ -1,12 +1,14 @@
 <h5>予約はこちらから</h5>
-<%= form_with model:@reservation, url:user_reservations_path, method: :post, local:true do |form| %>
-
+<%= form_with model:@reservation, url:confirm_reservation_path, method: :post, local:true do |form| %>
+<!--Datetimepickerの実装-->
+<div type="text" id="datepicker"><!--type="text"は-->
   <label>チェックイン</label>
-  <%= form.text_field  :start_date,  :class => 'datepicker' %>
+  <%= form.text_field  :start_date %>
 
   <label>チェックアウト</label><%= form.text_field  :end_date,  :class => 'datepicker' %>
+</div>
 
-  <label>チェックアウト</label><%= form.text_field  :end_date,  :class => 'datepicker' %>
+  <label>ご要望がありましたらご記入ください</label><%= form.text_field  :request %>
 
   <!--hotelのidは簡潔にuserがfindしたidをviewから送信-->
   <%= form.hidden_field :hotel_id, value: @hotel.id %>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
   <head>
     <title>Cadogs</title>
@@ -6,7 +6,10 @@
     <%= csp_meta_tag %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.css" type="text/css" media="all" />
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!--datepickerを利用するための2行-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -44,11 +47,7 @@
         <!--全体ログイン前ー-->
         <% else %>
         <li><a href="#"><span class="glyphicon glyphicon-flag"></span> about</a></li>
-<<<<<<< HEAD
         <li><%= link_to "ホテルを見る", hotels_path, class:"glyphicon glyphicon-home"%></li>
-=======
-        <li><a href="#"><span class="glyphicon glyphicon-home"></span> ホテルを見る</a></li>
->>>>>>> admin_owner_user
         <li><%= link_to " お客様登録", new_user_registration_path, class:"glyphicon glyphicon-user" %></li>
         <li><%= link_to " お客様ログイン", new_user_session_path, class:"glyphicon glyphicon-log-in" %></li>
         <li><%= link_to " ホテルの登録の申請はこちらから", new_owner_registration_path %></li>

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :pets, only: [:index, :create, :edit, :update, :destroy]
     resources :reservations, only: [:create, :index] do
     post 'confirm', on: :member
-    get 'finish', on: :member
+    get 'finish', on: :collection
     end
     get 'confirm', on: :collection
     put 'hide', on: :collection
