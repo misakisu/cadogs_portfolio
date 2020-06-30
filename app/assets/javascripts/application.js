@@ -10,14 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/i18n/datepicker-ja
+//= require jquery_ujs
+//= require jquery-ui/i18n/datepicker-ja
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
-$( function() {
-  $("#datepicker").datepicker({
-
-  monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
-
-});
