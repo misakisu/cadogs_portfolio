@@ -2,7 +2,12 @@ class ReservationsController < ApplicationController
   def confirm
   @user = current_user#表示させるためのみ
   @reservation = current_user.reservations.new(reservation_params)
-  @total_price = 3000
+  #滞在日数の計算
+  enddate = params[:end_date].to_i
+  startdate = params[:start_date].to_i
+  @stay_days = (enddate - startdate).to_i
+  #合計金額の計算
+  #@total_price = @hotel.price*@stay_days
   end
 
   def create

@@ -1,11 +1,12 @@
-<h5>予約はこちらから</h5>
+<h5>予約フォーム</h5>
+<i>予約は1ペット様ずつ可能となっております</i>
 <%= form_with model:@reservation, url:confirm_reservation_path, method: :post, local:true do |form| %>
 <!--Datetimepickerの実装-->
 <div type="text" id="datepicker"><!--type="text"は-->
   <label>チェックイン</label>
-  <%= form.text_field  :start_date %>
+  <%= form.date_field  :start_date %>
 
-  <label>チェックアウト</label><%= form.text_field  :end_date,  :class => 'datepicker' %>
+  <label>チェックアウト</label><%= form.date_field  :end_date,  :class => 'datepicker' %>
 </div>
 
   <label>ご要望がありましたらご記入ください</label><%= form.text_field  :request %>
