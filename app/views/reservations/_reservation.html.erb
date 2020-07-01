@@ -1,15 +1,15 @@
-<h5>予約フォーム</h5>
+<h4><strong>予約フォーム</strong></h4>
 <i>予約は1ペット様ずつ可能となっております</i>
 <%= form_with model:@reservation, url:confirm_reservation_path, method: :post, local:true do |form| %>
-<!--Datetimepickerの実装-->
-<div type="text" id="datepicker"><!--type="text"は-->
   <label>チェックイン</label>
   <%= form.date_field  :start_date %>
 
-  <label>チェックアウト</label><%= form.date_field  :end_date,  :class => 'datepicker' %>
-</div>
+  <label>チェックアウト</label><%= form.date_field  :end_date %>
 
-  <label>ご要望がありましたらご記入ください</label><%= form.text_field  :request %>
+  <label>ご要望がありましたらご記入ください</label><%= form.text_field  :request, class: "form-control bg-gradient" %>
+
+  <label>ご宿泊予定のペット様</label>
+  <%= form.collection_select(:pet_id, Pet.all, :id, :name) %>
 
   <!--hotelのidは簡潔にuserがfindしたidをviewから送信-->
   <%= form.hidden_field :hotel_id, value: @hotel.id %>

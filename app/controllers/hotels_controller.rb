@@ -8,6 +8,7 @@ class HotelsController < ApplicationController
   @hotel_comment = HotelComment.new
   @hotel_comments = @hotel.hotel_comments #hotelのidに紐づいたhotels全部
   @reservation = Reservation.new
+  @pets = current_user.pets #Userのペット一覧の情報
   end
 
 private

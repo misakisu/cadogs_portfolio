@@ -3,9 +3,12 @@ class ReservationsController < ApplicationController
   @user = current_user#表示させるためのみ
   @reservation = current_user.reservations.new(reservation_params)
   #滞在日数の計算
-  enddate = params[:end_date].to_i
-  startdate = params[:start_date].to_i
-  @stay_days = (enddate - startdate).to_i
+  require "date"
+  enddate =  Date.parse(reservation_params[:end_date])
+  startdate = Date.parse(reservation_params[:start_date])
+  #enddate = reservation_params[:end_date].parse
+  #startdate = reservation_params[:start_date].parse
+  @stay_length = (enddate - startdate).to_i
   #合計金額の計算
   #@total_price = @hotel.price*@stay_days
   end
@@ -25,6 +28,6 @@ class ReservationsController < ApplicationController
 
   private
   def reservation_params
-    params.require(:reservation).permit(:user_id, :hotel_id, :start_date, :end_date, :total_price, :request)
+    params.require(:reservation).permit(:user_id, :hotel_id, :pet_id, :start_date, :end_date, :total_price, :request)
   end
 end
