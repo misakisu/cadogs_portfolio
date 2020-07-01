@@ -1,3 +1,2 @@
 /*コメントの部分更新。createアクションが始動された際、コメント部分テンプレートのみを更新。*/
-$("textarea").val('')
 $("#hotelcomments").html("<%= j(render partial: 'hotel_comments/hotelcomment', locals: {hotel_comments: @hotel.hotel_comments}) %>");

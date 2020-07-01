@@ -7,7 +7,7 @@
     <% end %>
   <% else %>
     <%= link_to hotel_favorites_path(hotel), method: :post, remote: true do %>
-    <i class="fa fa-star-o" aria-hidden="true"></i>
+    <i class="far fa-star"></i>
     <% end %>
   <% end %>
   <%= hotel.favorites.count %>

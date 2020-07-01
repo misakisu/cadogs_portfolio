@@ -1,8 +1,9 @@
+<div class="container">
 <h2><%= @hotel.name %></h2>
 <%= attachment_image_tag @hotel, :image, format: 'jpg', size: "600x500", class: "col-xs-12 hotel_image", fallback: "no_image.jpg" %>
 <div class="hotel_profile">
   <h3><strong>ホテル詳細</strong></h3><hr>
-  <!--いいねの部分的更新-->
+  <!--いいねの部分的非同期更新-->
   <div id="favorites_button_<%= @hotel.id %>">
     <%= render partial: 'favorites/favorite', locals: { hotel: @hotel} %>
   </div>
@@ -18,6 +19,7 @@
   <h4><strong>紹介文</strong></h4>
     <p><%= @hotel.introduction %></p>
 </div>
+<div>
   <h4><strong>詳細写真</strong></h4>
   <!--ホテルのペットジャンルを中間テーブルから-->
   <h4><strong>ご利用可能なペット一覧</strong></h4>
@@ -30,8 +32,9 @@
   <%= f.text_area :comment, rows:'5', class: "form-control" %>
   <%= f.submit "送信", class: "btn", remote: true %>
   <% end %>
-  <!--コメント部分的更新-->
-  <div id="hotelcomments_<%= @hotel.id %>">
+  <!--コメント部分的非同期更新-->
+  <div id="hotelcomments">
     <%= render partial: 'hotel_comments/hotelcomment', locals: { hotel_comments: @hotel.hotel_comments} %>
   </div>
   <!--ここまで-->
+</div>

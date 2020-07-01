@@ -1,4 +1,11 @@
+<div class="container">
+<h4><strong>コメント一覧<strong></h4>
 <% hotel_comments.each do |hotel_comment| %>
-    <p><%= hotel_comment.comment %></p>
-    <!--<p><%= hotel_comment.user %></p>-->
+      <p><%= hotel_comment.user.family_name %>さん       <%= hotel_comment.comment %></p>
+    <!--コメント投稿者へのみ削除ボタンを表示-->
+      <% if hotel_comment.user == current_user %>
+        <%= link_to '削除', hotel_comment_path(hotel_comment), class: "btn-sm btn-danger", method: :delete, remote: true %>
+      <% end %>
+    <hr>
 <% end %>
+</div>
