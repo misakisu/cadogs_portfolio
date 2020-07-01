@@ -5,7 +5,7 @@ class HotelCommentsController < ApplicationController
     @comment.user_id = current_user.id#どのuserのコメントかという情報をおくるためuser_idを定義
     if @comment.save
       flash[:success] = "コメントが投稿されました"
-      redirect_to hotel_path(@hotel)
+      #redirect_to hotel_path(@hotel)
     else
       render hotel_path(@hotel)
     end

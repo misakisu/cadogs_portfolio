@@ -5,13 +5,13 @@
     <%= link_to hotel_favorites_path(hotel), method: :delete, remote: true do %>
     <i class="fa fa-star" aria-hidden="true"></i>
     <% end %>
-    <%= hotel.favorites.count %>
   <% else %>
     <%= link_to hotel_favorites_path(hotel), method: :post, remote: true do %>
     <i class="fa fa-star-o" aria-hidden="true"></i>
     <% end %>
-    <%= hotel.favorites.count %>
   <% end %>
+  <%= hotel.favorites.count %>
 <% elsif owner_signed_in? || admin_signed_in? %>
   <%= hotel.favorites.count %>
 <% end %>
+<!--参考:aria-hidden="true"は読み上げ利用時読み上げしないように記述(アクセシビリティを考慮)-->
