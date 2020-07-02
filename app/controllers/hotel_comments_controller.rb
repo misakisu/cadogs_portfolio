@@ -4,7 +4,6 @@ class HotelCommentsController < ApplicationController
     @comment = @hotel.hotel_comments.new(hotel_comment_params)
     @comment.user_id = current_user.id#どのuserのコメントかという情報をおくるためuser_idを定義
     if @comment.save
-      flash[:success] = "コメントが投稿されました"
     else
       render hotel_path(@hotel)
     end
@@ -15,7 +14,7 @@ class HotelCommentsController < ApplicationController
     if @hotel_comment.user == current_user
        @hotel_comment.destroy
     end
-    @hotel = Hotel.find(@hotel_comment.hotel_id)
+    @hotel = Hotel.find(@hotel_comment.hotel_id)#非同期部分テンプレートのため
   end
 
   private
