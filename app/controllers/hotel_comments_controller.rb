@@ -11,11 +11,11 @@ class HotelCommentsController < ApplicationController
   end
 
   def destroy
-    @hotel_comment = HotelComment.find_by(params[:hotel_id])
-    @hotel_comments = @hotel.hotel_comments
+    @hotel_comment = HotelComment.find(params[:id])
     if @hotel_comment.user == current_user
-    @hotel_comment.destroy
+       @hotel_comment.destroy
     end
+    @hotel = Hotel.find(@hotel_comment.hotel_id)
   end
 
   private
