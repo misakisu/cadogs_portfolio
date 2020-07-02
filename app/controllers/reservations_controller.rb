@@ -1,33 +1,38 @@
 class ReservationsController < ApplicationController
   def confirm
-  @user = current_user#表示させるためのみ
-  @reservation = current_user.reservations.new(reservation_params)
-  #滞在日数の計算
-  require "date"
-  enddate =  Date.parse(reservation_params[:end_date])
-  startdate = Date.parse(reservation_params[:start_date])
-  #enddate = reservation_params[:end_date].parse
-  #startdate = reservation_params[:start_date].parse
-  @stay_length = (enddate - startdate).to_i
-  #合計金額の計算
-  #@total_price = @hotel.price*@stay_days
+    @reservation = current_user.reservations.new(reservation_params)
+    @user = current_user
+    @pet = Pet.find(reservation_params[:pet_id])
+    @hotel = Hotel.find(reservation_params[:hotel_id])
+    require "date"#日付データ宣言
+    #Stringを日付データへ変換
+    @enddate = Date.parse(reservation_params[:end_date])
+    @startdate = Date.parse(reservation_params[:start_date])
+    #合計金額の計算
+    @stay_length = (@enddate - @startdate).to_i
+    @total_price = @hotel.price * @stay_length
   end
 
   def create
-  #Confirm画面で戻るボタンでホテルshow画面、確定でSave
-  @reservation = current_user.reservations.new(reservation_params)
-  @user = current_user
-    if params[:back]
-      @hotel = Hotel.find(params[:id])
-      render hotel_path(@hotel)
-    elsif @reservation.save
-      render "finish"
-    end
+    @reservation = current_user.reservations.new(reservation_params)
+    @hotel = Hotel.find(reservation_params[:hotel_id])#reservationから受け取ったidでホテル検索
+    @user = current_user
+    #Confirm画面で戻るボタンでホテルshow画面へ
+      if params[:back]
+        render hotel_path(@hotel.id)
+      #Confirm画面で確定ボタンでSave
+      elsif @reservation.save
+        redirect_to finish_user_reservations_path
+      end
   end
-  #参考:newとsaveはcreateでまとめることが可能。今回は下記で統一。
+  #参考:newとsaveはcreateでまとめることが可能。
+
+  def finish
+  end
 
   private
   def reservation_params
     params.require(:reservation).permit(:user_id, :hotel_id, :pet_id, :start_date, :end_date, :total_price, :request)
   end
 end
+

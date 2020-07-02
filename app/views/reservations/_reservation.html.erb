@@ -1,15 +1,20 @@
+<div class="container">
 <h4><strong>予約フォーム</strong></h4>
 <i>予約は1ペット様ずつ可能となっております</i>
 <%= form_with model:@reservation, url:confirm_reservation_path, method: :post, local:true do |form| %>
-  <label>チェックイン</label>
+
+  <h3><strong>チェックイン</strong></h3>
   <%= form.date_field  :start_date %>
 
-  <label>チェックアウト</label><%= form.date_field  :end_date %>
+  <h3><strong>チェックアウト</strong></h3>
+  <%= form.date_field  :end_date %>
 
-  <label>ご要望がありましたらご記入ください</label><%= form.text_field  :request, class: "form-control bg-gradient" %>
-
-  <label>ご宿泊予定のペット様</label>
+  <h3><strong>ご宿泊予定のペット</strong></h3>
+  <i>予約は1ペット様ずつ可能となっております</i>
   <%= form.collection_select(:pet_id, Pet.all, :id, :name) %>
+
+  <h3><strong>その他ご要望</strong></h3>
+  <%= form.text_field  :request, class: "form-control bg-gradient" %>
 
   <!--hotelのidは簡潔にuserがfindしたidをviewから送信-->
   <%= form.hidden_field :hotel_id, value: @hotel.id %>
@@ -17,3 +22,4 @@
   <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
 
 <% end %>
+</div>
