@@ -1,7 +1,7 @@
 <div class="container">
 <h4><strong>予約フォーム</strong></h4>
 <i>予約は1ペット様ずつ可能となっております</i>
-<%= form_with model:@reservation, url:confirm_reservation_path, method: :post, local:true do |form| %>
+<%= form_with model:@reservation, url:confirm_user_reservations_path, method: :post, local:true do |form| %>
 
   <h3><strong>チェックイン</strong></h3>
   <%= form.date_field  :start_date %>

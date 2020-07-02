@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
     @user = current_user
     @pet = Pet.find(reservation_params[:pet_id])
     @hotel = Hotel.find(reservation_params[:hotel_id])
-    require "date"#日付データ宣言
+    require "date"#日付データ利用宣言
     #Stringを日付データへ変換
     @enddate = Date.parse(reservation_params[:end_date])
     @startdate = Date.parse(reservation_params[:start_date])
@@ -19,7 +19,8 @@ class ReservationsController < ApplicationController
     @user = current_user
     #Confirm画面で戻るボタンでホテルshow画面へ
       if params[:back]
-        render hotel_path(@hotel.id)
+        @hotel_comments = @hotel.hotel_comments#hotels/showへ戻る際に再度コメント一覧を渡す
+        render "hotels/show"#hotel_path(@hotel.id)では他コントローラへrenderできない
       #Confirm画面で確定ボタンでSave
       elsif @reservation.save
         redirect_to finish_user_reservations_path
@@ -27,12 +28,9 @@ class ReservationsController < ApplicationController
   end
   #参考:newとsaveはcreateでまとめることが可能。
 
-  def finish
-  end
-
   private
   def reservation_params
-    params.require(:reservation).permit(:user_id, :hotel_id, :pet_id, :start_date, :end_date, :total_price, :request)
+    params.require(:reservation).permit(:user_id, :hotel_id, :pet_id, :start_date, :end_date, :total_price, :id, :request)
   end
 end
 
