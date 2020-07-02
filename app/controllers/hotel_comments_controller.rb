@@ -5,19 +5,17 @@ class HotelCommentsController < ApplicationController
     @comment.user_id = current_user.id#どのuserのコメントかという情報をおくるためuser_idを定義
     if @comment.save
       flash[:success] = "コメントが投稿されました"
-      redirect_to hotel_path(@hotel)
     else
       render hotel_path(@hotel)
     end
   end
 
   def destroy
-    @hotel = Hotel.find(params[:hotel_id])
     @hotel_comment = HotelComment.find(params[:id])
     if @hotel_comment.user == current_user
-      @hotel_comment.destroy
-      redirect_to hotel_path(@hotel)
+       @hotel_comment.destroy
     end
+    @hotel = Hotel.find(@hotel_comment.hotel_id)
   end
 
   private

@@ -1,14 +1,47 @@
 <div class="container">
-  <!--reservtion/confirmから戻った際に部分テンプレートを読み込めるよう絶対パスで記載-->
-  <%= render '/hotels/hotel', hotel: @hotel %>
-  <%= render '/reservations/reservation', reservation: @reservation %>
-  <div class="col-xs-12">
-    <%= form_with model:@hotel_comment, url:hotel_hotel_comments_path(@hotel), method: :post, local:true do |f| %>
-    <%= f.text_area :comment, rows:'5', class: "form-control" %>
-    <%= f.submit "送信", class: "btn" %>
-    <% end %>
-    <% @hotel_comments.each do |hotel_comment| %>
-    <p><%= hotel_comment.comment %></p>
-    <% end %>
+<h2><%= @hotel.name %></h2>
+<%= attachment_image_tag @hotel, :image, format: 'jpg', size: "600x500", class: "col-xs-12 hotel_image", fallback: "no_image.jpg" %>
+<div class="hotel_profile">
+  <h3><strong>ホテル詳細</strong></h3><hr>
+  <!--いいねの部分的非同期更新-->
+  <div id="favorites_button_<%= @hotel.id %>">
+    <%= render partial: 'favorites/favorite', locals: { hotel: @hotel} %>
   </div>
+  <!--ここまで-->
+  <h3><strong>一室一泊</strong></h3>
+    <p><strong class="price_data"><%= @hotel.price %></strong>
+  <h4><strong>住所</strong></h4>
+    <p><%= @hotel.address %></p>
+  <h4><strong>一室一泊</strong></h4>
+    <p><%= @hotel.phone_number %></p>
+  <h4><strong>電話番号</strong></h4>
+    <p><%= @hotel.phone_number %></p>
+  <h4><strong>紹介文</strong></h4>
+    <p><%= @hotel.introduction %></p>
+</div>
+<div>
+  <h4><strong>詳細写真</strong></h4>
+  <!--ホテルの詳細写真をeachで回す-->
+  <% if @hotel.hotel_images.present? %>
+    <% @hotel.hotel_images.each do |image| %>
+    <%= attachment_image_tag image, :image, format: 'jpg', size: "300x200", fallback: "no_image.jpg" %>
+    <% end %>
+  <% else %>
+    <%= image_tag 'no_image.jpg', size: '200x200' %>
+  <% end %>
+  <h4><strong>ご利用可能なペット一覧</strong></h4>
+  <% @hotel.pet_genres.each do |pet_genre| %>
+    <p><%= pet_genre.name %></p>
+  <% end %>
+</div>
+  <!--コメント投稿部分-->
+  <%= form_with model:[@hotel, @hotel_comment], url:hotel_hotel_comments_path(@hotel), method: :post, local:true, data: {remote: true} do |f| %>
+  <%= f.text_area :comment, rows:'5', class: "form-control" %>
+  <%= f.submit "送信", class: "btn", remote: true %>
+  <% end %>
+  <!--コメント部分的非同期更新-->
+  <div id="hotelcomments">
+    <%= render partial: 'hotel_comments/hotelcomment', locals: { hotel_comments: @hotel.hotel_comments} %>
+  </div>
+  <!--ここまで-->
 </div>
