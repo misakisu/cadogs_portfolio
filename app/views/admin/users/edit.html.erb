@@ -1,0 +1,42 @@
+<div class="container">
+  <h2><%= @user.family_name %><%= @user.given_name %>さんの会員情報編集</h2>
+
+    <%= form_with model:[@user], url:admin_user_path(@user), method: :put, local:true do |form| %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">名前</div>
+      <div class="field col-xs-12 col-sm-3">
+        <%= form.text_field :family_name, autofocus: true, class: "form-control bg-gradient-success" %>
+      </div>
+      <div class="field col-xs-12 col-sm-4">
+        <%= form.text_field :given_name, autofocus: true, class: "form-control bg-gradient-success" %>
+      </div>
+
+      <div class="col-xs-12 col-sm-3">フリガナ</div>
+      <div class="field col-xs-12 col-sm-3">
+        <%= form.text_field :family_name_kana, autofocus: true, class: "form-control bg-gradient-success" %>
+      </div>
+      <div class="field col-xs-12 col-sm-4">
+        <%= form.text_field :given_name_kana, autofocus: true, class: "form-control bg-gradient-success" %>
+      </div>
+
+      <div class="col-xs-12 col-sm-3"><%= form.label :email, "メールアドレス" %></div>
+      <div class="field col-xs-12 col-sm-9">
+        <%= form.email_field :email, autofocus: true, autocomplete: "email", class: "form-control bg-gradient-success" %>
+      </div>
+
+      <div class="col-xs-12 col-sm-3"><%= form.label :phone_number, "電話番号(ハイフン無し)" %></div>
+      <div class="field col-xs-12 col-sm-9">
+        <%= form.number_field :phone_number, autofocus: true, class: "form-control bg-gradient-success" %>
+      </div>
+
+      <div class="col-xs-12 col-sm-3">
+        <%= form.radio_button :is_valid, true,  class: :rd %>有効
+        <%= form.radio_button :is_valid, false,  class: :rd %>退会済み
+      </div>
+      <div class="field col-xs-12 col-sm-9">
+        <%= form.submit '編集内容を保存する', class: "btn btn-primary" %>
+      </div>
+
+    </div>
+    <% end %>
+</div>

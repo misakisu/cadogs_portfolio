@@ -38,7 +38,7 @@
         <% elsif admin_signed_in? %>
         <li><%= link_to "ホテル一覧", hotels_path, class:"glyphicon glyphicon-home"%></li>
         <li><%= link_to " ペットジャンル管理", admin_pet_genres_path, class:"glyphicon glyphicon-th-list" %></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> お客様一覧</a></li>
+        <li><%= link_to " お客様一覧", admin_users_path, class:"glyphicon glyphicon-user" %></li>
         <li><a href="#"><span class="glyphicon glyphicon-home"></span>  ホテル一覧</a></li>
         <li><%= link_to " サインアウト", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
         <!--全体ログイン前ー-->

@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>会員一覧</h1>
+  <i>会員情報の変更は名前をクリック</i>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>フリガナ</th>
+          <th>メールアドレス</th>
+          <th>電話番号</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= link_to (user.family_name+user.given_name), edit_admin_user_path(user.id) %></td>
+          <td><%= user.family_name_kana %> <%= user.given_name_kana %></td>
+          <td><%= user.phone_number %></td>
+          <td><%= user.email %></td>
+          <td>
+            <% if user.is_valid? %>
+              <p>有効</p>
+            <% else %>
+              <p>退会済</p>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>

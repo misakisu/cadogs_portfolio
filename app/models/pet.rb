@@ -1,6 +1,7 @@
 class Pet < ApplicationRecord
   belongs_to :user
   belongs_to :pet_genre
+  has_many   :reservations
   attachment :image
   #genderを定義
   enum gender:{
