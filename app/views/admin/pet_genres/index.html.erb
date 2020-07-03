@@ -1,3 +1,4 @@
+<div class="container">
  <%= form_with model: @pet_genre, url: admin_pet_genres_path, method: :post, local:true do |form| %>
  <%= form.label :name, "ジャンル名" %>
  <%= form.text_field :name, autofocus: true %>
@@ -20,3 +21,4 @@
     <% end %>
   </tbody>
 </table>
+</div>

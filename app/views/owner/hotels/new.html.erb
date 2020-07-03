@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_with model:[@owner, @hotel], url:owner_hotels_path, method: :post, local:true do |form| %>
 
   <%= form.label :image, "ホテル画像" %>
@@ -26,8 +27,9 @@
   <%= form.label :pet_genres %>
     <%= collection_check_boxes(:hotel, :pet_genre_ids, PetGenre.all, :id, :name, include_hidden: false) do |b| %>
     <%= b.label { b.check_box + b.text } %>
-    <% end %>
+  <% end %>
 
   <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
 
 <% end %>
+</div>
