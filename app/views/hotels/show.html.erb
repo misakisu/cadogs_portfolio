@@ -36,10 +36,10 @@
 </div>
 
 　<!--予約画面-->
-　<%= render '/reservations/reservation', reservation: @reservation %>
+　<%= render partial: 'reservations/reservation', locals: { reservation: @reservation} %>
 
   <!--コメント投稿部分-->
-  <%= form_with model:[@hotel, @hotel_comment], url:hotel_hotel_comments_path(@hotel), method: :post, local:true, remote: true do |f| %>
+  <%= form_with model:[@hotel, @hotel_comment], url:hotel_hotel_comments_path(@hotel), method: :post, local:true, data: {remote: true} do |f| %>
   <%= f.text_area :comment, rows:'5', class: "form-control" %>
   <%= f.submit "送信", class: "btn", remote: true %>
   <% end %>
