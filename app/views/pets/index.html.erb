@@ -1,6 +1,6 @@
 <div class="container">
 <h5>ペット新規登録</h5>
-<%= form_with model:@pet, url:user_pets_path, method: :post, local:true do |form| %>
+<%= form_with model:[@user, @pet], url:user_pets_path, method: :post, local:true do |form| %>
 
   <%= form.label :image, "プロフィール画像" %>
   <%= form.attachment_field :image %>
@@ -39,7 +39,7 @@
           <td><%= pet.name %></td>
           <td><%= pet.gender %></td>
           <td><%= pet.pet_genre.name %></td>
-          <td><%= link_to '編集する', edit_pet_path(pet), method: :delete, class:"btn btn-success" %></td>
+          <td><%= link_to '編集する', edit_pet_path(pet), class:"btn btn-success" %></td>
           <td><%= link_to '削除する', pet_path(pet), method: :delete, class:"btn btn-danger" %></td>
         </tr>
       <% end %>

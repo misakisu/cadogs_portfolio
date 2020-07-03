@@ -1,4 +1,4 @@
-<%= form_with model:@hotel, url:owner_hotels_path, method: :post, local:true do |form| %>
+<%= form_with model:[@owner, @hotel], url:owner_hotels_path, method: :post, local:true do |form| %>
 
   <%= form.label :image, "ホテル画像" %>
   <%= form.attachment_field :image %>
