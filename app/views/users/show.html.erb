@@ -1,5 +1,5 @@
 <div class="container">
-<h5>プロフィール</h5>
+<h4><strong>プロフィール</strong></h4>
 <div class="row profile">
   <div class="col-xs-12 col-sm-4">
     <div class="profile-name"><%= @user.family_name %><%= @user.given_name %></div>
@@ -12,8 +12,12 @@
   </div>
 </div>
 
-<h5>予約一覧</h5>
-<%= render partial: 'reservations/all', locals: { reservations: @reservations} %>
+<h4><strong>予約一覧</strong></h4>
+  <% @reservations.each do |reservation| %>
+    <div class="reservation-box">
+      <%= render partial: 'reservations/all', locals: { reservation: reservation} %>
+    </div>
+  <% end %>
 </div>
 
 

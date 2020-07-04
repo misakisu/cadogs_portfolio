@@ -1,22 +1,33 @@
-<div class="container">
-<div class="row">
-  <% reservations.each do |reservation| %>
+  <div class="row">
   <div class="col-xs-6">
+
+  <!--ペットが削除されている場合のために条件分岐-->
+  <% if reservation.pet.present? %>
     <h4><strong>宿泊ペット様</strong></h4>
-      <div><%= attachment_image_tag reservation.pet :image, format: 'jpg', size: "200x200", class: "pullleft profile-img", fallback: "no_image.jpg" %></div>
-      <h4><%= reservation.pet.name %></h4>
+      <div><%= attachment_image_tag reservation.pet, :image, format: 'jpg', size: "200x200", class: "pullleft profile-img", fallback: "no_image.jpg" %></div>
+  　<h4><%= reservation.pet.name %>様</h4>
+  <% else %>
+    <%= image_tag "no_image.jpg", size: "200x200", class: "pullleft profile-img" %>
+    <p>ご宿泊ペット様が見つかりません</p>
+  <% end %>
   </div>
 
 　<div class="col-xs-6">
     <table class="table table-inverse">
-      <tr><th>予約者名真</th><td><%= reservation.user.family_name %><%= reservation.user.given_name %></td></tr>
-      <tr><th>予約ホテル名</th><td><%= reservation.hotel.name %></td></tr>
+        <tr><th>予約者名</th><td><%= reservation.user.family_name %><%= reservation.user.given_name %></td></tr>
+
+      <!--ホテルが削除されている場合のために条件分岐-->
+      <% if reservation.hotel.present? %>
+        <tr><th>予約ホテル名</th><td><%= link_to "#{reservation.hotel.name}", hotel_path(reservation.hotel.id) %>
+      <% else %>
+        <tr><th>予約ホテル名</th><td>ご宿泊ペット様はホテルオーナ様によって削除されました</td></tr>
+      <% end %>
+
       <tr><th>チェックイン</th><td><%= reservation.start_date %></td></tr>
       <tr><th>チェックアウト</th><td><%= reservation.end_date %></td></tr>
-      <tr><th>チェックアウト</th><td><%= reservation.request %></td></tr>
+      <tr><th>ご要望</th><td><%= reservation.request %></td></tr>
       <tr><th>合計金額</th><td><%= reservation.total_price %></td></tr>
     </table>
   </div>
-  <% end %>
-</div>
-</div>
+  </div>
+

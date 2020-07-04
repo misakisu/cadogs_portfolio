@@ -1,6 +1,15 @@
 class HotelsController < ApplicationController
   def index
-    @hotels = Hotel.all
+    @pet_genres = PetGenre.all
+    @hotels = Hotel.where(is_valid: "true")#無効なホテル(未承認ホテル)は非表示
+    #検索に必要な情報(中間テーブルを活用して検索)
+    if params[:pet_genre_id]
+     @pet_genre_id = params[:pet_genre_id]
+     @hotels_all = @pet_genre_id.hotels
+     @hotels = @hotels_all.where(is_valid: "true")
+     else
+     render "index"
+    end
   end
 
   def show

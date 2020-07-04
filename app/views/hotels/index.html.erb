@@ -1,10 +1,12 @@
 <div class="container">
-
-<div class="status_search">
+<div class="col-xs-3 status_search">
  <%= render partial: 'search', locals: {pet_genres: @pet_genres} %>
 </div>
 
+<div class="col-xs-9">
 <% @hotels.each do |hotel| %>
-  <%= render partial: 'hotels', locals: {hotel: hotel} %>
+  <div class="hotel_box">
+    <%= render partial: 'hotels', locals: {hotel: hotel} %>
+  </div>
 <% end %>
 </div>

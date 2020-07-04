@@ -1,0 +1,10 @@
+<div class="container">
+<h4><strong>プロフィール</strong></h4>
+<div class="row profile">
+  <div class="col-xs-12 col-sm-4">
+    <div class="profile-name"><%= @user.family_name %><%= @user.given_name %>様</div>
+    <div><%= @user.family_name_kana %> <%= @user.given_name_kana %></div>
+    <div><i class="fas fa-phone"></i> <%= @user.phone_number %></div>
+    <div><i class="fas fa-envelope"></i> </th><td><%= @user.email %></div>
+  </div>
+</div>

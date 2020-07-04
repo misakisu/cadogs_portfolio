@@ -15,6 +15,11 @@ class Owner::HotelsController < ApplicationController
     end
   end
 
+  def show
+    @hotel = Hotel.find(params[:id])
+    @reservations = @hotel.reservations
+  end
+
   def edit
     @hotel = Hotel.find(params[:id])
   end

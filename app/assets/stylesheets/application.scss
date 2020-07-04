@@ -40,6 +40,14 @@ p {
   font-weight:400px;
 }
 
+/*ReservationのallテンプレートのCSS*/
+.reservation-box{
+  border: solid 0.5px gray;
+  border-radius: 5px;
+  padding:20px;
+  margin-bottom: 30px;
+  box-shadow: 8px 8px 8px rgba(0,0,0,0.3);
+}
 
 /*Userのtop画面のCSS*/
 .sns {
@@ -108,8 +116,9 @@ p {
 .hotel_box {
   border: solid 1px gray;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding:20px;
+  box-shadow: 8px 8px 8px rgba(0,0,0,0.3);
 }
 
 .hotel_box:hover {

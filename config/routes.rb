@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     get 'home' => 'home#top'
     resources :hotels
     resources :reservations, only: [:index, :destroy]
+    resources :users, only: [:show]
   end
 
   #adminデバイス

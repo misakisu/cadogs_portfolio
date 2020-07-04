@@ -15,10 +15,10 @@
 
 <h4>登録済みホテル（一覧)</h4>
   <% @hotels.each do |hotel| %>
-  <div class="owner_hotel">
-  <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
-  <%= link_to 'ホテル編集', edit_owner_hotel_path(hotel), class: "btn btn-success" %>
-  <%= link_to '予約確認', owner_reservations_path(hotel), class: "btn btn-warning" %>
+  <div class="hotel_box">
+    <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
+    <%= link_to "ホテル編集", edit_owner_hotel_path(hotel), class: "btn btn-success" %>
+    <%= link_to "予約確認", owner_hotel_path(hotel), class: "btn btn-warning" %>
   </div>
   <% end %>
 </div>
