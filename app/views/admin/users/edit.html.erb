@@ -1,5 +1,5 @@
 <div class="container">
-  <h2><%= @user.family_name %><%= @user.given_name %>さんの会員情報編集</h2>
+  <h2><%= @user.family_name %><%= @user.given_name %>様の会員情報編集</h2>
 
     <%= form_with model:[@user], url:admin_user_path(@user), method: :put, local:true do |form| %>
     <div class="row">
@@ -30,9 +30,12 @@
       </div>
 
       <div class="col-xs-12 col-sm-3">
-        <%= form.radio_button :is_valid, true,  class: :rd %>有効
-        <%= form.radio_button :is_valid, false,  class: :rd %>退会済み
+        <%= form.radio_button :is_valid, true,  class: :radio_button %>
+        <%= form.label :is_valid, "有効" %>
+        <%= form.radio_button :is_valid, false,  class: :radio_button %>
+        <%= form.label :is_valid, "退会済み" %>
       </div>
+
       <div class="field col-xs-12 col-sm-9">
         <%= form.submit '編集内容を保存する', class: "btn btn-primary" %>
       </div>

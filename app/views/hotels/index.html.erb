@@ -1,4 +1,9 @@
 <div class="container">
+
+<div class="status_search">
+ <%= render partial: 'search', locals: {pet_genres: @pet_genres} %>
+</div>
+
 <% @hotels.each do |hotel| %>
   <%= render partial: 'hotels', locals: {hotel: hotel} %>
 <% end %>

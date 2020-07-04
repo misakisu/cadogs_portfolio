@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   #userのルート petsとreservationsネスト
   resource :user, only: [:show], shallow: true do
     resources :pets, only: [:index, :create, :edit, :update, :destroy]
-    resources :reservations, only: [:create, :index] do
+    resources :reservations, only: [:create] do
       post 'confirm', on: :collection
       get 'finish', on: :collection
     end

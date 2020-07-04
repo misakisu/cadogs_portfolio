@@ -17,7 +17,7 @@
         <a class="navbar-brand" href="#"><em>Cadogs</em></a>
       </div>
       <!--Owner用左側ヘッダー-->
-      <% if owner_signed_in? %>
+      <% if owner_signed_in? || admin_signed_in? %>
       <ul class="nav navbar-nav">
         <li><%= link_to "ホテル一覧", hotels_path, class:"glyphicon glyphicon-home"%></li>
       </ul>
@@ -36,10 +36,11 @@
         <li><%= link_to " サインアウト", destroy_owner_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
         <!--Admin用ヘッダー-->
         <% elsif admin_signed_in? %>
-        <li><%= link_to "ホテル一覧", hotels_path, class:"glyphicon glyphicon-home"%></li>
+        <!--ホテル申請一覧は管理者hotelのIndex-->
+        <li><%= link_to "ホテル管理", admin_hotels_path, class:"glyphicon glyphicon-home"%></li>
         <li><%= link_to " ペットジャンル管理", admin_pet_genres_path, class:"glyphicon glyphicon-th-list" %></li>
-        <li><%= link_to " お客様一覧", admin_users_path, class:"glyphicon glyphicon-user" %></li>
-        <li><a href="#"><span class="glyphicon glyphicon-home"></span>  ホテル一覧</a></li>
+        <li><%= link_to " お客様管理", admin_users_path, class:"glyphicon glyphicon-user" %></li>
+        <li><%= link_to " オーナー様管理", admin_owners_path, class:"glyphicon glyphicon-user" %></li>
         <li><%= link_to " サインアウト", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
         <!--全体ログイン前ー-->
         <% else %>

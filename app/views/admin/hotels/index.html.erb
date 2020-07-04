@@ -1,0 +1,23 @@
+<!--ホテル申請一覧は管理者hotelのIndex-->
+<div class="container">
+	<!--Hotelの有効、無効で表示を変える-->
+	<div>
+	  <%= form_with(url: admin_hotels_path, method: :get, local:true) do |form| %>
+	    <%= form.select :is_valid, ([["有効(承認済み)","true"],["無効(申請待ち)","false"]]) %>
+	    <%= form.submit "表示する", class: "btn-sm btn-warning" %>
+	  <% end %>
+	</div>
+	<!--Hotel一覧もしくは上記で検索した条件(有効・無効)に合うホテル一覧を表示-->
+    <% @hotels.each do |hotel| %>
+      <div class="owner_hotel">
+        <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
+          <% if hotel.is_valid? %>
+            <p>有効</p>
+          <% else %>
+            <p><strong>無効(申請承認待ち)</strong></p>
+          <% end %>
+        <%= link_to "ホテル編集", edit_admin_hotel_path(hotel), class: "btn btn-success" %>
+        <a>予約確認<a>
+      </div>
+    <% end %>
+</div>

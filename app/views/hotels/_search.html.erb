@@ -1,0 +1,14 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ペット情報で検索</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--コントローラーへpet_genre_idを送り検索-->
+      <% pet_genres.each do |pet_genre| %>
+        <tr><td><%= link_to "#{pet_genre.name}", controller: "hotels", action: "index", pet_genre_id: pet_genre.id %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
