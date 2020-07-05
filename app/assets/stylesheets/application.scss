@@ -40,7 +40,15 @@ p {
   font-weight:400px;
 }
 
-/*ReservationのallテンプレートのCSS*/
+/*ReservationのformのCSS*/
+.reservation-form{
+  background-color: #B2E800;
+  background-color:rgba(178,232,0,0.7);
+  border-radius: 5px;
+  padding :20px;
+}
+
+/*ReservationのallのCSS*/
 .reservation-box{
   border: solid 0.5px gray;
   border-radius: 5px;
@@ -129,7 +137,7 @@ p {
   font-weight:bold;
   font-size:20px;
   color:red;
-  background: linear-gradient(transparent 70%, orange 10%);
+  background: linear-gradient(transparent 70%, yellow 10%);
 }
 
 .hotel_profile {

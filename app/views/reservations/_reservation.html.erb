@@ -1,5 +1,5 @@
-<div class="container">
 <h4><strong>予約フォーム</strong></h4>
+<div class="reservation-form">
 <i>予約は1ペット様ずつ可能となっております</i>
 <%= form_with model:[@user, @reservation], url:confirm_user_reservations_path, method: :post, local:true do |form| %>
 
@@ -14,7 +14,7 @@
   <%= form.collection_select(:pet_id, Pet.all, :id, :name) %>
 
   <h3><strong>その他ご要望</strong></h3>
-  <%= form.text_field  :request, class: "form-control bg-gradient" %>
+  <%= form.text_area  :request, rows:'5', class: "form-control bg-gradient" %>
 
   <!--hotelのidは簡潔にuserがfindしたidをviewから送信-->
   <%= form.hidden_field :hotel_id, value: @hotel.id %>

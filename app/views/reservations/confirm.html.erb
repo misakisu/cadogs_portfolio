@@ -33,7 +33,7 @@
     <p><%= @reservation.request %></p>
     <%= form.hidden_field :request, value: @reservation.request %>
 
-    <h4><strong>合計金額</strong><strong> <%= @total_price %>円</strong></h4>
+    <h4><strong>合計金額</strong><strong> <%= addTax(@total_price,1.10) %></strong></h4>
     <%= form.hidden_field :total_price, value: @total_price %>
 
     <div class="actions">

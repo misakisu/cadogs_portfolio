@@ -9,7 +9,7 @@
       <table class="table-inverse">
       <tr class="row">
         <th class="col-xs-6"><strong>金額</strong></th>
-        <td class="col-xs-6">一泊一室：<strong class="price_data"><%= hotel.price %></strong></td>
+        <td class="col-xs-6">一泊一室：<strong class="price_data"><%= addTax(hotel.price,1.10) %></strong></td>
       </tr>
       <tr class="row">
         <th class="col-xs-6"><strong>住所</strong></th>
