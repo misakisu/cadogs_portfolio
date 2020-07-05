@@ -4,7 +4,7 @@
 <div class="hotel_profile">
   <h3><strong>ホテル詳細</strong></h3><hr>
   <!--いいねの部分的非同期更新-->
-  <div id="favorites_button_<%= @hotel.id %>">
+  <div id="favorites_<%= @hotel.id %>">
     <%= render partial: 'favorites/favorite', locals: { hotel: @hotel} %>
   </div>
   <!--ここまで-->

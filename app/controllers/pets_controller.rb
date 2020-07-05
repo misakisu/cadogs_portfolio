@@ -9,7 +9,7 @@ class PetsController < ApplicationController
     @pet = current_user.pets.new(pet_params)
     if @pet.save
       flash[:success] = "ペット情報が保存されました！"
-      redirect_to user_pets_path
+      #redirect_to user_pets_path
     else
     	render "index"
     end
@@ -33,7 +33,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     if @pet.destroy
       flash[:success] = "ペット情報が保存されました！"
-      redirect_to user_pets_path
+      #redirect_to user_pets_path
     else
     	render "index"
     end

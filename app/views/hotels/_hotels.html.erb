@@ -4,7 +4,8 @@
     <!--hotel一覧右側-->
     <div class="col-xs-8">
     <h2><%= hotel.name %></h2>
-      <h5><strong>　<%= link_to "ホテル詳細をみる", hotel_path(hotel) %></strong></h5><hr>
+      <h5><strong><%= link_to "ホテル詳細をみる", hotel_path(hotel) %></strong></h5>
+      <p><strong><%= hotel.favorites.count %>人がお気に入りにしました</strong></p><hr>
       <table class="table-inverse">
       <tr class="row">
         <th class="col-xs-6"><strong>金額</strong></th>
