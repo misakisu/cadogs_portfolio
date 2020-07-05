@@ -6,6 +6,7 @@
     </thead>
     <tbody>
       <!--コントローラーへpet_genre_idを送り検索-->
+      <tr><td><%= link_to 'All', hotels_path %></td></tr>
       <% pet_genres.each do |pet_genre| %>
         <tr><td><%= link_to "#{pet_genre.name}", controller: "hotels", action: "index", pet_genre_id: pet_genre.id %></td>
         </tr>

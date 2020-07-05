@@ -2,7 +2,7 @@
 <div class="col-xs-3 status_search">
  <%= render partial: 'search', locals: {pet_genres: @pet_genres} %>
 </div>
-
+<p><%= flash[:notice] %></p>
 <div class="col-xs-9">
 <% @hotels.each do |hotel| %>
   <div class="hotel_box">

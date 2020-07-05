@@ -2,13 +2,17 @@ class HotelsController < ApplicationController
   def index
     @pet_genres = PetGenre.all
     @hotels = Hotel.where(is_valid: "true")#無効なホテル(未承認ホテル)は非表示
-    #検索に必要な情報(中間テーブルを活用して検索)
+    #検索に必要な情報をメソッドをつかって検索(中間テーブルを活用して検索)
     if params[:pet_genre_id]
-     @pet_genre_id = params[:pet_genre_id]
-     @hotels_all = @pet_genre_id.hotels
-     @hotels = @hotels_all.where(is_valid: "true")
-     else
-     render "index"
+      @pet_genre = PetGenre.find_by(id: params[:pet_genre_id])
+        unless @hotels = @pet_genre.hotels.empty?
+        @hotels = @pet_genre.hotels.where(is_valid: "true")#受け取ったペットIDに基づくHotelをすべて取得+有効(承認済み)のもの
+        else
+        flash[:notice] = "ホテルは存在しません"
+        render "index"
+        end
+    else
+      render "index"#何かあったときのため記述
     end
   end
 
