@@ -16,3 +16,10 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+jQuery(document).ready(function($){
+    $('.slider').bxSlider({
+        auto: true,
+        maxSlides: 1,
+        controls: false,
+    	});
+  });

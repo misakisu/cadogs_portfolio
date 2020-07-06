@@ -19,15 +19,80 @@
  @import "bootstrap";
 
 /*全体*/
-html {
+body {
   position: relative;
   min-height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif;
 }
 
 a:hover{
   text-decoration: none;
 }
 
+.faa-ring{
+  color: #FFC300;
+}
+
+/*Userのtop画面のCSS*/
+.top-message{
+  padding: 100px;
+}
+
+.top-message li{
+  font-size:20px;
+  list-style: none;
+}
+
+.top-message strong{
+ background: linear-gradient(transparent 70%, orange 10%);
+}
+
+.top_img{
+  border-radius: 50%;
+  box-shadow: 8px 8px 8px rgba(0,0,0,0.3);
+  /*hoverから戻るとき1秒待機*/
+  transition-duration: 1s;
+}
+
+.top_img:hover{
+  border-radius: 50%;
+  /*hover時影が2倍に*/
+  box-shadow: 16px 16px 16px rgba(0,0,0,0.3);
+  /*hover時影が2倍になるようにY方向へ-8移動*/
+  transform: translateY(-8px);
+  transition-duration: 1s;
+}
+
+.sns {
+  margin:40px 0px;
+  padding:2rem;
+}
+
+.fab {
+  font-size:50px;
+}
+
+.fa-instagram {
+  color: #FF3366;
+}
+
+.fa-facebook {
+  color: #000066;
+}
+
+.fa-twitter {
+  color:#0099FF;
+}
+
+.fa-youtube {
+  color: #FF3300;
+}
+
+.faa-ring{
+  color: #FFC300;
+}
+
+/*Userプロフィール*/
 .profile {
 margin-bottom:30px;
 }
@@ -57,32 +122,6 @@ p {
   box-shadow: 8px 8px 8px rgba(0,0,0,0.3);
 }
 
-/*Userのtop画面のCSS*/
-.sns {
-  margin:40px 0px;
-  padding:2rem;
-}
-
-.fab {
-  font-size:50px;
-}
-
-.fa-instagram {
-  color: #FF3366;
-}
-
-.fa-facebook {
-  color: #000066;
-}
-
-.fa-twitter {
-  color:#0099FF;
-}
-
-.fa-youtube {
-  color: #FF3300;
-}
-
 /*Ownerのtop画面のCSS*/
 .jumbotron{
   background-color:white;
@@ -97,22 +136,18 @@ p {
 }
 
 .owner_main_img {
- width:500px;
- heigth:500px;
+  box-shadow: 8px 8px 8px rgba(0,0,0,0.3);
+  object-fit:cover;
 }
 
 .owner_step {
-  font-size:25px;
+  font-size:20px;
   list-style: none;
+  padding: 100px;
 }
 
 .owner_top li {
   margin-bottom:20px;
-}
-
-.owner_top li span {
-  font-weight:bold;
-  background: linear-gradient(transparent 70%, orange 10%);
 }
 
 .owner_top li span:hover {

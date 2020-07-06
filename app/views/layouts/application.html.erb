@@ -6,55 +6,99 @@
     <%= csp_meta_tag %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.css" type="text/css" media="all" />
+    <!--bxsliderの導入-->
+    <link rel="stylesheet" href="/jquery.bxslider.scss">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" /></script>
+    <script src="/jquery.bxSlider.min.js"></script>
+    <!--ここまで-->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-  <nav class="navbar" style="background-color: #FFF70C">
+ <body>
+  <header>
+  <nav style="background-color: #FFF70C">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#"><em>Cadogs</em></a>
+        <a><strong><%= link_to "Cadogs", root_path, class: "navbar-brand" %></strong></a>
       </div>
       <!--Owner用左側ヘッダー-->
       <% if owner_signed_in? || admin_signed_in? %>
       <ul class="nav navbar-nav">
-        <li><%= link_to "ホテル一覧", hotels_path, class:"glyphicon glyphicon-home"%></li>
+        <li><%= link_to "ホテル一覧", hotels_path, class: "glyphicon glyphicon-home"%></li>
       </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
+
         <!--User用ヘッダー-->
         <% if user_signed_in? %>
-        <li><%= link_to "ホテル一覧", hotels_path, class:"glyphicon glyphicon-home"%></li>
-        <li><%= link_to "マイページ", user_path, class:"glyphicon glyphicon-user"%></li>
-        <li><%= link_to " マイペット", user_pets_path, method: :get, class:"fas fa-paw" %></li>
-        <li><%= link_to " サインアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
+        <li><%= link_to " ホテル一覧", hotels_path, class: "glyphicon glyphicon-home"%></li>
+        <li><%= link_to " マイページ", user_path, class: "glyphicon glyphicon-user"%></li>
+        <li><%= link_to " マイペット", user_pets_path, method: :get, class: "fas fa-paw" %></li>
+        <li><%= link_to " サインアウト", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
+
         <!--Owner用ヘッダー-->
         <% elsif owner_signed_in? %>
-        <li><%= link_to " 管理者ページ", owner_path,class:"glyphicon glyphicon-user" %></li>
-        <li><%= link_to " ホテル申請", new_owner_hotel_path, class:"glyphicon glyphicon-home" %></li>
-        <li><%= link_to " サインアウト", destroy_owner_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
+        <li><%= link_to " 管理者ページ", owner_path,class: "glyphicon glyphicon-user" %></li>
+        <li><%= link_to " ホテル申請", new_owner_hotel_path, class: "glyphicon glyphicon-home" %></li>
+        <li><%= link_to " サインアウト", destroy_owner_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
+
         <!--Admin用ヘッダー-->
         <% elsif admin_signed_in? %>
-        <!--ホテル申請一覧は管理者hotelのIndex-->
-        <li><%= link_to "ホテル管理", admin_hotels_path, class:"glyphicon glyphicon-home"%></li>
+        <li><%= link_to "ホテル管理", admin_hotels_path, class: "glyphicon glyphicon-home"%></li>
         <li><%= link_to " ペットジャンル管理", admin_pet_genres_path, class:"glyphicon glyphicon-th-list" %></li>
-        <li><%= link_to " お客様管理", admin_users_path, class:"glyphicon glyphicon-user" %></li>
-        <li><%= link_to " オーナー様管理", admin_owners_path, class:"glyphicon glyphicon-user" %></li>
-        <li><%= link_to " サインアウト", destroy_admin_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
+        <li><%= link_to " お客様管理", admin_users_path, class: "glyphicon glyphicon-user" %></li>
+        <li><%= link_to " オーナー様管理", admin_owners_path, class: "glyphicon glyphicon-user" %></li>
+        <li><%= link_to " サインアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
+
         <!--全体ログイン前ー-->
         <% else %>
         <li><a href="#"><span class="glyphicon glyphicon-flag"></span> about</a></li>
-        <li><%= link_to "ホテルを見る", hotels_path, class:"glyphicon glyphicon-home"%></li>
-        <li><%= link_to " お客様登録", new_user_registration_path, class:"glyphicon glyphicon-user" %></li>
-        <li><%= link_to " お客様ログイン", new_user_session_path, class:"glyphicon glyphicon-log-in" %></li>
-        <li><%= link_to " ホテルの登録はこちらから", owner_home_path %></li>
+        <li><%= link_to "ホテルを見る", hotels_path, class: "glyphicon glyphicon-home"%></li>
+        <li><%= link_to " お客様登録", new_user_registration_path, class: "glyphicon glyphicon-user" %></li>
+        <li><%= link_to " お客様ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+        <li><%= link_to " ホテルの掲載はこちらから", owner_home_path %></li>
         <% end %>
       </ul>
     </div>
   </nav>
+  </header>
 
     <%= yield %>
+
+  <!--footerは色分けのために2段階-->
+  <footer class="container-fluid bg-4 text-center" style="background-color: #FFF70C">
+    <div class="row text-center">
+      <div class="col-md-6">
+        <h5>Cadogs</h5>
+        <hr>
+        <p>030-2828-2828</p>
+        <p>cadogs.com</p>
+        <p>5-1-2 cado street Italy</p>
+      </div>
+      <div class="col-md-6">
+        <h5>お問い合わせ</h5>
+        <hr class="light">
+        <p>平日:9:00~17:00</p>
+        <p>休日・祝日:10:00~16:00</p>
+        <p>水曜日:閉店</p>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-12">
+      <hr>
+        <%= link_to " ホテルの掲載はこちらから", owner_home_path, class:"btn btn-success" %>
+      <hr>
+      </div>
+      <div class="col-12" style="background-color: white">
+        <%= link_to " 管理者画面ログイン", new_admin_session_path, class:"btn" %>
+      <hr>
+      </div>
+      <div class="col-12">
+        <p>Cadogs.copyright</p>
+      </div>
+    </div>
+  </footer>
 
   </body>
 </html>
