@@ -11,7 +11,7 @@
     <tbody>
       <% pets.each do |pet| %>
         <tr>
-          <td><%= attachment_image_tag pet, :image, format: 'jpg', size: "100x100", class: "pullleft profile-img", fallback: "no_image.jpg" %></td>
+          <td><%= attachment_image_tag pet, :image, format: 'jpg', size: "200x200", class: "pullleft profile-img", fallback: "no_image.jpg" %></td>
           <td><%= pet.name %></td>
           <td><%= pet.gender %></td>
           <td><%= pet.pet_genre.name %></td>

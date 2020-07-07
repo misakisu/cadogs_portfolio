@@ -1,5 +1,6 @@
 <!--ホテル申請一覧は管理者hotelのIndex-->
 <div class="container">
+  <p class="text-primary"><%= flash[:success] %></p>
 	<!--Hotelの有効、無効で表示を変える-->
 	<div>
 	  <%= form_with(url: admin_hotels_path, method: :get, local:true) do |form| %>

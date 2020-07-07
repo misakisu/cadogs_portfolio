@@ -8,4 +8,7 @@ class Pet < ApplicationRecord
     男の子: 0,
     女の子: 1
   }
+  #バリデーション
+  validates :name, presence: true
+  validates :gender, presence: true
 end

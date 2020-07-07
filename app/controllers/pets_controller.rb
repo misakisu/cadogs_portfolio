@@ -9,12 +9,10 @@ class PetsController < ApplicationController
   def create
     @pet = current_user.pets.new(pet_params)
     if @pet.save
-      flash[:success] = "ペット情報が保存されました！"
-      #redirect_to user_pets_path
     else
     	render "index"
     end
-    @pets = current_user.pets#非同期部分テンプレートの変数のため???????
+    @pets = current_user.pets#非同期部分テンプレートの変数のため
   end
   #浅くネストしているため、以下Idが情報取得に必要。
   def edit
@@ -27,7 +25,7 @@ class PetsController < ApplicationController
       flash[:success] = "ペット情報が更新されました！"
       redirect_to user_pets_path
     else
-    	render "index"
+    	render "edit"
     end
   end
 

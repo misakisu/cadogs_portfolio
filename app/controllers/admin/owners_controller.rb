@@ -10,8 +10,8 @@ class Admin::OwnersController < ApplicationController
   def update
     @owner = Owner.find(params[:id])
     if @owner.update(owner_params)
+      flash[:success] = "更新されました"
       redirect_to admin_owners_path
-      flash[:notice] = "更新されました"
     else
       render "edit"
     end

@@ -1,4 +1,5 @@
 <div class="container">
+<p class="text-danger"><%= flash[:error] %></p>
 <h2>ログイン画面</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -19,9 +20,8 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
-<%= render "owner_devises/shared/links" %>
 </div>

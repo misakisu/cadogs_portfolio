@@ -1,4 +1,5 @@
 <div class="container">
+  <p class="text-primary"><%= flash[:success] %></p>
   <!--プロフィール-->
   <h4><strong>プロフィール</strong></h4>
   <div class="row profile">
@@ -26,11 +27,11 @@
     <div class="favorite_box">
       <div class="row ">
       <!--ホテルのeachで回す詳細の部分テンプレート-->
-        <div class="col-xs-11">
+        <div class="col-sm-11">
           <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
         </div>
         <!--いいねの部分的非同期更新-->
-        <div class="col-xs-1" id="favorites_<%= hotel.id %>">
+        <div class="col-sm-1" id="favorites_<%= hotel.id %>">
           <%= render partial: 'favorites/favorite', locals: { hotel: hotel} %>
         </div>
       </div>
@@ -38,6 +39,7 @@
     <% end %>
   </div>
 </div>
+
 
 
 

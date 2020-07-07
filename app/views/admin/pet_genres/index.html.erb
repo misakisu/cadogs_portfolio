@@ -1,4 +1,5 @@
 <div class="container">
+  <p class="text-primary"><%= flash[:success] %></p>
  <%= form_with model: @pet_genre, url: admin_pet_genres_path, method: :post, local:true do |form| %>
  <%= form.label :name, "ジャンル名" %>
  <%= form.text_field :name, autofocus: true %>

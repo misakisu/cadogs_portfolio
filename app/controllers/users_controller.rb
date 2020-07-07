@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     #hideアクションでis_vaildカラムをfalseへupdate
     if @user.update(is_valid: false)
        reset_session
-       flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+       flash[:success] = "ありがとうございました。またのご利用を心よりお待ちしております。"
        redirect_to root_path
     else
        render edit_user_registration_path
