@@ -1,6 +1,6 @@
 <div class="container">
-<h5>ペット新規登録</h5>
-<%= form_with model:[@user, @pet], url:user_pets_path, method: :post, local:true, remote: true do |form| %>
+<h4>ペット新規登録</h4>
+<%= form_with model:[@user, @pet], url:user_pets_path, method: :post, local:true do |form| %>
 
   <%= form.label :image, "プロフィール画像" %>
   <%= form.attachment_field :image %>
@@ -17,10 +17,12 @@
 
   <div><%= form.collection_select(:pet_genre_id, PetGenre.all, :id, :name) %></div>
 
-  <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
+  <%= form.submit "確認画面へ進む", class:"btn btn-success", remote: true %>
 
 <% end %>
 
-<div id="pets_all">
-  <%= render partial: 'pets/pets', locals: { pets: @pets} %>
+  <div id="pets_all">
+    <%= render partial: 'pets/all', locals: { pets: @pets} %>
+  </div>
+
 </div>

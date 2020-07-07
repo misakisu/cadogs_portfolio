@@ -13,6 +13,7 @@ class PetsController < ApplicationController
     else
     	render "index"
     end
+    @pets = current_user.pets#非同期部分テンプレートの変数のため???????
   end
   #浅くネストしているため、以下Idが情報取得に必要。
   def edit
@@ -33,10 +34,10 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     if @pet.destroy
       flash[:success] = "ペット情報が保存されました！"
-      #redirect_to user_pets_path
     else
     	render "index"
     end
+    @pets = current_user.pets#非同期部分テンプレートの変数のため
   end
 
 private
