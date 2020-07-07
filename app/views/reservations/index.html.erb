@@ -1,0 +1,8 @@
+<div class="container">
+<h4><strong><%= @user.family_name %> <%= @user.given_name %>様の予約一覧</strong></h4>
+    <% @reservations.each do |reservation| %>
+      <div class="reservation-box">
+        <%= render partial: 'reservations/all', locals: { reservation: reservation} %>
+      </div>
+    <% end %>
+</div>

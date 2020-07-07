@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-    @pets = @user.pets
-    @reservations = @user.reservations
+    #おきにいり一覧
+    @favorites = Favorite.where(user_id: @user)
+    @hotels = []#お気に入りしているホテルの情報を配列として取得
+    @favorites.each do |favorite|
+      @hotel = Hotel.find_by(id: favorite.hotel_id)
+      @hotels.push(@hotel)
+    end
   end
 
   def confirm

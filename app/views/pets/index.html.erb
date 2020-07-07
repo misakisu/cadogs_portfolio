@@ -1,5 +1,5 @@
 <div class="container">
-<h4>ペット新規登録</h4>
+<h4><strong>ペット新規登録</strong></h4>
 <%= form_with model:[@user, @pet], url:user_pets_path, method: :post, local:true do |form| %>
 
   <%= form.label :image, "プロフィール画像" %>
@@ -21,6 +21,7 @@
 
 <% end %>
 
+  <h4><strong><%= @user.family_name %> <%= @user.given_name %>様のペット一覧</strong></h4>
   <div id="pets_all">
     <%= render partial: 'pets/all', locals: { pets: @pets} %>
   </div>

@@ -2,7 +2,8 @@ class PetsController < ApplicationController
   def index
     @pet = Pet.new
     #現在のユーザーのペットを表示
-    @pets = current_user.pets
+    @user = current_user
+    @pets = @user.pets
   end
 
   def create

@@ -1,4 +1,9 @@
 class ReservationsController < ApplicationController
+  def index
+    @user = current_user
+    @reservations = @user.reservations
+  end
+
   def confirm
     @reservation = current_user.reservations.new(reservation_params)
     @user = current_user
