@@ -2,6 +2,7 @@
   <!--ペット新規登録-->
   <div class="col-xs-12 col-sm-3">
     <h4><strong>ペット新規登録</strong></h4>
+    <!--form_withのデフォルトはremote:trueになっているため、下記記述でajax起動-->
     <%= form_with model:[@user, @pet], url:user_pets_path, method: :post do |form| %>
 
     <%= form.label :image, "プロフィール画像" %>
