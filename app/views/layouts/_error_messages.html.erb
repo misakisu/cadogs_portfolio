@@ -1,12 +1,12 @@
-<p class="text-danger">
 <% if model.errors.any? %>
-  <div class="alert alert-warning">
-    <h2><%= pluralize(model.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <%= model.errors.count %>個のエラーがあります。
+    </div>
     <ul>
-      <% model.errors.full_messages.each do |msg| %>
+    <% model.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
-      <% end %>
+    <% end %>
     </ul>
   </div>
 <% end %>
-</p>

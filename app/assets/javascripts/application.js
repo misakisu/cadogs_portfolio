@@ -23,3 +23,12 @@ jQuery(document).ready(function($){
         controls: false,
     	});
   });
+
+jQuery(document).ready(function($) {
+  if ($("#content").val().length == 0) {
+    $("#submit").prop('disabled', true);
+  }
+  else {
+  	 $("#submit").prop('disabled', false);
+    }
+});

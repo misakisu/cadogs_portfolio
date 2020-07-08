@@ -1,9 +1,15 @@
 <div class="container">
   <p class="text-primary"><%= flash[:success] %></p>
  <%= form_with model: @pet_genre, url: admin_pet_genres_path, method: :post, local:true do |form| %>
+
+ <%= render partial: 'layouts/error_messages', locals: { model: form.object} %>
+
  <%= form.label :name, "ジャンル名" %>
+
  <%= form.text_field :name, autofocus: true %>
+
  <%= form.submit "作成", class:"btn-sm btn-primary" %>
+
  <% end %>
 
 <table class="table">
@@ -17,7 +23,7 @@
     <% @pet_genres.each do |pet_genre| %>
     <tr>
       <td class="col-xs-4"><%= pet_genre.name %></td>
-      <td><%= link_to '削除する', admin_pet_genre_path(pet_genre), method: :delete, class:"btn-sm btn-danger" %></td>
+      <td><%= link_to '削除する', admin_pet_genre_path(pet_genre), method: :delete, data: {confirm: "削除しますか？"}, class:"btn-sm btn-danger" %></td>
     </tr>
     <% end %>
   </tbody>
