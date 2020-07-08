@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   #userのルート petsとreservationsネスト
   resource :user, only: [:show], shallow: true do
     resources :pets, only: [:index, :create, :edit, :update, :destroy]
-    resources :reservations, only: [:new, :create, :index] do
-    post 'confirm', on: :member
-    get 'finish', on: :member
+    resources :reservations, only: [:index, :create] do
+      post 'confirm', on: :collection
+      get 'finish', on: :collection
     end
     get 'confirm', on: :collection
     put 'hide', on: :collection
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     get 'home' => 'home#top'
     resources :hotels
     resources :reservations, only: [:index, :destroy]
+    resources :users, only: [:show]
   end
 
   #adminデバイス

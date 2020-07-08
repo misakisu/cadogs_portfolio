@@ -1,5 +1,5 @@
 <div class="container">
-<%= form_with model:@pet, url:pet_path(@pet), method: :put, local:true do |form| %>
+<%= form_with model:[@user, @pet], url:pet_path(@pet), method: :put, local:true do |form| %>
 
   <%= form.label :image, "プロフィール画像" %>
   <%= form.attachment_field :image %>

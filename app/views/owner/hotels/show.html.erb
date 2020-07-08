@@ -1,0 +1,12 @@
+<!--各ホテルの予約一覧-->
+<div class="container">
+<h4><strong>予約一覧</strong></h4>
+<div class="col-xs-12">
+  <% @reservations.each do |reservation| %>
+  <div class="reservation-box">
+    <%= render partial: 'reservations/all', locals: { reservation: reservation} %>
+    <%= link_to "お客様詳情報", edit_admin_user_path(reservation.user) %>
+  </div>
+  <% end %>
+</div>
+</div>

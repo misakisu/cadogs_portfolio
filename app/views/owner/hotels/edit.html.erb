@@ -1,4 +1,5 @@
-<%= form_with model:@hotel, url:owner_hotel_path, method: :put, local:true do |form| %>
+<div class="container">
+<%= form_with model:[@owner, @hotel], url:owner_hotel_path, method: :put, local:true do |form| %>
 
   <%= form.label :image, "ホテル画像" %>
   <%= form.attachment_field :image %>
@@ -18,8 +19,15 @@
   <%= form.label :introduction, "紹介文" %>
   <%= form.text_area :introduction, size: "20x10", class: "form-control bg-gradient" %>
 
-  <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
+  <%= form.label :pet_genres %>
+  <%= collection_check_boxes(:hotel, :pet_genre_ids, PetGenre.all, :id, :name, include_hidden: false) do |b| %>
+  <%= b.label { b.check_box + b.text } %>
+  <% end %>
+
+
+  <%= form.submit "変更内容を保存する", class:"btn btn-primary" %>
 
 <% end %>
 
 <%= link_to 'ホテル情報を削除する', owner_hotel_path(@hotel), method: :delete, class: "btn btn-danger" %>
+</div>

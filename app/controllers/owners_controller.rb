@@ -13,7 +13,7 @@ class OwnersController < ApplicationController
     #hideアクションでis_vaildカラムをfalseへupdate
     if @owner.update(is_valid: false)
        reset_session
-       flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+       flash[:success] = "ありがとうございました。またのご利用を心よりお待ちしております。"
        redirect_to owner_home_path
     else
        render edit_owner_registration_path

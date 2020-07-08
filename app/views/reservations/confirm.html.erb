@@ -1,0 +1,49 @@
+<div class="container">
+<!--確認画面のため、hidden_fieldにて情報を保持。顧客データに関してはコントローラー定義-->
+<%= form_with model:@reservation, url:user_reservations_path, method: :post, local:true do |form| %>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h4><strong>宿泊ペット様</strong></h4>
+    <div><%= attachment_image_tag @pet, :image, format: 'jpg', size: "200x200", class: "pullleft profile-img", fallback: "no_image.jpg" %></div>
+    <h4><%= @pet.name %></h4>
+    <%= form.hidden_field :pet_id, value: @pet.id %>
+  </div>
+
+　<div class="col-xs-6">
+    <h4><strong>予約者名</strong></h4>
+    <h4><%= @user.family_name %><%= @user.given_name %></h4>
+
+    <h4><strong>予約ホテル名前</strong></h4>
+    <h5><%= @hotel.name %></h5>
+    <%= form.hidden_field :hotel_id, value: @hotel.id %>
+
+    <h4><strong>チェックイン</strong></h4>
+    <%= @reservation.start_date %>
+    <%= form.hidden_field :start_date, value: @startdate %>
+
+    <h4><strong>チェックアウト</strong></h4>
+    <%= @reservation.end_date %>
+    <%= form.hidden_field :end_date, value: @enddate %>
+
+    <h4><strong>滞在日数</strong></h4>
+    <%= @stay_length %>日間の滞在
+
+    <h4><strong>その他ご要望</strong></h4>
+    <p><%= @reservation.request %></p>
+    <%= form.hidden_field :request, value: @reservation.request %>
+
+    <h4><strong>合計金額</strong><strong> <%= addTax(@total_price,1.10) %></strong></h4>
+    <%= form.hidden_field :total_price, value: @total_price %>
+
+    <div class="actions">
+      <%= form.submit '投稿画面に戻る', name: 'back' %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit '確定する' %>
+    </div>
+  </div>
+</div>
+<% end %>
+</div>

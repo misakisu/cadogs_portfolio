@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-    @pets = @user.pets
+    #おきにいり一覧
+    @favorites = Favorite.where(user_id: @user)
+    @hotels = []#お気に入りしているホテルの情報を配列として取得
+    @favorites.each do |favorite|
+      @hotel = Hotel.find_by(id: favorite.hotel_id)
+      @hotels.push(@hotel)
+    end
   end
 
   def confirm
@@ -13,7 +19,7 @@ class UsersController < ApplicationController
     #hideアクションでis_vaildカラムをfalseへupdate
     if @user.update(is_valid: false)
        reset_session
-       flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+       flash[:success] = "ありがとうございました。またのご利用を心よりお待ちしております。"
        redirect_to root_path
     else
        render edit_user_registration_path

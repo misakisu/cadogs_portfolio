@@ -25,11 +25,11 @@ class AdminDevises::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   def after_sign_in_path_for(resource)
-    flash[:notice] = "ログインに成功しました。"
+    flash[:success] = "ログインに成功しました。"
     root_path
   end
   def after_sign_out_path_for(resource)
-    flash[:notice] = "ログアウトに成功しました。"
+    flash[:success] = "ログアウトに成功しました。"
     root_path
   end
 end

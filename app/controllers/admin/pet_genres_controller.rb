@@ -8,7 +8,7 @@ class Admin::PetGenresController < ApplicationController
   @pet_genre = PetGenre.new(pet_genre_params)
   @pet_genres = PetGenre.all
     if @pet_genre.save!
-      flash[:notice] = "登録しました"
+      flash[:success] = "登録しました"
       redirect_to admin_pet_genres_path
     else
       render :index
@@ -19,7 +19,7 @@ class Admin::PetGenresController < ApplicationController
   @pet_genre = PetGenre.find(params[:id])
   if @pet_genre.destroy
     redirect_to admin_pet_genres_path
-      flash[:notice] = "削除しました"
+      flash[:success] = "削除しました"
     else
       render :index
     end

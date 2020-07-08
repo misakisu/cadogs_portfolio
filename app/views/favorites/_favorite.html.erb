@@ -1,0 +1,16 @@
+<!--いいねはUserのみが可能、Ownerと管理者は合計数の閲覧のみ-->
+<!--remote: trueでJs非同期通信リクエストを送信-->
+<% if user_signed_in? %>
+  <% if hotel.favorited_by?(current_user) %>
+    <%= link_to hotel_favorites_path(hotel), method: :delete, remote: true do %>
+    <i class="fa fa-star" aria-hidden="true"></i>
+    <% end %>
+  <% else %>
+    <%= link_to hotel_favorites_path(hotel), method: :post, remote: true do %>
+    <i class="far fa-star"></i>
+    <% end %>
+  <% end %>
+<% elsif owner_signed_in? || admin_signed_in? %>
+  <%= hotel.favorites.count %>
+<% end %>
+<!--参考:aria-hidden="true"は読み上げ利用時読み上げしないように記述(アクセシビリティを考慮)-->

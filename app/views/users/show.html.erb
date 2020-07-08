@@ -1,19 +1,45 @@
 <div class="container">
-<h5>プロフィール</h5>
-<div class="row profile">
-  <div class="col-xs-12 col-sm-4">
-    <div class="profile-name"><%= @user.family_name %><%= @user.given_name %></div>
-    <div><%= @user.family_name_kana %> <%= @user.given_name_kana %></div>
-    <div><i class="fas fa-phone"></i> <%= @user.phone_number %></div>
-    <div><i class="fas fa-envelope"></i> </th><td><%= @user.email %></div>
-  　<%= link_to edit_user_registration_path do %>
-    <button class="btn btn-success">登録情報編集</button>
-  　<% end %>
+  <p class="text-primary"><%= flash[:success] %></p>
+  <!--プロフィール-->
+  <h4><strong>プロフィール</strong></h4>
+  <div class="row profile">
+    <div class="col-xs-12 col-sm-4">
+      <h4 class="profile-name"><%= @user.family_name %>  <%= @user.given_name %></h4>
+      <h5><%= @user.family_name_kana %> <%= @user.given_name_kana %></h5>
+      <%= link_to edit_user_registration_path do %>
+      <button class="btn btn-success">登録情報編集</button>
+      <% end %>
+      <%= link_to user_reservations_path do %>
+      <button class="btn btn-warning">予約履歴確認</button>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <h4><i class="fas fa-phone"> </i><%= @user.phone_number %></h4>
+      <h4><i class="fas fa-envelope"> </i><%= @user.email %></h4>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+
+　<!--お気に入りホテル一覧-->
+  <div class="row">
+  <h4><strong>お気に入り一覧</strong></h4>
+    <% @hotels.each do |hotel| %>
+    <div class="favorite_box">
+      <div class="row ">
+      <!--ホテルのeachで回す詳細の部分テンプレート-->
+        <div class="col-sm-11">
+          <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
+        </div>
+        <!--いいねの部分的非同期更新-->
+        <div class="col-sm-1" id="favorites_<%= hotel.id %>">
+          <%= render partial: 'favorites/favorite', locals: { hotel: hotel} %>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
 
-<h5>予約一覧</h5>
-</div>
 
 
 

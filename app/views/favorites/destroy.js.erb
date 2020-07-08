@@ -1,0 +1,2 @@
+/*いいねの部分更新。createアクションが始動された際、いいね部分テンプレートのみを更新*/
+$("#favorites_<%= @hotel.id %>").html("<%= j(render partial: 'favorites/favorite', locals: {hotel: @hotel}) %>");

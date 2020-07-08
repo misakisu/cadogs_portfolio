@@ -2,7 +2,7 @@
 
 class UserDevises::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -61,12 +61,20 @@ class UserDevises::RegistrationsController < Devise::RegistrationsController
   # end
   before_action :configure_permitted_parameters,if: :devise_controller?
   def after_sign_up_path_for(resource)
-    flash[:notice] = "ご登録ありがとうございます！"
+    flash[:success] = "ご登録ありがとうございます！"
     root_path
+  end
+  def after_update_path_for(resource)
+    flash[:success] = "ご登録情報の変更に成功しました。"
+    user_path
   end
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,keys:[:email, :family_name, :given_name, :family_name_kana, :given_name_kana, :phone_number, :is_valid])
+  end
+  #Update時のパラメーター
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update,keys:[:email, :family_name, :given_name, :family_name_kana, :given_name_kana, :phone_number, :is_valid])
   end
 end
 

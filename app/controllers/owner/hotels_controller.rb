@@ -15,6 +15,11 @@ class Owner::HotelsController < ApplicationController
     end
   end
 
+  def show
+    @hotel = Hotel.find(params[:id])
+    @reservations = @hotel.reservations
+  end
+
   def edit
     @hotel = Hotel.find(params[:id])
   end
@@ -41,6 +46,6 @@ class Owner::HotelsController < ApplicationController
 
 private
   def hotel_params
-    params.require(:hotel).permit(:owner_id, :name, :image, :price, :address, :phone_number, :image, :introduction, :is_valid, hotel_images_images: [])
+    params.require(:hotel).permit(:owner_id, :name, :image, :price, :address, :phone_number, :image, :introduction, :is_valid, hotel_images_images: [], pet_genre_ids: [])
   end
 end
