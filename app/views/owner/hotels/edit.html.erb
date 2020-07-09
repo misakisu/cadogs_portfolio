@@ -1,6 +1,8 @@
 <div class="container">
 <%= form_with model:[@owner, @hotel], url:owner_hotel_path, method: :put, local:true do |form| %>
 
+  <%= render partial: 'layouts/error_messages', locals: { model: form.object} %>
+
   <%= form.label :image, "ホテル画像" %>
   <%= form.attachment_field :image %>
 
@@ -29,5 +31,5 @@
 
 <% end %>
 
-<%= link_to 'ホテル情報を削除する', owner_hotel_path(@hotel), method: :delete, class: "btn btn-danger" %>
+<%= link_to 'ホテル情報を削除する', owner_hotel_path(@hotel), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
 </div>

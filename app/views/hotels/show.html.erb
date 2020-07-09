@@ -4,6 +4,10 @@
   <div class="col-xs-12 col-sm-3">
     <% if user_signed_in? %>
       <%= render partial: 'reservations/reservation', locals: { reservation: @reservation} %>
+    <% else %>
+      <div class="status_search">
+       <%= render partial: 'search', locals: {pet_genres: @pet_genres} %>
+      </div>
     <% end %>
   </div>
 
@@ -35,6 +39,7 @@
         <p><%= pet_genre.name %></p>
         <% end %>
       </div>
+    </div>
 
       <div class="row col-xs-12">
       <h4><strong>詳細写真</strong></h4>
@@ -48,19 +53,29 @@
         <% end %>
       </div>
 
-  <!--コメント投稿部分-->
-  <div class="row col-xs-12">
+  <!--コメント投稿部分、ログインユーザーのみコメント可能-->
+<% if user_signed_in? %>
+
+  <%= render partial: 'layouts/error_messages', locals: { model: @hotel_comment} %>
+
+  <div class="row col-xs-12 comment_form">
   <%= form_with model:[@hotel, @hotel_comment], url:hotel_hotel_comments_path(@hotel), method: :post do |f| %>
+
   <%= f.text_area :comment, rows:'5', class: "form-control" %>
+
   <%= f.submit "送信", class: "btn" %>
+
   <% end %>
+  </div>
+
+<% end %>
+
   <!--コメント部分的非同期更新-->
-  <div id="hotelcomments">
+  <div class="row col-xs-12" id="hotelcomments">
     <%= render partial: 'hotel_comments/hotelcomment', locals: { hotel_comments: @hotel.hotel_comments} %>
   </div>
   <!--ここまで-->
   </div>
+  <!--ここまでdivのclass hotel_profile-->
   </div>
-  </div>
-</div>
 </div>

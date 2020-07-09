@@ -1,0 +1,38 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        family_name: お名前
+        given_name: お名前
+        family_name_kan: フリガナ
+        given_name_kana: フリガナ
+        phone_number: 電話番号
+
+      pet:
+        name: お名前
+        gender: 性別
+
+      reservation:
+        start_date: チェックイン
+        end_date: チェックアウト
+        total_price: 合計金額
+        request: ご要望
+
+      hotel_comment:
+        comment: コメント
+
+      hotel:
+        name: ホテル名
+        price: 単価
+        address: 住所
+        phone_number: 電話番号
+
+      owner:
+        email: メールアドレス
+        name: 名前
+        phone_number: 電話番号
+
+      pet_genre:
+        name: ジャンル名
+        gender: 性別

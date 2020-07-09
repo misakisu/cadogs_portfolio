@@ -1,6 +1,8 @@
 <div class="container">
 <%= form_with model:[@user, @pet], url:pet_path(@pet), method: :put, local:true do |form| %>
 
+  <%= render partial: 'layouts/error_messages', locals: { model: form.object} %>
+
   <%= form.label :image, "プロフィール画像" %>
   <%= form.attachment_field :image %>
 
