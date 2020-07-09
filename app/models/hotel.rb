@@ -9,6 +9,11 @@ class Hotel < ApplicationRecord
   attachment :image
   #refile複数画像投稿用に下記記述
   accepts_attachments_for :hotel_images, attachment: :image
+  #バリデーション
+  validates :name, presence: { message:"を入力してください"}
+  validates :price, presence: { message:"を入力してください"}
+  validates :address, presence: { message:"を入力してください"}
+  validates :phone_number, presence: { message:"を入力してください"}
   #検索スピードを考慮してexists?を使用
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

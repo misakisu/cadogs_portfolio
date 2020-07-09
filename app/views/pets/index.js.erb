@@ -1,0 +1,2 @@
+/*エラーがあった際は非同期を導入しているため、jsからエラー文を表示する*/
+$('#error_messages').html("<%= j(render partial: 'layouts/error_messages', locals: {model: @pet}) %>");

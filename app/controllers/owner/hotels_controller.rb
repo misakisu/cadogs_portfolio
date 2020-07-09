@@ -22,6 +22,9 @@ class Owner::HotelsController < ApplicationController
 
   def edit
     @hotel = Hotel.find(params[:id])
+    if current_owner.id != @hotel.owner.id
+    redirect_to owner_path
+    end
   end
 
   def update
