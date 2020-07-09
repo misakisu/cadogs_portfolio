@@ -5,9 +5,9 @@ class Owner < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :hotels, dependent: :destroy
   #バリデーション
-  validates :name, presence: { message: ":を入力してください" }, allow_blank: true
-  validates :phone_number, numericality: {only_integer: true,message:"を入力してください"},format:{with: /\A\d{10,11}\z/,message: "ハイフン無し10桁or11桁で入力して下さい。", allow_blank: true}
-  validates :email, presence: true, uniqueness: { message:":入力されたアドレスは既に登録されています", allow_blank: true}, on: :create
+  validates :name, presence: { message: "を入力してください" }
+  validates :phone_number, numericality: {only_integer: true,message:"を入力してください"},format:{with: /\A\d{10,11}\z/,message: "ハイフン無し10桁or11桁で入力して下さい。"}
+  validates :email, presence: true, uniqueness: { message:":入力されたアドレスは既に登録されています"}, on: :create
   #エラー文の重複を防ぐ allow_blank: true
   #{AZ}はハイフン無し
   #退会済みのアカウントをはじく
