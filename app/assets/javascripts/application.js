@@ -16,10 +16,20 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
-jQuery(document).ready(function($){
-    $('.slider').bxSlider({
+$(document).on('turbolinks:load',function(){
+     $('.slider').bxSlider({
         auto: true,
         maxSlides: 1,
         controls: false,
     	});
-  });
+     $("#submit").prop('disabled', true);
+     $("#content").keyup(function() {
+      console.log($("#content"))
+        if ($("#content").val() != '') {
+           $("#submit").prop('disabled', false);
+        } else {
+          $("#submit").prop('disabled', true);
+        }
+     });
+ });
+/*keyupは入力中にキーが離れたらfunctionを実行*/

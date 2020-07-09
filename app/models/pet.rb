@@ -9,6 +9,6 @@ class Pet < ApplicationRecord
     女の子: 1
   }
   #バリデーション
-  validates :name, presence: true
-  validates :gender, presence: true
+  validates :name, presence: { message:"を入力してください"}
+  validates :gender, presence: { message:"を入力してください"}
 end
