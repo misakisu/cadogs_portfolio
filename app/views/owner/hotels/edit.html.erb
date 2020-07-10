@@ -21,6 +21,10 @@
   <%= form.label :introduction, "紹介文" %>
   <%= form.text_area :introduction, size: "20x10", class: "form-control bg-gradient" %>
 
+  <!--hotel複数画像の追加-->
+  <%= form.label :hotel_images_images, "ホテル詳細画像" %>
+  <%= form.attachment_field :hotel_images_images, multiple: true %></p>
+
   <%= form.label :pet_genres %>
   <%= collection_check_boxes(:hotel, :pet_genre_ids, PetGenre.all, :id, :name, include_hidden: false) do |b| %>
   <%= b.label { b.check_box + b.text } %>

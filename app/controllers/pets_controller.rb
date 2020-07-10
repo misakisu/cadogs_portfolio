@@ -19,6 +19,9 @@ class PetsController < ApplicationController
   #浅くネストしているため、以下Idが情報取得に必要。
   def edit
     @pet = Pet.find(params[:id])
+    if current_user.id != @pet.user.id
+      redirect_to user_pets_path
+    end
   end
 
   def update

@@ -3,6 +3,7 @@ class ReservationsController < ApplicationController
 
   def index
     @user = current_user
+    @pets = @user.pets
     @reservations = @user.reservations
   end
 

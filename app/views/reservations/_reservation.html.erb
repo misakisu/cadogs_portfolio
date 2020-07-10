@@ -13,7 +13,7 @@
 
   <h3><strong>ご宿泊予定のペット</strong></h3>
   <i>予約は1ペット様ずつ可能となっております</i>
-  <%= form.collection_select(:pet_id, Pet.all, :id, :name) %>
+  <%= form.collection_select(:pet_id, @pets, :id, :name) %>
 
   <h3><strong>その他ご要望</strong></h3>
   <%= form.text_area  :request, rows:'5', class: "form-control bg-gradient" %>

@@ -8,6 +8,9 @@ class OwnersController < ApplicationController
 
   def confirm
     @owner = current_owner
+    if current_owner.id != @owner.id
+      redirect_to owner_path(@owner)
+    end
   end
 
   def hide
