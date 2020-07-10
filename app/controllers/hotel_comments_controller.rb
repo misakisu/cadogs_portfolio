@@ -1,4 +1,6 @@
 class HotelCommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @hotel = Hotel.find(params[:hotel_id])
     @comment = @hotel.hotel_comments.new(hotel_comment_params)

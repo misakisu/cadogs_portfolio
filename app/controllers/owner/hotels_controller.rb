@@ -1,4 +1,6 @@
 class Owner::HotelsController < ApplicationController
+  before_action :authenticate_owner!
+
   def new
     @hotel = Hotel.new
     @owner = current_owner

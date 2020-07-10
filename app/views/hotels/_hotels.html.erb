@@ -1,11 +1,25 @@
   <div class="row">
     <!--hotel一覧左側-->
+    <!--ホテルステータスが無効のものは表示無し-->
+    <% if hotel.is_valid == false %>
+    <div><%= image_tag "no_photo.jpg", format: 'jpg', size: "200x200", class: "col-xs-12 col-sm-4 hotel_image" %></div>
+    <% else %>
     <div><%= attachment_image_tag hotel, :image, format: 'jpg', size: "200x200", class: "col-xs-12 col-sm-4 hotel_image", fallback: "no_photo.jpg" %></div>
+    <% end %>
+
+
     <!--hotel一覧右側-->
     <div class="col-xs-12 col-sm-8">
     <h2><%= hotel.name %></h2>
-      <h5><strong><%= link_to "ホテル詳細をみる", hotel_path(hotel) %></strong></h5>
+
+    <!--ホテルステータスが無効のものは表示無し-->
+      <% if hotel.is_valid == false %>
+        <h5><strong>恐れ入りますが、こちらのホテルは現在掲載されておりません</strong></h5>
+      <% else %>
+        <h5><strong><%= link_to "ホテル詳細をみる", hotel_path(hotel) %></strong></h5>
+      <% end %>
       <hr>
+
       <table class="table-inverse">
       <tr class="row">
         <th class="col-xs-6"><strong>金額</strong></th>

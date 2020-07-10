@@ -1,4 +1,6 @@
 class Admin::PetGenresController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
   @pet_genre = PetGenre.new
   @pet_genres = PetGenre.all

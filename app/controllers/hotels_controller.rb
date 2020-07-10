@@ -1,4 +1,5 @@
 class HotelsController < ApplicationController
+
   def index
     @pet_genres = PetGenre.all
     @hotels = Hotel.where(is_valid: "true")
@@ -12,6 +13,11 @@ class HotelsController < ApplicationController
 
   def show
     @hotel = Hotel.find(params[:id])
+    #ホテルのステータスが無効なものはページ遷移できない設定
+    if @hotel.is_valid == false
+      flash[:error] = "こちらのホテルは無効です"
+      redirect_to hotels_path
+    end
     @hotel_comment = HotelComment.new
     @hotel_comments = @hotel.hotel_comments #hotelのidに紐づいたhotels全部
     @reservation = Reservation.new

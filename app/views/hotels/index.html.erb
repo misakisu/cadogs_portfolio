@@ -3,6 +3,7 @@
  <%= render partial: 'search', locals: {pet_genres: @pet_genres} %>
 </div>
 <p><%= flash[:notice] %></p>
+<p class="text-danger"><%= flash[:error] %></p>
 <div class="col-xs-12 col-sm-9">
   <% @hotels.each do |hotel| %>
     <div class="hotel_box">
