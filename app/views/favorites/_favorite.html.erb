@@ -13,4 +13,5 @@
 <% elsif owner_signed_in? || admin_signed_in? %>
   <%= hotel.favorites.count %>
 <% end %>
+<p><strong>　<%= hotel.favorites.count %></strong></p>
 <!--参考:aria-hidden="true"は読み上げ利用時読み上げしないように記述(アクセシビリティを考慮)-->
