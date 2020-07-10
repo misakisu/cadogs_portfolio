@@ -1,5 +1,9 @@
 <div class="container">
-  <!--ペット新規登録-->
+  <!--jsを通してエラー文を表示-->
+  <div id="error_messages">
+    <%= render partial: 'layouts/error_messages', locals: { model: @pet} %>
+  </div>
+  <!--ペット新規登録、createのみ非同期実装-->
   <div class="col-xs-12 col-sm-3">
     <h4><strong>ペット新規登録</strong></h4>
     <!--form_withのデフォルトはremote:trueになっているため、下記記述でajax起動-->

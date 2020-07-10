@@ -1,4 +1,6 @@
 class Owner::HotelsController < ApplicationController
+  before_action :authenticate_owner!
+
   def new
     @hotel = Hotel.new
     @owner = current_owner
@@ -22,6 +24,9 @@ class Owner::HotelsController < ApplicationController
 
   def edit
     @hotel = Hotel.find(params[:id])
+    if current_owner.id != @hotel.owner.id
+    redirect_to owner_path
+    end
   end
 
   def update

@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @hotel = Hotel.find(params[:hotel_id])
     @favorite = @hotel.favorites.new(user_id: current_user.id)#どのuserのコメントかという情報をおくるためuser_idを定義

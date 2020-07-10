@@ -1,4 +1,6 @@
 class Admin::HotelsController < ApplicationController
+  before_action :authenticate_admin!
+
   #管理者用のホテル一覧
   def index
     @hotels = Hotel.all

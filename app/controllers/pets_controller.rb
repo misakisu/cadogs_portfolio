@@ -1,4 +1,6 @@
 class PetsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @pet = Pet.new
     #現在のユーザーのペットを表示
