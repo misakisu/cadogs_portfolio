@@ -1,3 +1,4 @@
+require "date"#dateモジュール
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
 
@@ -9,10 +10,16 @@ class ReservationsController < ApplicationController
 
   def confirm
     @reservation = current_user.reservations.new(reservation_params)
+    @hotel = Hotel.find(reservation_params[:hotel_id])
+    if @reservation.invalid?
+      @pets = current_user.pets
+      @hotel_comment = HotelComment.new
+      @hotel_comments = @hotel.hotel_comments #hotelのidに紐づいたhotels全部
+      render "hotels/show"
+      return #confirmメソッドを終る
+    end
     @user = current_user
     @pet = Pet.find(reservation_params[:pet_id])
-    @hotel = Hotel.find(reservation_params[:hotel_id])
-    require "date"#日付データ利用宣言
     #Stringを日付データへ変換
     @enddate = Date.parse(reservation_params[:end_date])
     @startdate = Date.parse(reservation_params[:start_date])
@@ -27,7 +34,6 @@ class ReservationsController < ApplicationController
     @user = current_user
     #Confirm画面で戻るボタンでホテルshow画面へ
       if params[:back]
-        #hotels/showへ戻る際に再度下記情報を渡す
         @hotel_comment = HotelComment.new
         @hotel_comments = @hotel.hotel_comments
         render "hotels/show"#hotel_path(@hotel.id)では他コントローラへrenderできない

@@ -22,9 +22,9 @@ $(document).on('turbolinks:load',function(){
         maxSlides: 1,
         controls: false,
     	});
+
      $("#submit").prop('disabled', true);
      $("#content").keyup(function() {
-      console.log($("#content"))
         if ($("#content").val() != '') {
            $("#submit").prop('disabled', false);
         } else {

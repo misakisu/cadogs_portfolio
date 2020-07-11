@@ -2,8 +2,6 @@
 <div class="reservation-form">
 <i>予約は1ペット様ずつ可能となっております</i>
 <%= form_with model:[@user, @reservation], url:confirm_user_reservations_path, method: :post, local:true do |form| %>
-  <!--エラーメッセ―ジ-->
-  <%= render partial: 'layouts/error_messages', locals: { model: form.object} %>
 
   <h3><strong>チェックイン</strong></h3>
   <%= form.date_field  :start_date %>
