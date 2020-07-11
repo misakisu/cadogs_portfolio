@@ -3,12 +3,12 @@ class HotelsController < ApplicationController
   def index
     @pet_genres = PetGenre.all
     #お気に入りが多い順に表示+ステータスが有効なホテルを取得
-    @hotel_all = Hotel.where(is_valid: "true").includes(:favorites)
+    @hotel_all = Hotel.where(is_valid: "true").includes(:favorites)#左外部結合でテーブルを結合
     @hotels = @hotel_all.sort_by {|hotel| hotel.favorites.count}.reverse#昇順に並べ替え
     #中間テーブルを活用してペットジャンルで検索+ステータスが有効なホテルを取得
     if params[:pet_genre_id]
       @pet_genre = PetGenre.find_by(id: params[:pet_genre_id])
-      @hotel_all = @pet_genre.hotels.where(is_valid: "true").includes(:favorites)#受け取ったペットIDに基づくHotelをすべて取得+有効(承認済み)のもの
+      @hotel_all = @pet_genre.hotels.where(is_valid: "true").includes(:favorites)
       @hotels = @hotel_all.sort_by {|hotel| hotel.favorites.count}.reverse#昇順に並べ替え
     end
   end
