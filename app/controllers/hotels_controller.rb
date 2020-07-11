@@ -2,12 +2,20 @@ class HotelsController < ApplicationController
 
   def index
     @pet_genres = PetGenre.all
-    @hotels = Hotel.where(is_valid: "true")
-    #無効なホテル(未承認ホテル)は非表示
+    #お気に入りが多い順に表示+ステータスが無効なものに関しては
+    @hotel_ranks = Favorite.group(:hotel_id).order('count(hotel_id) desc').pluck(:hotel_id)
+    @hotels = []
+    @hotel_ranks.each do |hotel_rank|
+      @hotel = Hotel.find(hotel_rank)
+      if @hotel.is_valid == true
+         @hotels.push(@hotel)
+      end
+    end
     #検索に必要な情報をメソッドをつかって検索(中間テーブルを活用して検索)
     if params[:pet_genre_id]
       @pet_genre = PetGenre.find_by(id: params[:pet_genre_id])
-      @hotels = @pet_genre.hotels.where(is_valid: "true")#受け取ったペットIDに基づくHotelをすべて取得+有効(承認済み)のもの
+      @hotels = @pet_genre.hotels.where(is_valid: "true")
+      #受け取ったペットIDに基づくHotelをすべて取得+有効(承認済み)のもの
     end
   end
 
