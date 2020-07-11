@@ -33,14 +33,14 @@ class ReservationsController < ApplicationController
     @hotel = Hotel.find(reservation_params[:hotel_id])#reservationから受け取ったidでホテル検索
     @user = current_user
     #Confirm画面で戻るボタンでホテルshow画面へ
-      if params[:back]
-        @hotel_comment = HotelComment.new
-        @hotel_comments = @hotel.hotel_comments
-        render "hotels/show"#hotel_path(@hotel.id)では他コントローラへrenderできない
-      #Confirm画面で確定ボタンでSave
-      elsif @reservation.save
-        redirect_to finish_user_reservations_path
-      end
+    if params[:back]
+      @hotel_comment = HotelComment.new
+      @hotel_comments = @hotel.hotel_comments
+      render "hotels/show"#hotel_path(@hotel.id)では他コントローラへrenderできない
+    #Confirm画面で確定ボタンでSave
+    elsif @reservation.save
+      redirect_to finish_user_reservations_path
+    end
   end
   #参考:newとsaveはcreateでまとめることが可能
 
@@ -48,4 +48,5 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.require(:reservation).permit(:user_id, :hotel_id, :pet_id, :start_date, :end_date, :total_price, :id, :request)
   end
+
 end

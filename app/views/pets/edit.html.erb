@@ -1,26 +1,26 @@
 <div class="container">
-<%= form_with model:[@user, @pet], url:pet_path(@pet), method: :put, local:true do |form| %>
+  <%= form_with model:[@user, @pet], url:pet_path(@pet), method: :put, local:true do |form| %>
 
-  <%= render partial: 'layouts/error_messages', locals: { model: form.object} %>
+    <%= render partial: 'layouts/error_messages', locals: { model: form.object} %>
 
-  <%= form.label :image, "プロフィール画像" %>
-  <%= form.attachment_field :image %>
+    <%= form.label :image, "プロフィール画像" %>
+    <%= form.attachment_field :image %>
 
-  <%= form.label :name, "ペットのお名前" %>
-  <%= form.text_field :name, class: "form-control bg-gradient" %>
+    <%= form.label :name, "ペットのお名前" %>
+    <%= form.text_field :name, class: "form-control bg-gradient" %>
 
-  <div>
-  <%= form.radio_button :gender,:男の子, class:"radio_button" %>
-  <%= form.label :gender, "男", {value: 0} %>
-  <%= form.radio_button :gender,:女の子, class:"radio_button" %>
-  <%= form.label :gender, "女", {value: 1} %>
-  </div>
+    <div>
+      <%= form.radio_button :gender,:男の子, class:"radio_button" %>
+      <%= form.label :gender, "男", {value: 0} %>
+      <%= form.radio_button :gender,:女の子, class:"radio_button" %>
+      <%= form.label :gender, "女", {value: 1} %>
+    </div>
 
-  <div>
-  <%= form.collection_select(:pet_genre_id, PetGenre.all, :id, :name) %>
-  </div>
+    <div>
+      <%= form.collection_select(:pet_genre_id, PetGenre.all, :id, :name) %>
+    </div>
 
-  <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
+    <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
 
-<% end %>
+  <% end %>
 </div>

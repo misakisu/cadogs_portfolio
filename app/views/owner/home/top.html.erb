@@ -1,22 +1,22 @@
 <!--top-->
 <div class="jumbotron">
- <div class="container">
-  <p class="text-primary"><%= flash[:success] %></p>
- 	<h1>As your best partner</h1>
- 	<p>このサイトでは、ホテルの審査過程を設けているため、お客様の信頼を得ています。<br>ペットのためを考えるお客様の応援ができるよう、パートナーとして一緒に素敵な環境づくりができればと存じます。</p>
- 	<%= link_to new_owner_registration_path do %>
+  <div class="container">
+    <p class="text-primary"><%= flash[:success] %></p>
+ 	  <h1>As your best partner</h1>
+ 	  <p>このサイトでは、ホテルの審査過程を設けているため、お客様の信頼を得ています。<br>ペットのためを考えるお客様の応援ができるよう、パートナーとして一緒に素敵な環境づくりができればと存じます。</p>
+ 	  <%= link_to new_owner_registration_path do %>
     <button class="btn btn-lg btn-warning">ホテルの登録を始める</button>
     <% end %>
     <%= link_to new_owner_session_path do %>
     <button class="btn btn-lg">ログイン</button>
     <% end %>
- </div>
+  </div>
 </div>
 
 <!--main-->
 <hr>
 <div class="col-xs-8 col-xs-offset-4 step">
-<h1><span class="far fa-lightbulb faa-ring animated"></span>ホテル掲載までのSTEP</h1>
+  <h1><span class="far fa-lightbulb faa-ring animated"></span>ホテル掲載までのSTEP</h1>
 </div>
 
 <div class="container">
@@ -40,12 +40,12 @@
         <p>ホテルご申請後、Cadogが2～3日で審査いたします。</p>
       </ul>
     </div>
-      <div><%= image_tag 'Catsafe.jpg', format: 'jpg', size: "400x300", class: "owner_main_img col-xs-12 col-sm-4" %></div>
+    <div><%= image_tag 'Catsafe.jpg', format: 'jpg', size: "400x300", class: "owner_main_img col-xs-12 col-sm-4" %></div>
   </div>
 
   <!--main3-->
   <div class="row owner_main">
-    <hr>
+  <hr>
     <%= image_tag 'book_dog.jpg', format: 'jpg', size: "300x300", class: "owner_main_img col-xs-12 col-sm-4" %>
     <div class="col-xs-12 col-sm-8">
       <ul class="owner_step">

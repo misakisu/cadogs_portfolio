@@ -1,25 +1,25 @@
 <h4><strong>予約フォーム</strong></h4>
 <div class="reservation-form">
-<i>予約は1ペット様ずつ可能となっております</i>
-<%= form_with model:[@user, @reservation], url:confirm_user_reservations_path, method: :post, local:true do |form| %>
-
-  <h3><strong>チェックイン</strong></h3>
-  <%= form.date_field  :start_date %>
-
-  <h3><strong>チェックアウト</strong></h3>
-  <%= form.date_field  :end_date %>
-
-  <h3><strong>ご宿泊予定のペット</strong></h3>
   <i>予約は1ペット様ずつ可能となっております</i>
-  <%= form.collection_select(:pet_id, @pets, :id, :name) %>
+  <%= form_with model:[@user, @reservation], url:confirm_user_reservations_path, method: :post, local:true do |form| %>
 
-  <h3><strong>その他ご要望</strong></h3>
-  <%= form.text_area  :request, rows:'5', class: "form-control bg-gradient" %>
+    <h3><strong>チェックイン</strong></h3>
+    <%= form.date_field  :start_date %>
 
-  <!--hotelのidは簡潔にuserがfindしたidをviewから送信-->
-  <%= form.hidden_field :hotel_id, value: @hotel.id %>
+    <h3><strong>チェックアウト</strong></h3>
+    <%= form.date_field  :end_date %>
 
-  <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
+    <h3><strong>ご宿泊予定のペット</strong></h3>
+    <i>予約は1ペット様ずつ可能となっております</i>
+    <%= form.collection_select(:pet_id, @pets, :id, :name) %>
 
-<% end %>
+    <h3><strong>その他ご要望</strong></h3>
+    <%= form.text_area  :request, rows:'5', class: "form-control bg-gradient" %>
+
+    <!--hotelのidは簡潔にuserがfindしたidをviewから送信-->
+    <%= form.hidden_field :hotel_id, value: @hotel.id %>
+
+    <%= form.submit "確認画面へ進む", class:"btn btn-success" %>
+
+  <% end %>
 </div>

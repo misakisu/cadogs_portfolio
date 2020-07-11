@@ -1,80 +1,82 @@
 <div class="container">
   <div class="row">
+    <!--予約フォームに対するエラーメッセージ-->
     <%= render partial: 'layouts/error_messages', locals: { model: @reservation} %>
-  <!--予約画面-->
-  <div class="col-xs-12 col-sm-3">
-    <% if user_signed_in? %>
-      <%= render partial: 'reservations/reservation', locals: { reservation: @reservation} %>
-    <% else %>
+
+    <!--予約画面-->
+    <div class="col-xs-12 col-sm-3">
+      <% if user_signed_in? %>
+        <%= render partial: 'reservations/reservation', locals: { reservation: @reservation} %>
+      <% else %>
       <div class="status_search">
-       <%= render partial: 'search', locals: {pet_genres: @pet_genres} %>
+        <%= render partial: 'search', locals: {pet_genres: @pet_genres} %>
       </div>
-    <% end %>
-  </div>
-
-  <!--ホテル詳細画面-->
-  <div class="col-xs-12 col-sm-9">
-    <h2><%= @hotel.name %></h2>
-    <%= attachment_image_tag @hotel, :image, format: 'jpg', size: "600x500", class: "col-xs-12 hotel_image", fallback: "no_image.jpg" %>
-
-    <div class="hotel_profile">
-      <div class="row">
-        <h3 class="col-xs-12 col-sm-6"><strong>ホテル詳細</strong></h3><hr>
-        <h3 class="col-xs-12 col-sm-6"><strong class="price_data"><%= addTax(@hotel.price,1.10) %></strong></h3>
-        <hr>
-      </div>
-      <!--いいねの部分的非同期更新-->
-      <div id="favorites_<%= @hotel.id %>">
-        <%= render partial: 'favorites/favorite', locals: { hotel: @hotel} %>
-      </div>
-      <!--ここまで-->
-      <div class="row col-xs-12">
-      <h4><strong>住所</strong></h4>
-        <p><%= @hotel.address %></p>
-      <h4><strong>電話番号</strong></h4>
-        <p><%= @hotel.phone_number %></p>
-      <h4><strong>紹介文</strong></h4>
-        <p><%= @hotel.introduction %></p>
-      <h4><strong>ご利用可能なペット一覧</strong></h4>
-        <% @hotel.pet_genres.each do |pet_genre| %>
-        <p><%= pet_genre.name %></p>
-        <% end %>
-      </div>
+      <% end %>
     </div>
 
+    <!--ホテル詳細画面-->
+    <div class="col-xs-12 col-sm-9">
+      <h2><%= @hotel.name %></h2>
+      <%= attachment_image_tag @hotel, :image, format: 'jpg', size: "600x500", class: "col-xs-12 hotel_image", fallback: "no_image.jpg" %>
+
+      <div class="hotel_profile">
+        <div class="row">
+          <h3 class="col-xs-12 col-sm-6"><strong>ホテル詳細</strong></h3><hr>
+          <h3 class="col-xs-12 col-sm-6"><strong class="price_data"><%= addTax(@hotel.price,1.10) %></strong></h3>
+        <hr>
+        </div>
+
+        <!--いいねの部分的非同期更新-->
+        <div id="favorites_<%= @hotel.id %>">
+          <%= render partial: 'favorites/favorite', locals: { hotel: @hotel} %>
+        </div>
+        <!--ここまで-->
+
+        <div class="row col-xs-12">
+          <h4><strong>住所</strong></h4>
+            <p><%= @hotel.address %></p>
+          <h4><strong>電話番号</strong></h4>
+            <p><%= @hotel.phone_number %></p>
+          <h4><strong>紹介文</strong></h4>
+            <p><%= @hotel.introduction %></p>
+          <h4><strong>ご利用可能なペット一覧</strong></h4>
+            <% @hotel.pet_genres.each do |pet_genre| %>
+            <p><%= pet_genre.name %></p>
+            <% end %>
+        </div>
+      </div>
+
       <div class="row col-xs-12">
-      <h4><strong>詳細写真</strong></h4>
+        <h4><strong>詳細写真</strong></h4>
         <!--ホテルの詳細写真をeachで回す-->
         <% if @hotel.hotel_images.present? %>
-        <% @hotel.hotel_images.each do |image| %>
-        <%= attachment_image_tag image, :image, format: 'jpg', size: "300x200", fallback: "no_image.jpg" %>
-        <% end %>
+          <% @hotel.hotel_images.each do |image| %>
+          <%= attachment_image_tag image, :image, format: 'jpg', size: "300x200", fallback: "no_image.jpg" %>
+          <% end %>
         <% else %>
-        <%= image_tag 'no_image.jpg', size: '200x200' %>
+          <%= image_tag 'no_image.jpg', size: '200x200' %>
         <% end %>
       </div>
 
-  <!--コメント投稿部分、ログインユーザーのみコメント可能-->
-<% if user_signed_in? %>
+      <!--コメント投稿部分、ログインユーザーのみコメント可能-->
+      <% if user_signed_in? %>
+        <div class="row col-xs-12 comment_form">
+          <%= form_with model:[@hotel, @hotel_comment], url:hotel_hotel_comments_path(@hotel), method: :post do |f| %>
 
-  <div class="row col-xs-12 comment_form">
-  <%= form_with model:[@hotel, @hotel_comment], url:hotel_hotel_comments_path(@hotel), method: :post do |f| %>
+          <%= f.text_area :comment, rows:'5', class: "form-control", id: "content" %>
 
-  <%= f.text_area :comment, rows:'5', class: "form-control", id: "content" %>
+          <%= f.submit "送信", class: "btn",id: "submit" %>
 
-  <%= f.submit "送信", class: "btn",id: "submit" %>
+        <% end %>
+        </div>
+      <% end %>
 
-  <% end %>
-  </div>
-
-<% end %>
-
-  <!--コメント部分的非同期更新-->
-  <div class="row col-xs-12" id="hotelcomments">
-    <%= render partial: 'hotel_comments/hotelcomment', locals: { hotel_comments: @hotel.hotel_comments} %>
-  </div>
-  <!--ここまで-->
-  </div>
+      <!--コメント部分的非同期更新-->
+      <div class="row col-xs-12" id="hotelcomments">
+        <%= render partial: 'hotel_comments/hotelcomment', locals: { hotel_comments: @hotel.hotel_comments} %>
+      </div>
+      <!--ここまで-->
+    </div>
   <!--ここまでdivのclass hotel_profile-->
   </div>
 </div>

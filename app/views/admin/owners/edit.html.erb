@@ -2,29 +2,29 @@
   <h2><%= @owner.name %>様の会員情報編集</h2>
 
     <%= form_with model:[@owner], url:admin_owner_path(@owner), method: :put, local:true do |form| %>
-     　<div class="field">
-          <%= form.label :name, "ご担当者様のお名前" %><br />
-          <%= form.text_field :name, autofocus: true, autofocus: true, class: "form-control bg-gradient-success" %>
-  　　　</div>
+      <div class="field">
+        <%= form.label :name, "ご担当者様のお名前" %><br />
+        <%= form.text_field :name, autofocus: true, autofocus: true, class: "form-control bg-gradient-success" %>
+      </div>
 
-        <div class="field">
-          <%= form.label :email, "ご担当者様のメールアドレス" %><br />
-          <%= form.email_field :email, autofocus: true, autocomplete: "email", class: "form-control bg-gradient-success" %>
-        </div>
+      <div class="field">
+        <%= form.label :email, "ご担当者様のメールアドレス" %><br />
+        <%= form.email_field :email, autofocus: true, autocomplete: "email", class: "form-control bg-gradient-success" %>
+      </div>
 
-        <div class="field">
-          <%= form.label :phone_number, "ご担当者様の電話番号" %><br />
-          <%= form.number_field :phone_number, autofocus: true, autofocus: true, class: "form-control bg-gradient-success" %>
-        </div>
+      <div class="field">
+        <%= form.label :phone_number, "ご担当者様の電話番号" %><br />
+        <%= form.number_field :phone_number, autofocus: true, autofocus: true, class: "form-control bg-gradient-success" %>
+      </div>
 
-        <div class="col-xs-12 col-sm-3">
-          <%= form.radio_button :is_valid, true,  class: :radio_button %>
-          <%= form.label :is_valid, "有効" %>
-          <%= form.radio_button :is_valid, false,  class: :radio_button %>
-          <%= form.label :is_valid, "退会済み" %>
-        </div>
+      <div class="col-xs-12 col-sm-3">
+        <%= form.radio_button :is_valid, true,  class: :radio_button %>
+        <%= form.label :is_valid, "有効" %>
+        <%= form.radio_button :is_valid, false,  class: :radio_button %>
+        <%= form.label :is_valid, "退会済み" %>
+      </div>
 
-        <div><%= form.submit '編集内容を保存する', class: "btn btn-primary" %></div>
+      <div><%= form.submit '編集内容を保存する', class: "btn btn-primary" %></div>
 
     <% end %>
 </div>

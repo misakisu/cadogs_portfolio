@@ -1,65 +1,73 @@
 <div class="container">
-<h2>登録情報変更</h2>
+  <h2>登録情報変更</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-  <%= render partial: 'layouts/error_messages', locals: { model: f.object} %>
+    <%= render partial: 'layouts/error_messages', locals: { model: f.object} %>
 
-<table  class="table table-inverse">
-  <tr><th>名前</th>
-  <td class="field">
-    <%= f.label :family_name, "(姓)" %>
-    <%= f.text_field :family_name, autofocus: true %>
-    <%= f.label :given_name, "(名)" %>
-    <%= f.text_field :given_name, autofocus: true %>
-  </td></tr>
+    <table  class="table table-inverse">
+      <tr><th>名前</th>
+        <td class="field">
+          <%= f.label :family_name, "(姓)" %>
+          <%= f.text_field :family_name, autofocus: true %>
+          <%= f.label :given_name, "(名)" %>
+          <%= f.text_field :given_name, autofocus: true %>
+        </td>
+      </tr>
 
-  <tr><th>フリガナ</th>
-  <td class="field">
-    <%= f.label :family_name_kana, "(セイ)" %>
-    <%= f.text_field :family_name_kana, autofocus: true %>
-    <%= f.label :given_name_kana, "(メイ)" %>
-    <%= f.text_field :given_name_kana, autofocus: true %>
-  </td></tr>
+      <tr><th>フリガナ</th>
+        <td class="field">
+          <%= f.label :family_name_kana, "(セイ)" %>
+          <%= f.text_field :family_name_kana, autofocus: true %>
+          <%= f.label :given_name_kana, "(メイ)" %>
+          <%= f.text_field :given_name_kana, autofocus: true %>
+        </td>
+      </tr>
 
-  <tr><th><%= f.label :email, "メールアドレス" %></th>
-  <td class="field">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </td></tr>
+      <tr><th><%= f.label :email, "メールアドレス" %></th>
+        <td class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </td>
+      </tr>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <tr><th><%= f.label :phone_number, "電話番号(ハイフン無し)" %></th>
+        <td class="field">
+          <%= f.number_field :phone_number, autofocus: true %>
+        </td>
+      </tr>
+
+      <tr><th><%= f.label :password, "新しいパスワード" %> 
+      <i>*パスワードを変更しない場合は次へ進んでください</i></th>
+        <td class="field">
+          <%= f.password_field :password, autocomplete: "new-password" %>
+          <% if @minimum_password_length %>
+          <br />
+            <em>最低<%= @minimum_password_length %> 文字のパスワードを入力してください</em>
+          <% end %>
+        </td>
+      </tr>
+
+      <tr><th><%= f.label :password_confirmation, "新しいパスワードを再度入力してください" %></th>
+        <td class="field"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+      </tr>
+
+      <tr><th><%= f.label :current_password, "現在のパスワード" %> <i>*変更には現在のパスワードが必要です</i></th>
+        <td class="field">
+          <%= f.password_field :current_password, autocomplete: "current-password" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="actions">
+          <%= f.submit "更新する" %>
+        </td>
+    </table>
   <% end %>
 
-  <tr><th><%= f.label :phone_number, "電話番号(ハイフン無し)" %></th>
-  <td class="field">
-    <%= f.number_field :phone_number, autofocus: true %>
-  </td></tr>
-
-  <tr><th><%= f.label :password, "新しいパスワード" %> <i>*パスワードを変更しない場合は次へ進んでください</i></th>
-  <td class="field">
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em>最低<%= @minimum_password_length %> 文字のパスワードを入力してください</em>
-    <% end %>
-  </td></tr>
-
-   <tr><th><%= f.label :password_confirmation, "新しいパスワードを再度入力してください" %></th>
-   <td class="field"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td></tr>
-
-  <tr><th><%= f.label :current_password, "現在のパスワード" %> <i>*変更には現在のパスワードが必要です</i></th>
-  <td class="field">
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </td></tr>
-
-  <tr>
-  <td class="actions">
-    <%= f.submit "更新する" %>
-  </td>
-</table>
-<% end %>
-
-<%= link_to " 退会する", confirm_user_path %>
+  <%= link_to " 退会する", confirm_user_path %>
 
 </div>

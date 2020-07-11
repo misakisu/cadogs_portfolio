@@ -1,22 +1,24 @@
 <div class="container">
-<h2><%= @hotel.name %> を編集</h2>
-<h4>ホテルステータスの変更</h4>
+  <h2><%= @hotel.name %> を編集</h2>
+  <h4>ホテルステータスの変更</h4>
   <i>有効にしたホテルは掲載されます。</i>
   <%= form_with model:[@owner, @hotel], url:admin_hotel_path(@hotel), method: :put, local:true do |form| %>
 
     <%= form.radio_button :is_valid, true,  class: :radio_button %>
     <%= form.label :is_valid, "有効にする" %>
+
     <%= form.radio_button :is_valid, false,  class: :radio_button %>
     <%= form.label :is_valid, "無効にする" %>
 
-  <div><%= form.submit "編集内容を保存する", class: "btn-sm btn-primary" %></div>
+    <div><%= form.submit "編集内容を保存する", class: "btn-sm btn-primary" %></div>
+
   <% end %>
 
-<h4>ホテル情報の削除</h4>
+  <h4>ホテル情報の削除</h4>
 
   <!--削除時確認ボタン表示-->
   <div><%= link_to '削除する', admin_hotel_path(@hotel), method: :delete, data: {confirm: "削除しますか？"}, class: "btn-sm btn-danger" %></div>
 
-　<p>削除の連絡をする</br>電話番号：<%= @hotel.phone_number %></p>
+   <p>削除の連絡をする</br>電話番号：<%= @hotel.phone_number %></p>
 
 </div>

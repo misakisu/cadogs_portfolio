@@ -1,6 +1,6 @@
 <div class="container">
-<p class="text-primary"><%= flash[:success] %></p>
-<h4><strong>管理者画面</strong></h4>
+  <p class="text-primary"><%= flash[:success] %></p>
+  <h4><strong>管理者画面</strong></h4>
   <div class="row profile">
     <div class="col-xs-12 col-sm-4">
       <h4 class="profile-name"><%= @owner.name %></h4>
@@ -15,17 +15,17 @@
     <div class="col-sm-4"></div>
   </div>
 
-<h4>登録済みホテル（一覧)</h4>
+  <h4>登録済みホテル（一覧)</h4>
   <% @hotels.each do |hotel| %>
-  <div class="hotel_box">
-    <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
+    <div class="hotel_box">
+      <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
       <% if hotel.is_valid? %>
         <p>掲載中</p>
       <% else %>
         <p><strong>承認されるまでお待ちください</strong></p>
       <% end %>
-    <%= link_to "ホテル編集", edit_owner_hotel_path(hotel), class: "btn btn-success" %>
-    <%= link_to "予約確認", owner_hotel_path(hotel), class: "btn btn-warning" %>
-  </div>
+      <%= link_to "ホテル編集", edit_owner_hotel_path(hotel), class: "btn btn-success" %>
+      <%= link_to "予約確認", owner_hotel_path(hotel), class: "btn btn-warning" %>
+    </div>
   <% end %>
 </div>

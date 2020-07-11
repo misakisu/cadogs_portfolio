@@ -1,25 +1,24 @@
 <table class="table table-inverse">
-   <thead class="thead-lignt">
-     <tr>
-       <th>写真</th>
-       <th>名前</th>
-       <th>性別</th>
-       <th>タイプ</th>
-       <th></th>
-     </tr>
-    </thead>
-    <tbody>
-      <% pets.each do |pet| %>
-        <tr>
-          <td><%= attachment_image_tag pet, :image, format: 'jpg', size: "200x200", class: "pullleft profile-img", fallback: "no_image.jpg" %></td>
-          <td><%= pet.name %></td>
-          <td><%= pet.gender %></td>
-          <td><%= pet.pet_genre.name %></td>
-          <td><%= link_to '編集する', edit_pet_path(pet), class:"btn btn-success" %></td>
-          <!--削除時確認ボタン表示-->
-          <td><%= link_to '削除する', pet_path(pet), method: :delete, class:"btn btn-danger", data: {confirm: "削除しますか？"} %></td>
-        </tr>
-      <% end %>
-    </tbody>
+  <thead class="thead-lignt">
+    <tr>
+      <th>写真</th>
+      <th>名前</th>
+      <th>性別</th>
+      <th>タイプ</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% pets.each do |pet| %>
+      <tr>
+        <td><%= attachment_image_tag pet, :image, format: 'jpg', size: "200x200", class: "pullleft profile-img", fallback: "no_image.jpg" %></td>
+        <td><%= pet.name %></td>
+        <td><%= pet.gender %></td>
+        <td><%= pet.pet_genre.name %></td>
+        <td><%= link_to '編集する', edit_pet_path(pet), class:"btn btn-success" %></td>
+        <!--削除時確認ボタン表示-->
+        <td><%= link_to '削除する', pet_path(pet), method: :delete, class:"btn btn-danger", data: {confirm: "削除しますか？"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-</div>

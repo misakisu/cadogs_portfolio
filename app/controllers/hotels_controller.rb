@@ -50,4 +50,5 @@ private
   def hotel_params
     params.require(:hotel).permit(:owner_id, :name, :image, :price, :address, :phone_number, :image, :introduction, :is_valid)
   end
+
 end

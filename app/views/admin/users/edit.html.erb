@@ -1,7 +1,7 @@
 <div class="container">
   <h2><%= @user.family_name %><%= @user.given_name %>様の会員情報編集</h2>
 
-    <%= form_with model:[@user], url:admin_user_path(@user), method: :put, local:true do |form| %>
+  <%= form_with model:[@user], url:admin_user_path(@user), method: :put, local:true do |form| %>
     <div class="row">
       <div class="col-xs-12 col-sm-3">名前</div>
       <div class="field col-xs-12 col-sm-3">
@@ -41,5 +41,5 @@
       </div>
 
     </div>
-    <% end %>
+  <% end %>
 </div>
