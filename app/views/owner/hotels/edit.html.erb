@@ -8,7 +8,7 @@
     <%= form.label :name, "ホテル名" %>
     <%= form.text_field :name, class: "form-control bg-gradient" %>
 
-    <%= form.label :price, "1泊の金額" %>
+    <%= form.label :price, "1泊の金額(税抜き)" %>
     <%= form.number_field :price, class: "form-control bg-gradient" %>
 
     <%= form.label :address, "住所" %>
@@ -18,7 +18,7 @@
     <%= form.number_field :phone_number, autofocus: true, class: "form-control bg-gradient" %>
 
     <%= form.label :introduction, "紹介文" %>
-    <%= form.text_area :introduction, size: "20x10", class: "form-control bg-gradient" %>
+    <%= form.text_area :introduction, rows:'8', class: "form-control bg-gradient", :placeholder => "紹介文  【設備】・水自動機 ・クーラー完備 ・監視カメラ管理 ・お食事のオプションは豊富です【オプション】 ・お迎え可能(要相談) ご不明な点がありましたらお気軽にお申し付けください。" %>
 
     <!--hotel複数画像の追加-->
     <%= form.label :hotel_images_images, "ホテル詳細画像" %>

@@ -10,8 +10,9 @@
     <%= form.date_field  :end_date %>
 
     <h3><strong>ご宿泊予定のペット</strong></h3>
-    <i>予約は1ペット様ずつ可能となっております</i>
     <%= form.collection_select(:pet_id, @pets, :id, :name) %>
+　　<p><i>ご予約は1ペット様ずつとなっております</i></p>
+    <p><%= link_to "ペット様のご登録から", user_pets_path, class: "btn-sm btn-primary" %></p>
 
     <h3><strong>その他ご要望</strong></h3>
     <%= form.text_area  :request, rows:'5', class: "form-control bg-gradient" %>
