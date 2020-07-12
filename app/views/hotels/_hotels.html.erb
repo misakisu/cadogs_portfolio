@@ -14,12 +14,17 @@
     <% if owner_signed_in? || admin_signed_in? %>
       <%= hotel.favorites.count %>人がお気に入りに登録しています
     <% end %>
-    <!--ホテルステータスが無効のものは表示無し-->
+    <!--ホテルステータスが無効のものはリンク表示無し(Userのみ)+コントローラでも直打ち禁止(Userのみ)-->
     <% if hotel.is_valid == false %>
-      <h5><strong>恐れ入りますが、こちらのホテルは現在掲載されておりません</strong></h5>
+      <% if user_signed_in? %>
+        <h5><strong>恐れ入りますが、こちらのホテルは現在掲載されておりません</strong></h5>
+      <% elsif owner_signed_in? || admin_signed_in? %>
+        <h5><strong><%= link_to "ホテル詳細", hotel_path(hotel) %></strong></h5>
+      <% end %>
     <% else %>
       <h5><strong><%= link_to "ホテル詳細をみる", hotel_path(hotel) %></strong></h5>
     <% end %>
+    <!--ここまで-->
     <hr>
 
     <table class="table-inverse">
