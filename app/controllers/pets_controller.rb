@@ -11,8 +11,6 @@ class PetsController < ApplicationController
   def create
     @pet = current_user.pets.new(pet_params)
     if @pet.save
-      flash[:success] = "ペットの登録が完了しました"
-      redirect_to "index"
     else
     	render "index"
     end
@@ -39,7 +37,8 @@ class PetsController < ApplicationController
   def destroy
     @pet = Pet.find(params[:id])
     if @pet.destroy
-      flash[:success] = "ペット情報が保存されました！"
+      flash[:success] = "ペット情報が削除されました"
+      redirect_to user_pets_path
     else
     	render "index"
     end
