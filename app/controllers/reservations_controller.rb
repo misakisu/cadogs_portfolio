@@ -36,6 +36,7 @@ class ReservationsController < ApplicationController
     if params[:back]
       @hotel_comment = HotelComment.new
       @hotel_comments = @hotel.hotel_comments
+      @pets = current_user.pets
       render "hotels/show"#hotel_path(@hotel.id)では他コントローラへrenderできない
     #Confirm画面で確定ボタンでSave
     elsif @reservation.save

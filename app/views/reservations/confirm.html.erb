@@ -50,13 +50,14 @@
           <%= form.hidden_field :total_price, value: @total_price %>
         </div>
 
-        <div class="actions">
-          <%= form.submit '投稿画面に戻る' %>
+        <div class="back_btn">
+          <%= form.submit "投稿画面に戻る", name: 'back' %>
         </div>
 
-        <div class="actions">
-          <%= form.submit '確定する',class:"btn btn-primary" %>
+        <div>
+          <%= form.submit "確定する",class:"btn btn-primary" %>
         </div>
+
       </div>
     </div>
   <% end %>
