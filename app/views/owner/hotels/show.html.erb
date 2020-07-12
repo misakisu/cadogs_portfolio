@@ -5,7 +5,7 @@
     <% @reservations.each do |reservation| %>
       <div class="reservation-box">
         <%= render partial: 'reservations/all', locals: { reservation: reservation} %>
-        <%= link_to "お客様詳情報", edit_admin_user_path(reservation.user) %>
+        <%= link_to "お客様詳情報", owner_user_path(reservation.user) %>
       </div>
     <% end %>
   </div>

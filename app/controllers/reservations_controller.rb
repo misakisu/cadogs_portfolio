@@ -23,6 +23,14 @@ class ReservationsController < ApplicationController
     #Stringを日付データへ変換
     @enddate = Date.parse(reservation_params[:end_date])
     @startdate = Date.parse(reservation_params[:start_date])
+    #過去の予約のバリデーション
+    if @enddate.past? || @startdate
+      flash[:notice] = "過去の予約はできません"
+      @pets = current_user.pets
+      @hotel_comment = HotelComment.new
+      @hotel_comments = @hotel.hotel_comments
+      render "hotels/show"
+    end
     #合計金額の計算
     @stay_length = (@enddate - @startdate).to_i
     @total_price = @hotel.price * @stay_length

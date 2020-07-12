@@ -3,6 +3,7 @@
   <head>
     <title>Cadogs</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csp_meta_tag %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.css" type="text/css" media="all" />
@@ -58,7 +59,7 @@
       </nav>
     </header>
 
-    <%= yield %>
+    <div id="maincontents"><%= yield %></div>
 
     <!--footerは色分けのために2段階-->
     <footer class="container-fluid bg-4 text-center" style="background-color: #FFF70C">
@@ -85,8 +86,7 @@
         <hr>
         </div>
         <div class="col-xs-12" style="background-color: white">
-          <%= link_to " 管理者画面ログイン", new_admin_session_path, class:"btn" %>
-        <hr>
+          <%= link_to " 管理者画面ログイン", new_admin_session_path, class: "btn" %>
         </div>
         <div class="col-xs-12">
           <p>Cadogs.copyright</p>

@@ -1,17 +1,17 @@
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-xs-12 col-sm-6">
   <!--ペットが削除されている場合のために条件分岐-->
     <% if reservation.pet.present? %>
       <h4><strong>宿泊ペット様</strong></h4>
       <div><%= attachment_image_tag reservation.pet, :image, format: 'jpg', size: "200x200", class: "pullleft profile-img", fallback: "no_image.jpg" %></div>
-      <h4><%= reservation.pet.name %>様</h4>
+      <h4><%= reservation.pet.name %>様<i>(<%= reservation.pet.gender %>)</i></h4>
     <% else %>
       <%= image_tag "no_image.jpg", size: "200x200", class: "pullleft profile-img" %>
       <p>ご宿泊ペット様が見つかりません</p>
     <% end %>
   </div>
 
-  <div class="col-xs-6">
+  <div class="col-xs-12 col-sm-6">
     <table class="table table-inverse">
       <tr><th>予約者名</th><td><%= reservation.user.family_name %><%= reservation.user.given_name %></td></tr>
 

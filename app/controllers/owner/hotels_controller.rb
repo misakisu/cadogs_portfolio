@@ -44,8 +44,6 @@ class Owner::HotelsController < ApplicationController
     if @hotel.destroy
       flash[:success] = "ホテル情報が削除されました。"
       redirect_to owner_path
-    else
-      render "edit"
     end
   end
 

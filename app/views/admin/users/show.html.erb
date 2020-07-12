@@ -6,6 +6,7 @@
         <div><%= @user.family_name_kana %> <%= @user.given_name_kana %></div>
         <div><i class="fas fa-phone"></i> <%= @user.phone_number %></div>
         <div><i class="fas fa-envelope"></i> <%= @user.email %></div>
+        <div><%= link_to "お客様編集", edit_admin_user_path(@user),class: "btn btn-success" %></div>
       </div>
     </div>
 </div>

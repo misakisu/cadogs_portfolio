@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+    <p class="text-danger"><%= flash[:notice] %></p>
     <!--予約フォームに対するエラーメッセージ-->
     <%= render partial: 'layouts/error_messages', locals: { model: @reservation} %>
 

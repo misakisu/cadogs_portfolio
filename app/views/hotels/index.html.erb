@@ -1,24 +1,26 @@
-<div class="container">
-  <div class="col-xs-12 col-sm-3 status_search">
-   <%= render partial: 'search', locals: {pet_genres: @pet_genres} %>
-  </div>
-  <p><%= flash[:notice] %></p>
-  <p class="text-danger"><%= flash[:error] %></p>
-  <div class="col-xs-12 col-sm-9">
-    <% @hotels.each do |hotel| %>
-      <div class="hotel_box">
-  	    <div class="row">
-          <!--ホテルのeachで回す詳細の部分テンプレート、非同期はデザイン上の理由から設定なし-->
-          <div class="col-sm-11">
-            <%= render partial: 'hotels', locals: {hotel: hotel} %>
-          </div>
-          <!--いいねの部分的非同期更新-->
-          <div class="col-sm-1" id="favorites_<%= hotel.id %>">
-            <%= render partial: 'favorites/favorite', locals: { hotel: hotel} %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3 status_search">
+      <%= render partial: 'search', locals: {pet_genres: @pet_genres} %>
+    </div>
+    <p><%= flash[:notice] %></p>
+    <p class="text-danger"><%= flash[:error] %></p>
+    <div class="col-xs-12 col-sm-9">
+      <% @hotels.each do |hotel| %>
+        <div class="hotel_box">
+  	      <div class="row">
+            <!--ホテルのeachで回す詳細の部分テンプレート、非同期はデザイン上の理由から設定なし-->
+            <div class="col-sm-11">
+              <%= render partial: 'hotels', locals: {hotel: hotel} %>
+            </div>
+            <!--いいねの部分的非同期更新-->
+            <div class="col-sm-1" id="favorites_<%= hotel.id %>">
+              <%= render partial: 'favorites/favorite', locals: { hotel: hotel} %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 

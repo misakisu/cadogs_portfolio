@@ -13,18 +13,16 @@ class Admin::PetGenresController < ApplicationController
     flash[:success] = "登録しました"
     redirect_to admin_pet_genres_path
   else
-    render :index
+    render "index"
   end
   end
 
   def destroy
-  @pet_genre = PetGenre.find(params[:id])
-  if @pet_genre.destroy
-    flash[:success] = "削除しました"
-    redirect_to admin_pet_genres_path
-  else
-    render :index
-  end
+    @pet_genre = PetGenre.find(params[:id])
+    if @pet_genre.destroy
+      flash[:success] = "削除しました"
+      redirect_to admin_pet_genres_path
+    end
   end
 
 private

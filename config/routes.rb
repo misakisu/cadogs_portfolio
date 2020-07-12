@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 
   #adminグループアクション
   namespace :admin do
-    resources :users, only: [:index, :edit, :update]
+    resources :users, only: [:show, :index, :edit, :update]
     resources :owners, only: [:index, :edit, :update]
     resources :pet_genres, only: [:index, :create, :destroy]
     resources :hotels

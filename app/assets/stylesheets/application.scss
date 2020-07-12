@@ -19,8 +19,10 @@
  @import "bootstrap";
 
 /*全体*/
-body {
+html,body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif;
+  min-height: 100%;
+  position: relative;
 }
 
 a:hover{
@@ -29,6 +31,14 @@ a:hover{
 
 .faa-ring{
   color: #FFC300;
+}
+
+#maincontents{
+  min-height: calc(100vh - 60px);/*100%から50pxの固定幅を引いた数値*/
+}
+
+.registration_btn{
+  margin: 20px 0px;
 }
 
 /*Userのtop画面のCSS*/

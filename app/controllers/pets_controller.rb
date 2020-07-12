@@ -39,8 +39,6 @@ class PetsController < ApplicationController
     if @pet.destroy
       flash[:success] = "ペット情報が削除されました"
       redirect_to user_pets_path
-    else
-    	render "index"
     end
     @pets = current_user.pets#非同期部分テンプレートの変数のため
   end
