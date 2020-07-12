@@ -29,7 +29,7 @@
       <tr><th>チェックイン</th><td><%= reservation.start_date %></td></tr>
       <tr><th>チェックアウト</th><td><%= reservation.end_date %></td></tr>
       <tr><th>ご要望</th><td><%= reservation.request %></td></tr>
-      <tr><th>合計金額</th><td><%= reservation.total_price %></td></tr>
+      <tr><th>合計金額</th><td><%= addTax(reservation.total_price,1.10) %></td></tr>
     </table>
   </div>
 </div>

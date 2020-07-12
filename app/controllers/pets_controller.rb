@@ -11,6 +11,8 @@ class PetsController < ApplicationController
   def create
     @pet = current_user.pets.new(pet_params)
     if @pet.save
+      flash[:success] = "ペットの登録が完了しました"
+      redirect_to "index"
     else
     	render "index"
     end

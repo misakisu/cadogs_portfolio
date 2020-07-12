@@ -1,4 +1,5 @@
 <div class="container">
+  <p class="text-primary"><%= flash[:success] %></p>
   <h4><strong><%= @user.family_name %> <%= @user.given_name %>様の予約一覧</strong></h4>
   <% @reservations.each do |reservation| %>
     <div class="reservation-box">
