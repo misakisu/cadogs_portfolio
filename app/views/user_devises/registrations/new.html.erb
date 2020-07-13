@@ -36,9 +36,9 @@
       </div>
 
       <div class="col-xs-12 col-sm-3"><%= f.label :password, "パスワード" %></div>
-      <!--<% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> 文字以上)</em>
-      <% end %><br />-->
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字以上</em>
+      <% end %><br />
       <div class="field col-xs-12 col-sm-9">
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control bg-gradient-success" %>
       </div>

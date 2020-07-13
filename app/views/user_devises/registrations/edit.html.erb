@@ -46,7 +46,7 @@
           <%= f.password_field :password, autocomplete: "new-password" %>
           <% if @minimum_password_length %>
           <br />
-            <em>最低<%= @minimum_password_length %> 文字のパスワードを入力してください</em>
+            <em>最低<%= @minimum_password_length %> 文字以上</em>
           <% end %>
         </td>
       </tr>
