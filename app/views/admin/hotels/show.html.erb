@@ -7,4 +7,7 @@
       <%= link_to "お客様詳細", admin_user_path(reservation.user) %>
       </div>
     <% end %>
+  <div class="text-center">
+    <%= paginate @reservations %>
+  </div>
 </div>

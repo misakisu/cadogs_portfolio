@@ -4,12 +4,14 @@ class HotelsController < ApplicationController
     @pet_genres = PetGenre.all
     #お気に入りが多い順に表示+ステータスが有効なホテルを取得
     @hotel_all = Hotel.where(is_valid: "true").includes(:favorites)#左外部結合でテーブルを結合
-    @hotels = @hotel_all.sort_by {|hotel| hotel.favorites.count}.reverse#昇順に並べ替え
+    hotels = @hotel_all.sort_by {|hotel| hotel.favorites.count}.reverse#昇順に並べ替え
+    @hotels = Kaminari.paginate_array(hotels).page(params[:page]).per(5)#ページネーションのためKaminari利用
     #中間テーブルを活用してペットジャンルで検索+ステータスが有効なホテルを取得
     if params[:pet_genre_id]
       @pet_genre = PetGenre.find_by(id: params[:pet_genre_id])
       @hotel_all = @pet_genre.hotels.where(is_valid: "true").includes(:favorites)
-      @hotels = @hotel_all.sort_by {|hotel| hotel.favorites.count}.reverse#昇順に並べ替え
+      hotels = @hotel_all.sort_by {|hotel| hotel.favorites.count}.reverse#昇順に並べ替え
+      @hotels = Kaminari.paginate_array(hotels).page(params[:page]).per(5)#ページネーションのためKaminari利用
     end
   end
 
@@ -45,7 +47,8 @@ class HotelsController < ApplicationController
     #検索に必要な情報をメソッドをつかって検索(中間テーブルを活用して検索)
     if params[:pet_genre_id]
       @pet_genre = PetGenre.find_by(id: params[:pet_genre_id])
-      @hotels = @pet_genre.hotels.where(is_valid: "true")#受け取ったペットIDに基づくHotelをすべて取得+有効(承認済み)のもの
+      hotels = @pet_genre.hotels.where(is_valid: "true")#受け取ったペットIDに基づくHotelをすべて取得+有効(承認済み)のもの
+      @hotels = Kaminari.paginate_array(hotels).page(params[:page]).per(5)
       render "index"
     end
   end

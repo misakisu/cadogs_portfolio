@@ -2,7 +2,7 @@ class Admin::OwnersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @owners = Owner.all
+    @owners = Owner.all.page(params[:page]).per(10)
   end
 
   def edit

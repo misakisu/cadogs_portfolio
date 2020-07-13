@@ -22,4 +22,7 @@
         <%= link_to "予約確認", admin_hotel_path(hotel), class: "btn btn-warning" %>
       </div>
     <% end %>
+  <div class="text-center">
+    <%= paginate @hotels %>
+  </div>
 </div>

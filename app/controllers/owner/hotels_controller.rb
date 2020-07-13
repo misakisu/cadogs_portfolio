@@ -13,13 +13,14 @@ class Owner::HotelsController < ApplicationController
       flash[:success] = "ホテル情報が申請されました！営業日2～3日以内にご連絡差し上げます。"
       redirect_to owner_path
     else
+      @hotel.hotel_images.build#関連するモデルを生成するときはbuild
       render "new"
     end
   end
 
   def show
     @hotel = Hotel.find(params[:id])
-    @reservations = @hotel.reservations
+    @reservations = @hotel.reservations.page(params[:page]).per(5)
   end
 
   def edit
