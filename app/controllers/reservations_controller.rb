@@ -11,6 +11,7 @@ class ReservationsController < ApplicationController
   def confirm
     @reservation = current_user.reservations.new(reservation_params)
     @hotel = Hotel.find(reservation_params[:hotel_id])
+    #予約画面でエラーが合った場合でrenderhotels/showへ
     if @reservation.invalid?
       @pets = current_user.pets
       @hotel_comment = HotelComment.new
@@ -23,8 +24,8 @@ class ReservationsController < ApplicationController
     #Stringを日付データへ変換
     @enddate = Date.parse(reservation_params[:end_date])
     @startdate = Date.parse(reservation_params[:start_date])
-    #過去の予約のバリデーション
-    if @enddate.past? || @startdate
+    #予約画面で過去の日程が入力された場合のバリデーション(モデルでのバリーでションに変更予定)
+    if @enddate.past? || @startdate.past?
       flash[:notice] = "過去の予約はできません"
       @pets = current_user.pets
       @hotel_comment = HotelComment.new

@@ -3,14 +3,14 @@
   <%= form_with model:@reservation, url:user_reservations_path, method: :post, local:true do |form| %>
 
     <div class="row">
-      <div class="col-xs-4">
+      <div class="col-xs-12 col-sm-4">
         <h4><strong>ご宿泊ペット様</strong></h4>
         <div><%= attachment_image_tag @pet, :image, format: 'jpg', size: "200x200", class: "profile-img", fallback: "no_image.jpg" %></div>
         <h4><%= @pet.name %>様</h4>
         <%= form.hidden_field :pet_id, value: @pet.id %>
       </div>
 
-      <div class="col-xs-8">
+      <div class="col-xs-12 col-sm-8">
         <div class="row">
           <h4 class="col-xs-6"><strong>予約者名</strong></h4>
           <h4 class="col-xs-6"><%= @user.family_name %><%= @user.given_name %></h4>

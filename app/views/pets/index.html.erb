@@ -4,38 +4,39 @@
   <div id="error_messages">
     <%= render partial: 'layouts/error_messages', locals: { model: @pet} %>
   </div>
-  <!--ペット新規登録、createのみ非同期実装-->
-  <div class="col-xs-12 col-sm-3">
-    <h4><strong>ペット新規登録</strong></h4>
-    <!--form_withのデフォルトはremote:trueになっているため、下記記述でajax起動-->
-    <%= form_with model:[@user, @pet], url:user_pets_path, method: :post do |form| %>
+  <div class="row">
+    <!--ペット新規登録、createのみ非同期実装-->
+    <div class="col-xs-12 col-sm-3">
+      <h4><strong>ペット新規登録</strong></h4>
+      <!--form_withのデフォルトはremote:trueになっているため、下記記述でajax起動-->
+      <%= form_with model:[@user, @pet], url:user_pets_path, method: :post do |form| %>
 
-      <%= form.label :image, "プロフィール画像" %>
-      <%= form.attachment_field :image %>
+        <%= form.label :image, "プロフィール画像" %>
+        <%= form.attachment_field :image %>
 
-      <%= form.label :name, "ペットのお名前" %>
-      <%= form.text_field :name, class: "form-control bg-gradient" %>
+        <%= form.label :name, "ペットのお名前" %>
+        <%= form.text_field :name, class: "form-control bg-gradient" %>
 
-      <div>
-        <%= form.radio_button :gender, :男の子, class:"radio_button" %>
-        <%= form.label :gender, "男の子", {value: 0} %>
-        <%= form.radio_button :gender, :女の子, class:"radio_button" %>
-        <%= form.label :gender, "女の子", {value: 1} %>
+        <div>
+          <%= form.radio_button :gender, :男の子, class:"radio_button" %>
+          <%= form.label :gender, "男の子", {value: 0} %>
+          <%= form.radio_button :gender, :女の子, class:"radio_button" %>
+          <%= form.label :gender, "女の子", {value: 1} %>
+        </div>
+
+        <div><%= form.collection_select(:pet_genre_id, PetGenre.all, :id, :name) %></div>
+
+        <%= form.submit "登録する", class:"btn btn-warning" %>
+      <% end %>
+    </div>
+
+    <!--ペット一覧-->
+    <div class="col-xs-12 col-sm-9">
+      <h4><strong>ペット一覧</strong></h4>
+      <!--非同期-->
+      <div id="pets_all">
+        <%= render partial: 'pets/all', locals: { pets: @pets} %>
       </div>
-
-      <div><%= form.collection_select(:pet_genre_id, PetGenre.all, :id, :name) %></div>
-
-      <%= form.submit "登録する", class:"btn btn-warning" %>
-    <% end %>
-  </div>
-
-  <!--ペット一覧-->
-  <div class="col-xs-12 col-sm-9">
-    <h4><strong>ペット一覧</strong></h4>
-    <!--非同期-->
-    <div id="pets_all">
-      <%= render partial: 'pets/all', locals: { pets: @pets} %>
     </div>
   </div>
-
 </div>
