@@ -5,15 +5,13 @@ class PetsController < ApplicationController
     @pet = Pet.new
     #現在のユーザーのペットを表示
     @user = current_user
-    @pets = @user.pets
+    @pets = @user.pets.page(params[:page]).per(5)
   end
 
   def create
     @pet = current_user.pets.new(pet_params)
-    if @pet.save
-    else
-    	render "index"
-    end
+      if @pet.save
+      end
     @pets = current_user.pets#非同期部分テンプレートの変数のため
   end
   #浅くネストしているため、以下Idが情報取得に必要。

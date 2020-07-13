@@ -41,6 +41,24 @@ a:hover{
   margin: 20px 0px;
 }
 
+/*ページネーション*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #E8C900;   /*文字の色*/
+}
+
+.pagination>.active>a {
+  background: #FFC300;     /*アクティブ番号の背景色*/
+}
+
+.pagination>.active>a:hover {
+  background: #FFC300;     /*アクティブ番号hover時の背景色*/
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}
+
 /*Userのtop画面のCSS*/
 .top-message{
   padding: 100px;
