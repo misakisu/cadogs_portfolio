@@ -44,11 +44,11 @@
             <% @hotel.pet_genres.each do |pet_genre| %>
             <p><%= pet_genre.name %></p>
             <% end %>
+          <h4><strong>詳細写真</strong></h4>
         </div>
       </div>
 
       <div class="row col-xs-12">
-        <h4><strong>詳細写真</strong></h4>
         <!--ホテルの詳細写真をeachで回す-->
         <% if @hotel.hotel_images.present? %>
           <% @hotel.hotel_images.each do |image| %>
