@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-3 status_search">
       <%= render partial: 'search', locals: {pet_genres: @pet_genres} %>
+      <%= render 'searches/search_form' %>
     </div>
     <p><%= flash[:notice] %></p>
     <p class="text-danger"><%= flash[:error] %></p>

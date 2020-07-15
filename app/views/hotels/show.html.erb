@@ -11,6 +11,7 @@
       <% else %>
       <div class="status_search">
         <%= render partial: 'search', locals: {pet_genres: @pet_genres} %>
+        <%= render 'searches/search_form' %>
       </div>
       <% end %>
     </div>

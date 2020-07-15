@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3 status_search">
+      <%= render partial: 'hotels/search', locals: {pet_genres: @pet_genres} %>
+      <%= render 'searches/search_form' %>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <h4>検索結果</h4>
+      <% if @records.present? %>
+        <% @records.each do |record| %>
+          <div class="hotel_box">
+            <div class="row">
+              <!--ホテルのeachで回す詳細の部分テンプレート、非同期はデザイン上の理由から設定なし-->
+              <div class="col-sm-11">
+                <%= render partial: 'hotels/hotels', locals: {hotel: record} %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <h3>検索結果はゼロです</h3>
+      <% end %>
+    </div>
+  </div>
+</div>
+

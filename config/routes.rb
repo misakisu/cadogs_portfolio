@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
+  #hotel検索のルート
+  get 'search' => 'searches#search'
+
   #ownerデバイス
   devise_for :owners, controllers: {
     sessions: "owner_devises/sessions",
