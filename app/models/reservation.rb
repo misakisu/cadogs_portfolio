@@ -11,6 +11,6 @@ class Reservation < ApplicationRecord
 
   #チェックアウトの日程がチェックインの日程よりも前の日程で入力された場合は下記エラーを表示
   def correct_date
-    errors.add(:end_date, 'チェックアウトの日程が間違っています') if end_date < start_date
+    errors.add(:end_date, 'の日程が間違っています') if end_date < start_date
   end
 end
