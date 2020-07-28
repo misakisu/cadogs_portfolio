@@ -3,7 +3,7 @@ class NotificationMailer < ApplicationMailer
 
   def reservation_thanks_mail(reservation)
     @reservation = reservation
-    @url = hotel_url(@reservation.hotel)
+    @url = hotel_url(reservation.hotel.id)
     mail(
       subject: "ご予約ありがとうございます。", #メールのタイトル
       to: @reservation.user.email #宛先
