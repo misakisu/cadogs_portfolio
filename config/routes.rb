@@ -64,4 +64,9 @@ Rails.application.routes.draw do
     resources :pet_genres, only: [:index, :create, :destroy]
     resources :hotels
   end
+
+  #letter_opener用のマウント
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
