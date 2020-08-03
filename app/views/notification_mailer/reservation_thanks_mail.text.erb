@@ -1,0 +1,23 @@
+<%= @reservation.user.family_name %><%= @reservation.user.given_name %> 様
+<%= @reservation.pet.name %> 様
+
+<%= @reservation.hotel.name %>へのご予約ありがとうございます。
+
+チェックイン：<%= @reservation.start_date %>
+チェックアウト：<%= @reservation.end_date %>
+
+ホテルの詳細はこちら <%= @url %>
+
+お問い合わせは下記、<%= @reservation.hotel.name %>までご連絡ください。
+<%= @reservation.hotel.phone_number %>
+
+それでは<%= @reservation.pet.name %>様にお迎えできますことを楽しみにお待ち申し上げます。
+
+-------------------------
+
+cadogs
+HP:http://cadogs.work
+本社：5-1-2 cado street Italy
+
+-------------------------
+

@@ -49,6 +49,7 @@ class ReservationsController < ApplicationController
       render "hotels/show"#hotel_path(@hotel.id)では他コントローラへrenderできない
     #Confirm画面で確定ボタンでSave
     elsif @reservation.save
+      NotificationMailer.reservation_thanks_mail(@reservation).deliver
       redirect_to finish_user_reservations_path
     end
   end
