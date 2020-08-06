@@ -29,7 +29,16 @@
     <%= b.label { b.check_box + b.text } %>
     <% end %>
 
+    <h4>ホテルステータスの変更</h4>
+    <%= form.radio_button :is_valid, false,  class: :radio_button, checked: false %>
+    <%= form.label :is_valid, "無効にする" %>
+
+    <% if @hotel.is_valid == false %>
+      <p>ホテルの設定を再度有効にする場合は運営部までお問い合わせください</p>
+    <% end %>
+
     <%= form.submit "変更内容を保存する", class:"btn btn-primary" %>
+
 
   <% end %>
 

@@ -14,7 +14,8 @@
 
   <% end %>
 
-    <p><strong><%= link_to "#{@hotel.owner.name}", edit_admin_owner_path %></strong> 様へ削除の連絡をする</br>電話番号：<%= @hotel.phone_number %></p>
-
+    <div class="owner_edit_box">
+      <p><strong><%= link_to "#{@hotel.owner.name}", edit_admin_owner_path %></strong> 様へ連絡をする</br>電話番号：<%= @hotel.phone_number %></p>
+    </div>
   </div>
 </div>
