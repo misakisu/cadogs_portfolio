@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = current_user
     #おきにいり一覧
@@ -12,6 +14,9 @@ class UsersController < ApplicationController
 
   def confirm
     @user = current_user
+    if current_user.id != @user.id
+      redirect_to user_path(@user)
+    end
   end
 
   def hide

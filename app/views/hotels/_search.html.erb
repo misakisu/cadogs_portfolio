@@ -1,16 +1,16 @@
 <table class="table">
-    <thead>
-      <tr>
-        <th>ペット情報で検索</th>
+  <thead>
+    <tr>
+      <th>ペット情報で検索</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--全体(人気順)情報表示用-->
+    <tr><td><%= link_to 'All', hotels_path %></td></tr>
+    <!--コントローラーへpet_genre_idを送り検索-->
+    <% pet_genres.each do |pet_genre| %>
+      <tr><td><%= link_to "#{pet_genre.name}", controller: "hotels", action: "index", pet_genre_id: pet_genre.id %></td>
       </tr>
-    </thead>
-    <tbody>
-      <!--全体(検索無し)情報表示用-->
-      <tr><td><%= link_to 'All', hotels_path %></td></tr>
-      <!--コントローラーへpet_genre_idを送り検索-->
-      <% pet_genres.each do |pet_genre| %>
-        <tr><td><%= link_to "#{pet_genre.name}", controller: "hotels", action: "index", pet_genre_id: pet_genre.id %></td>
-        </tr>
-      <% end %>
-    </tbody>
+    <% end %>
+  </tbody>
 </table>

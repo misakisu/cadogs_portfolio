@@ -1,49 +1,64 @@
 <div class="container">
-<!--確認画面のため、hidden_fieldにて情報を保持。顧客データに関してはコントローラー定義-->
-<%= form_with model:@reservation, url:user_reservations_path, method: :post, local:true do |form| %>
+  <!--確認画面のため、hidden_fieldにて情報を保持。顧客データに関してはコントローラー定義-->
+  <%= form_with model:@reservation, url:user_reservations_path, method: :post, local:true do |form| %>
 
-<div class="row">
-  <div class="col-xs-6">
-    <h4><strong>宿泊ペット様</strong></h4>
-    <div><%= attachment_image_tag @pet, :image, format: 'jpg', size: "200x200", class: "pullleft profile-img", fallback: "no_image.jpg" %></div>
-    <h4><%= @pet.name %></h4>
-    <%= form.hidden_field :pet_id, value: @pet.id %>
-  </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <h4><strong>ご宿泊ペット様</strong></h4>
+        <div><%= attachment_image_tag @pet, :image, format: 'jpg', size: "200x200", class: "profile-img", fallback: "no_image.jpg" %></div>
+        <h4><%= @pet.name %>様</h4>
+        <%= form.hidden_field :pet_id, value: @pet.id %>
+      </div>
 
-　<div class="col-xs-6">
-    <h4><strong>予約者名</strong></h4>
-    <h4><%= @user.family_name %><%= @user.given_name %></h4>
+      <div class="col-xs-12 col-sm-8">
+        <div class="row">
+          <h4 class="col-xs-6"><strong>予約者名</strong></h4>
+          <h4 class="col-xs-6"><%= @user.family_name %><%= @user.given_name %></h4>
+        </div>
 
-    <h4><strong>予約ホテル名前</strong></h4>
-    <h5><%= @hotel.name %></h5>
-    <%= form.hidden_field :hotel_id, value: @hotel.id %>
+        <div class="row">
+          <h4 class="col-xs-6"><strong>予約ホテル名前</strong></h4>
+          <h5 class="col-xs-6"><%= @hotel.name %></h5>
+          <%= form.hidden_field :hotel_id, value: @hotel.id %>
+        </div>
 
-    <h4><strong>チェックイン</strong></h4>
-    <%= @reservation.start_date %>
-    <%= form.hidden_field :start_date, value: @startdate %>
+        <div class="row">
+          <h4 class="col-xs-6"><strong>チェックイン</strong></h4>
+          <p class="col-xs-6"><%= @reservation.start_date %><p>
+          <%= form.hidden_field :start_date, value: @startdate %>
+        </div>
 
-    <h4><strong>チェックアウト</strong></h4>
-    <%= @reservation.end_date %>
-    <%= form.hidden_field :end_date, value: @enddate %>
+        <div class="row">
+          <h4 class="col-xs-6"><strong>チェックアウト</strong></h4>
+          <p class="col-xs-6"><%= @reservation.end_date %></p>
+          <%= form.hidden_field :end_date, value: @enddate %>
+        </div>
 
-    <h4><strong>滞在日数</strong></h4>
-    <%= @stay_length %>日間の滞在
+        <div class="row">
+          <h4 class="col-xs-6"><strong>滞在日数</strong></h4>
+          <p class="col-xs-6"><%= @stay_length %>日間の滞在</p>
+        </div>
 
-    <h4><strong>その他ご要望</strong></h4>
-    <p><%= @reservation.request %></p>
-    <%= form.hidden_field :request, value: @reservation.request %>
+        <div class="row">
+          <h4 class="col-xs-6"><strong>その他ご要望</strong></h4>
+          <p class="col-xs-6"><%= @reservation.request %></p>
+          <%= form.hidden_field :request, value: @reservation.request %>
+        </div>
 
-    <h4><strong>合計金額</strong><strong> <%= addTax(@total_price,1.10) %></strong></h4>
-    <%= form.hidden_field :total_price, value: @total_price %>
+        <div class="row">
+          <h4 class="col-xs-12"><strong>合計金額</strong><strong> <%= addTax(@total_price,1.10) %></strong></h4>
+          <%= form.hidden_field :total_price, value: @total_price %>
+        </div>
 
-    <div class="actions">
-      <%= form.submit '投稿画面に戻る', name: 'back' %>
+        <div class="back_btn">
+          <%= form.submit "投稿画面に戻る", name: 'back' %>
+        </div>
+
+        <div>
+          <%= form.submit "確定する",class:"btn btn-primary" %>
+        </div>
+
+      </div>
     </div>
-
-    <div class="actions">
-      <%= form.submit '確定する' %>
-    </div>
-  </div>
-</div>
-<% end %>
+  <% end %>
 </div>

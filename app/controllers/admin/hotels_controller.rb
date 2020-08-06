@@ -1,19 +1,20 @@
 class Admin::HotelsController < ApplicationController
+  before_action :authenticate_admin!
+
   #管理者用のホテル一覧
   def index
-    @hotels = Hotel.all
+    @hotels = Hotel.all.page(params[:page]).per(5)
      #indexページにて送られて生きたステータス(is_valid)でホテルを検索
      if params[:is_valid]
      @is_valid = params[:is_valid]
-     @hotels = Hotel.where(is_valid: @is_valid)
-     else
-     render "index"
+     hotels = Hotel.where(is_valid: @is_valid)
+     @hotels = Kaminari.paginate_array(hotels).page(params[:page]).per(5)
      end
   end
 
   def show
     @hotel = Hotel.find(params[:id])
-    @reservations = @hotel.reservations
+    @reservations = @hotel.reservations.page(params[:page]).per(5)
   end
 
   def edit
@@ -24,9 +25,8 @@ class Admin::HotelsController < ApplicationController
     @hotel = Hotel.find(params[:id])
     if @hotel.update(hotel_params)
       flash[:success] = "ホテル情報が更新されました"
-      redirect_to admin_hotels_path
-    else
-      render "edit"
+      @hotels = Hotel.all.page(params[:page]).per(5)
+      render "index"
     end
   end
 
@@ -35,8 +35,6 @@ class Admin::HotelsController < ApplicationController
     if @hotel.destroy
       flash[:success] = "ホテル情報が削除されました。"
       redirect_to admin_hotels_path
-    else
-      render "edit"
     end
   end
 

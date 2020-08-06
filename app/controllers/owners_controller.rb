@@ -1,11 +1,16 @@
 class OwnersController < ApplicationController
+  before_action :authenticate_owner!
+
   def show
     @owner = current_owner
-    @hotels =@owner.hotels
+    @hotels =@owner.hotels.page(params[:page]).per(5)
   end
 
   def confirm
     @owner = current_owner
+    if current_owner.id != @owner.id
+      redirect_to owner_path(@owner)
+    end
   end
 
   def hide

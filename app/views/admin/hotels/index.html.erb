@@ -8,17 +8,21 @@
 	    <%= form.submit "表示する", class: "btn-sm btn-warning" %>
 	  <% end %>
 	</div>
-	<!--Hotel一覧もしくは上記で検索した条件(有効・無効)に合うホテル一覧を表示-->
+
+  <!--Hotel一覧もしくは上記で検索した条件(有効・無効)に合うホテル一覧を表示-->
     <% @hotels.each do |hotel| %>
       <div class="hotel_box">
         <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
-          <% if hotel.is_valid? %>
-            <p>有効</p>
-          <% else %>
-            <p><strong>無効(申請承認待ち)</strong></p>
-          <% end %>
+        <% if hotel.is_valid? %>
+          <p>有効</p>
+        <% else %>
+          <p><strong>無効(申請承認待ち)</strong></p>
+        <% end %>
         <%= link_to "ホテル編集", edit_admin_hotel_path(hotel), class: "btn btn-success" %>
         <%= link_to "予約確認", admin_hotel_path(hotel), class: "btn btn-warning" %>
       </div>
     <% end %>
+  <div class="text-center">
+    <%= paginate @hotels %>
+  </div>
 </div>

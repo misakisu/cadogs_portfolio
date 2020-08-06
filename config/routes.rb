@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
+  #hotel検索のルート
+  get 'search' => 'searches#search'
+
   #ownerデバイス
   devise_for :owners, controllers: {
     sessions: "owner_devises/sessions",
@@ -56,7 +59,7 @@ Rails.application.routes.draw do
 
   #adminグループアクション
   namespace :admin do
-    resources :users, only: [:index, :edit, :update]
+    resources :users, only: [:show, :index, :edit, :update]
     resources :owners, only: [:index, :edit, :update]
     resources :pet_genres, only: [:index, :create, :destroy]
     resources :hotels

@@ -1,0 +1,9 @@
+<div>
+	<p><strong>キーワードで検索する</strong></p>
+  <%= form_with(url: search_path, method: :get, local:true) do |form| %>
+    <span class="glyphicon glyphicon-search"></span>
+    <%= form.select :column, ([["ホテル名","name"],["ホテル住所","address"],["ホテル詳細","introduction"]]) %>
+    <%= form.text_field :content, autofocus: true %>
+    <%= form.submit "search", class:"btn btn-success" %>
+  <% end %>
+</div>

@@ -1,11 +1,11 @@
 class HotelCommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @hotel = Hotel.find(params[:hotel_id])
     @comment = @hotel.hotel_comments.new(hotel_comment_params)
     @comment.user_id = current_user.id#どのuserのコメントかという情報をおくるためuser_idを定義
     if @comment.save
-    else
-      render hotel_path(@hotel)
     end
   end
 

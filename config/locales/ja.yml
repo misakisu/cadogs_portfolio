@@ -3,10 +3,10 @@ ja:
     attributes:
       user:
         email: メールアドレス
-        family_name: お名前
-        given_name: お名前
-        family_name_kan: フリガナ
-        given_name_kana: フリガナ
+        family_name: お名前(姓)
+        given_name: お名前(名)
+        family_name_kana: フリガナ(セイ)
+        given_name_kana: フリガナ(メイ)
         phone_number: 電話番号
 
       pet:

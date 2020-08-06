@@ -1,4 +1,6 @@
 class Owner::HotelsController < ApplicationController
+  before_action :authenticate_owner!
+
   def new
     @hotel = Hotel.new
     @owner = current_owner
@@ -11,13 +13,14 @@ class Owner::HotelsController < ApplicationController
       flash[:success] = "ホテル情報が申請されました！営業日2～3日以内にご連絡差し上げます。"
       redirect_to owner_path
     else
+      @hotel.hotel_images.build#関連するモデルを生成するときはbuild
       render "new"
     end
   end
 
   def show
     @hotel = Hotel.find(params[:id])
-    @reservations = @hotel.reservations
+    @reservations = @hotel.reservations.page(params[:page]).per(5)
   end
 
   def edit
@@ -42,8 +45,6 @@ class Owner::HotelsController < ApplicationController
     if @hotel.destroy
       flash[:success] = "ホテル情報が削除されました。"
       redirect_to owner_path
-    else
-      render "edit"
     end
   end
 

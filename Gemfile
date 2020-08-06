@@ -39,10 +39,14 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+<<<<<<< HEAD
   gem 'capybara', '~> 2.15'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
   gem "factory_bot_rails"
+=======
+  gem 'pry-rails'
+>>>>>>> 34039c11aa79879742430b88488a9cb17b01c3b8
 end
 
 group :development do
@@ -68,4 +72,15 @@ gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'kaminari'
+<<<<<<< HEAD
 gem 'rails-i18n'
+=======
+
+gem 'rails-i18n'
+gem 'devise-i18n-views'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+>>>>>>> 34039c11aa79879742430b88488a9cb17b01c3b8

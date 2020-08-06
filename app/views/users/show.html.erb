@@ -22,20 +22,20 @@
 
 　<!--お気に入りホテル一覧-->
   <div class="row">
-  <h4><strong>お気に入り一覧</strong></h4>
+    <h4><strong>お気に入り一覧</strong></h4>
     <% @hotels.each do |hotel| %>
-    <div class="favorite_box">
-      <div class="row ">
-      <!--ホテルのeachで回す詳細の部分テンプレート-->
-        <div class="col-sm-11">
-          <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
-        </div>
-        <!--いいねの部分的非同期更新-->
-        <div class="col-sm-1" id="favorites_<%= hotel.id %>">
-          <%= render partial: 'favorites/favorite', locals: { hotel: hotel} %>
+      <div class="favorite_box">
+        <div class="row ">
+          <!--ホテルのeachで回す詳細の部分テンプレート-->
+          <div class="col-sm-11">
+            <%= render partial: 'hotels/hotels', locals: {hotel: hotel} %>
+          </div>
+          <!--いいねの部分的非同期更新-->
+          <div class="col-sm-1" id="favorites_<%= hotel.id %>">
+            <%= render partial: 'favorites/favorite', locals: { hotel: hotel} %>
+          </div>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>

@@ -1,10 +1,9 @@
 <div class="container">
   <p class="text-primary"><%= flash[:success] %></p>
   <h1>オーナ一覧</h1>
-    <i>オーナー情報の変更は名前をクリック</i>
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-xs-offset-2">
-    <table class='table table-hover table-inverse'>
+  <i>オーナー情報の変更は名前をクリック</i>
+  <div class="table-responsive"><!--テーブルレスポンシブのためのbootstrap-->
+    <table id="productSizes" class="table table-hover table-inverse">
       <thead>
         <tr>
           <th>オーナーID</th>
@@ -16,22 +15,24 @@
       </thead>
       <tbody>
         <% @owners.each do |owner| %>
-        <tr>
-          <td><%= owner.id %></td>
-          <td><%= link_to "#{owner.name}", edit_admin_owner_path(owner.id) %></td>
-          <td><%= owner.phone_number %></td>
-          <td><%= owner.email %></td>
-          <td>
+          <tr>
+            <td><%= owner.id %></td>
+            <td><%= link_to "#{owner.name}", edit_admin_owner_path(owner.id) %></td>
+            <td><%= owner.phone_number %></td>
+            <td><%= owner.email %></td>
+            <td>
             <% if owner.is_valid? %>
               <p>有効</p>
             <% else %>
               <p>退会済</p>
             <% end %>
-          </td>
-        </tr>
+            </td>
+          </tr>
         <% end %>
       </tbody>
     </table>
-    </div>
+  </div>
+  <div class="text-center">
+    <%= paginate @owners %>
   </div>
 </div>
