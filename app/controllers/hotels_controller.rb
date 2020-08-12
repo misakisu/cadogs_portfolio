@@ -40,23 +40,15 @@ class HotelsController < ApplicationController
     @hotel_comments = @hotel.hotel_comments #hotelのidに紐づいたhotels全部
     @reservation = Reservation.new
     @pet_genres = PetGenre.all
-<<<<<<< HEAD
-    #User以外の場合はペット情報無し且つ不要である情報を下記で定義
-=======
     #User以外が閲覧している場合はペット情報を持たない且つ予約不可のため下記で分岐
->>>>>>> 34039c11aa79879742430b88488a9cb17b01c3b8
     if current_user
       @pets = current_user.pets #Userのペット一覧の情報
     end
     #検索に必要な情報をメソッドをつかって検索(中間テーブルを活用して検索)
     if params[:pet_genre_id]
       @pet_genre = PetGenre.find_by(id: params[:pet_genre_id])
-<<<<<<< HEAD
-      @hotels = @pet_genre.hotels.where(is_valid: "true")#受け取ったペットIDに基づくHotelをすべて取得+有効(承認済み)のもの
-=======
       hotels = @pet_genre.hotels.where(is_valid: "true")#受け取ったペットIDに基づくHotelをすべて取得+有効(承認済み)のもの
       @hotels = Kaminari.paginate_array(hotels).page(params[:page]).per(5)
->>>>>>> 34039c11aa79879742430b88488a9cb17b01c3b8
       render "index"
     end
   end
