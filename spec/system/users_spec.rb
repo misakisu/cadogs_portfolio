@@ -19,7 +19,7 @@ describe 'ユーザー認証のテスト' do
 
         expect(page).to have_content 'ご登録ありがとうございます！'
       end
-      it '新規登録に失敗する' do
+      it '空欄に新規登録に失敗する' do
         fill_in 'user[family_name]',with: ''
         fill_in 'user[given_name]', with: ''
         fill_in 'user[family_name_kana]', with: ''

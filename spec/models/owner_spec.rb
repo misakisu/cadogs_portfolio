@@ -32,9 +32,9 @@ RSpec.describe 'Ownerモデルのテスト', type: :model do
         test_owner.phone_number = '0123456789'
         is_expected.to eq true;
       end
-      it '11文字以下であること' do
-        test_owner.phone_number = Faker::Lorem.characters(number:12)
-        is_expected.to eq false
+      it '10桁もしくは11桁でない場合のエラーメッセージ' do
+        test_owner.phone_number = '12345'
+        expect(owner.errors[:phone_number]).to include("10桁or11桁で入力して下さい")
       end
     end
   end
