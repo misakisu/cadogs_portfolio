@@ -27,6 +27,7 @@ ja:
         price: 単価
         address: 住所
         phone_number: 電話番号
+        hotel_images: 詳細写真
 
       owner:
         email: メールアドレス
