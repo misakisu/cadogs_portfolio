@@ -32,4 +32,3 @@ $(document).on('turbolinks:load',function(){
         }
      });
  });
-/*keyupは入力中にキーが離れたらfunctionを実行*/
