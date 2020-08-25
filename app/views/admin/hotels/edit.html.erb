@@ -14,13 +14,9 @@
 
   <% end %>
 
-  <h4>ホテル情報の削除</h4>
-
-  <!--削除時確認ボタン表示-->
   <div class="owner_edit_box">
-    <p><%= link_to '削除する', admin_hotel_path(@hotel), method: :delete, data: {confirm: "削除しますか？"}, class: "btn-sm btn-danger" %></p>
 
-    <p><strong><%= link_to "#{@hotel.owner.name}", edit_admin_owner_path %></strong> 様へ削除の連絡をする</br>電話番号：<%= @hotel.phone_number %></p>
+    <p><strong><%= link_to "#{@hotel.owner.name}", edit_admin_owner_path %></strong> 様へ連絡をする</br>電話番号：<%= @hotel.phone_number %></p>
 
   </div>
 </div>

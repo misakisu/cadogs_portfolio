@@ -14,6 +14,7 @@ class Hotel < ApplicationRecord
   validates :price, presence: { message:"を入力してください"}
   validates :address, presence: { message:"を入力してください"}
   validates :phone_number, presence: { message:"を入力してください"}
+  validates :hotel_images, length:{ maximum: 6, message:"は6枚まで投稿可能です" }
   #検索スピードを考慮してexists?を使用
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
