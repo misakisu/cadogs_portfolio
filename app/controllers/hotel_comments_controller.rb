@@ -12,7 +12,7 @@ class HotelCommentsController < ApplicationController
     if @hotel_comment.user == current_user
        @hotel_comment.destroy
     end
-    @hotel = Hotel.find(@hotel_comment.hotel_id)#非同期部分テンプレートの変数のため
+    @hotel = Hotel.find(@hotel_comment.hotel_id)#非同期の変数のため
   end
 
   private
