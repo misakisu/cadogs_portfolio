@@ -40,7 +40,8 @@
           <h4><strong>電話番号</strong></h4>
             <p><%= @hotel.phone_number %></p>
           <h4><strong>紹介文</strong></h4>
-            <p><%= @hotel.introduction %></p>
+            <!--改行反映-->
+            <p><%=safe_join(@hotel.introduction.split("\n"),tag(:br))%></p>
           <h4><strong>ご利用可能なペット一覧</strong></h4>
             <% @hotel.pet_genres.each do |pet_genre| %>
             <p><%= pet_genre.name %></p>
