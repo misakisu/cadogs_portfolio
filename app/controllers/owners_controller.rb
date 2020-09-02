@@ -3,7 +3,7 @@ class OwnersController < ApplicationController
 
   def show
     @owner = current_owner
-    @hotels =@owner.hotels.page(params[:page]).per(5)
+    @hotels =@owner.hotels.order(created_at: "DESC").page(params[:page]).per(5)
   end
 
   def confirm
