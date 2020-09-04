@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
   def index
     @user = current_user
     @pets = @user.pets
-    @reservations = @user.reservations.page(params[:page]).per(5)
+    @reservations = @user.reservations.order(created_at: "DESC").page(params[:page]).per(5)
   end
 
   def confirm
