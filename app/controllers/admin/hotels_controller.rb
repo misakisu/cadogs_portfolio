@@ -3,12 +3,12 @@ class Admin::HotelsController < ApplicationController
 
   #管理者用のホテル一覧
   def index
-    @hotels = Hotel.all.page(params[:page]).per(5)
+    @hotels = Hotel.all.order(created_at: "DESC").page(params[:page]).per(5)
      #indexページにて送られて生きたステータス(is_valid)でホテルを検索
-     if params[:is_valid]
-     @is_valid = params[:is_valid]
-     hotels = Hotel.where(is_valid: @is_valid)
-     @hotels = Kaminari.paginate_array(hotels).page(params[:page]).per(5)
+      if params[:is_valid]
+        @is_valid = params[:is_valid]
+        hotels = Hotel.where(is_valid: @is_valid)
+        @hotels = Kaminari.paginate_array(hotels).page(params[:page]).per(5)
      end
   end
 
