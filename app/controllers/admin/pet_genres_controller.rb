@@ -3,7 +3,7 @@ class Admin::PetGenresController < ApplicationController
 
   def index
   @pet_genre = PetGenre.new
-  @pet_genres = PetGenre.all
+  @pet_genres = PetGenre.all.order(created_at: "DESC")
   end
 
   def create
