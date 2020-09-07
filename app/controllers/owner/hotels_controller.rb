@@ -20,7 +20,7 @@ class Owner::HotelsController < ApplicationController
 
   def show
     @hotel = Hotel.find(params[:id])
-    @reservations = @hotel.reservations.page(params[:page]).per(5)
+    @reservations = @hotel.reservations.order(created_at: "DESC").page(params[:page]).per(5)
   end
 
   def edit
