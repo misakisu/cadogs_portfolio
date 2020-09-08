@@ -79,6 +79,10 @@
         <%= render partial: 'hotel_comments/hotelcomment', locals: { hotel_comments: @hotel.hotel_comments} %>
       </div>
       <!--ここまで-->
+      <!--オーナー用ホテル編集ページ-->
+      <% if owner_signed_in? %>
+    　　　<%= link_to "ホテル編集", edit_owner_hotel_path(@hotel), class: "btn btn-success" %>
+      <% end %>
     </div>
   <!--ここまでdivのclass hotel_profile-->
   </div>
