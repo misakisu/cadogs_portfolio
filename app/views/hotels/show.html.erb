@@ -19,6 +19,16 @@
     <!--ホテル詳細画面-->
     <div class="col-xs-12 col-sm-9">
       <h2><%= @hotel.name %></h2>
+
+      <!--オーナー用ホテル編集ページ-->
+        <% if owner_signed_in? %>
+    　　  <%= link_to "ホテル編集", edit_owner_hotel_path(@hotel), class: "btn btn-success col-xs-12" %>
+        <% end %>
+        <!--管理者用ホテル編集ページ-->
+        <% if admin_signed_in? %>
+          <%= link_to "ホテル編集", edit_admin_hotel_path(@hotel), class: "btn btn-success" %>
+        <% end %>
+
       <%= attachment_image_tag @hotel, :image, format: 'jpg', size: "600x500", class: "col-xs-12 hotel_image", fallback: "no_image.jpg" %>
 
       <div class="hotel_profile">
@@ -79,10 +89,6 @@
         <%= render partial: 'hotel_comments/hotelcomment', locals: { hotel_comments: @hotel.hotel_comments} %>
       </div>
       <!--ここまで-->
-      <!--オーナー用ホテル編集ページ-->
-      <% if owner_signed_in? %>
-    　　　<%= link_to "ホテル編集", edit_owner_hotel_path(@hotel), class: "btn btn-success" %>
-      <% end %>
     </div>
   <!--ここまでdivのclass hotel_profile-->
   </div>
