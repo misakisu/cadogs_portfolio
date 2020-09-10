@@ -46,13 +46,11 @@ class ReservationsController < ApplicationController
       @hotel_comment = HotelComment.new
       @hotel_comments = @hotel.hotel_comments
       @pets = current_user.pets
-      render "hotels/show"#hotel_path(@hotel.id)では他コントローラへrenderできない
-    #Confirm画面で確定ボタンでSave
+      render "hotels/show"#hotel_path(@hotel.id)では他コントローラへrender不可
     elsif @reservation.save
       redirect_to finish_user_reservations_path
     end
   end
-  #参考:newとsaveはcreateでまとめることが可能
 
   private
   def reservation_params
