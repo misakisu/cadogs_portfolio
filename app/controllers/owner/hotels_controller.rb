@@ -4,7 +4,7 @@ class Owner::HotelsController < ApplicationController
   def new
     @hotel = Hotel.new
     @owner = current_owner
-    @hotel.hotel_images.build#関連するモデルを生成するときはbuild
+    @hotel.hotel_images.build#関連するモデルを生成するためbuild
   end
 
   def create
@@ -13,7 +13,7 @@ class Owner::HotelsController < ApplicationController
       flash[:success] = "ホテル情報が申請されました！営業日2～3日以内にご連絡差し上げます。"
       redirect_to owner_path
     else
-      @hotel.hotel_images.build#関連するモデルを生成するときはbuild
+      @hotel.hotel_images.build
       render "new"
     end
   end
