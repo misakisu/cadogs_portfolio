@@ -1,5 +1,4 @@
 <!--いいねはUserのみが可能-->
-<!--remote: trueでJs非同期通信リクエストを送信-->
 <% if user_signed_in? %>
   <% if hotel.favorited_by?(current_user) %>
     <%= link_to hotel_favorites_path(hotel), method: :delete, remote: true do %>
