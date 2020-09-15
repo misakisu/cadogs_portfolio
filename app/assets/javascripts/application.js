@@ -15,6 +15,9 @@
 //= require activestorage
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
 $(document).on('turbolinks:load',function(){
      $('.slider').bxSlider({
