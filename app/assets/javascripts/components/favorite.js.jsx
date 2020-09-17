@@ -1,7 +1,7 @@
-class MyCompName extends React.Component {
-  render () {
+var HelloMessage = React.createClass({
+  render: function() {
     return (
-      <div>hello react</div>
-    );
+      <h1>Hello {this.props.name}!</h1>
+    )
   }
-}
+});
