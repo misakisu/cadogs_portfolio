@@ -1,5 +1,6 @@
 <!--いいねはUserのみが可能-->
 <% if user_signed_in? %>
+  <div><%= react_component('MyCompName') %></div>
   <% if hotel.favorited_by?(current_user) %>
     <%= link_to hotel_favorites_path(hotel), method: :delete, remote: true do %>
     <i class="fa fa-star" aria-hidden="true"></i>

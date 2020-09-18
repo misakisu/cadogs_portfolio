@@ -19,9 +19,6 @@
     <!--ホテル詳細画面-->
     <div class="col-xs-12 col-sm-9">
       <h2><%= @hotel.name %></h2>
-      <div>
-        <%= react_component('HelloMessage', name: 'John') %>
-      </div>
 
       <!--オーナー用ホテル編集ページ-->
         <% if owner_signed_in? %>
@@ -45,7 +42,7 @@
         <div id="favorites_<%= @hotel.id %>">
           <%= render partial: 'favorites/favorite', locals: { hotel: @hotel} %>
         </div>
-        <div><%= react_component('Favorite') %></div>
+        <div><%= react_component('HelloMessage') %></div>
         <!--ここまで-->
 
         <div class="row col-xs-12">
