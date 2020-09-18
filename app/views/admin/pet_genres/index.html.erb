@@ -23,7 +23,7 @@
       <% @pet_genres.each do |pet_genre| %>
         <tr>
           <td class="col-xs-4"><%= pet_genre.name %></td>
-          <td><%= link_to '削除する', admin_pet_genre_path(pet_genre), method: :delete, data: {confirm: "削除しますか？"}, class:"btn-sm btn-danger" %></td>
+          <!--<td><%= link_to '削除する', admin_pet_genre_path(pet_genre), method: :delete, data: {confirm: "削除しますか？"}, class:"btn-sm btn-danger" %></td>-->
         </tr>
       <% end %>
     </tbody>
