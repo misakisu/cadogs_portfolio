@@ -1,7 +1,14 @@
-class MyCompName extends React.Component {
-  render () {
+class Favorite extends React.Component {
+
+  ajaxMain() {
+    alert("お気に入りに追加しました");
+  }
+
+  render ()  {
     return (
-      <div>hello react</div>
+      <button onClick={this.ajaxMain}>
+        <i class="far fa-star"></i>
+      </button>
     );
   }
 }
