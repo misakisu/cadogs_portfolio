@@ -15,9 +15,8 @@
               <%= render partial: 'hotels', locals: {hotel: hotel} %>
             </div>
             <!--いいねの部分的非同期更新-->
-            <div class="col-sm-1" id="favorites_<%= hotel.id %>">
-              <%= render partial: 'favorites/favorite', locals: { hotel: hotel} %>
-            </div>
+
+            <!--ここまで-->
           </div>
         </div>
       <% end %>

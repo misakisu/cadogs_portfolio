@@ -39,10 +39,8 @@
         </div>
 
         <!--いいねの部分的非同期更新-->
-        <div id="favorites_<%= @hotel.id %>">
-          <%= render partial: 'favorites/favorite', locals: { hotel: @hotel} %>
-        </div>
-        <div><%= react_component('HelloMessage') %></div>
+        <div><%= react_component('Star') %></div>
+
         <!--ここまで-->
 
         <div class="row col-xs-12">
