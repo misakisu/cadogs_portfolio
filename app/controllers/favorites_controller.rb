@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
     respond_to do |format|
       if @favorite.save
         format.html
-        format.json { render json: {status: 'success', favorite: @favorite, counts: favorite.where(hotel_id: @favorite.hotel_id, user_id: current_user).count, favorited: true} }
+        format.json { render json: {favorite: @favorite} }
       end
     end
   end

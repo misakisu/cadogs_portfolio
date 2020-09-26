@@ -1,25 +1,31 @@
 class Star extends React.Component {
   constructor(props) {
     super(props)
+    console.log(props)
     // いいねされたかどうかのステートを宣言
     this.state = {
-    	iconClassName : 'far-star',
       favorited: false,
     };
+  this.handleClick = this.handleClick.bind(this)/*starをthisとして使うためbind*/
   }
 
-  handClick () {
-    const iconClassName = this.state.favorited? 'far-star' : 'fa-star';
+  handleClick () {
     this.setState({
-    	iconClassName : iconClassName,/*現在の値を定義*/
-    	favorited: !this.state.favorited/*現在の値を反転した値*/
+     	favorited: !this.state.favorited/*現在の値を反転した値*/
     });
+    $.ajax({
+      url: this.props.url,/*Favorite CreateのURLへ*/
+      type: "POST",
+      dataType: 'json',
+      cache: false,
+      data: {hotel_id: this.props.hotel},
+    })
   }
 
   render ()  {
     return (
-      <button onClick={() => this.handClick}>
-        <i className={'far ' + (this.state.favorited? 'far-star' : 'fa-star')}></i>
+      <button onClick={this.handleClick}>
+        <i className={(this.state.favorited? 'fas fa-star' : 'far fa-star')}></i>
       </button>
     );
   }
