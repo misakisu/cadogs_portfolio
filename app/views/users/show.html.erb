@@ -32,7 +32,10 @@
           </div>
           <!--いいねの部分的非同期更新-->
           <div class="col-sm-1" id="favorites_<%= hotel.id %>">
-            <%= render partial: 'favorites/favorite', locals: { hotel: hotel} %>
+            <% if user_signed_in? %>
+              <div><%= react_component('Star', {favorited:@hotel.favorited_by?(current_user), url:hotel_favorites_url(@hotel)}) %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

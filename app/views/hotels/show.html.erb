@@ -39,13 +39,9 @@
         </div>
 
         <!--いいねの部分的非同期更新-->
-        <!--Reactへ情報を送る-->
+        <!--Reactへcurrent_userのfavoriteの情報を渡す-->
         <% if user_signed_in? %>
-          <% if @hotel.favorited_by?(current_user) %>
-            <div><%= react_component('Star', {Favorited:true, url:hotel_favorites_url(@hotel)}) %></div>
-          <% else %>
-            <div><%= react_component('Star', {Favorited:false, url:hotel_favorites_url(@hotel)}) %></div>
-          <% end %>
+          <div><%= react_component('Star', {favorited:@hotel.favorited_by?(current_user), url:hotel_favorites_url(@hotel)}) %></div>
         <% end %>
 
         <!--ここまで-->
