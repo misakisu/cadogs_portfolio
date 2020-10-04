@@ -10,27 +10,16 @@ class Star extends React.Component {
   }
 
   handleClick () {
-    this.setState({
+      this.setState({
      	favorited: !this.state.favorited/*現在の値を反転した値*/
     });
-    if (favorited === false){
-      $.ajax({
+    const method = this.state.favorited ? "DELETE" : "POST"
+    $.ajax({
         url: this.props.url,/*Favorite CreateのURLへ*/
-        type: "POST",
+        type: method,
         dataType: 'json',
-        cache: false,
         data: {hotel_id: this.props.hotel},
-      })
-    }
-    else if (favorited === true){
-      $.ajax({
-        url: this.props.url,/*Favorite DeleteのURLへ*/
-        type: "DELETE",
-        dataType: 'json',
-        cache: false,
-        data: {hotel_id: this.props.hotel},
-      })
-    }
+    })
   }
 
   render ()  {

@@ -43,6 +43,7 @@
         <% if user_signed_in? %>
           <div><%= react_component('Star', {favorited:@hotel.favorited_by?(current_user), url:hotel_favorites_url(@hotel)}) %></div>
         <% end %>
+        <h4><% @hotel.favorites.count %>件</h4>
 
         <!--ここまで-->
 
