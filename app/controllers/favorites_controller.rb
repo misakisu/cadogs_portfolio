@@ -15,9 +15,7 @@ class FavoritesController < ApplicationController
   def destroy
   	@hotel = Hotel.find(params[:hotel_id])
     @favorite = @hotel.favorites.find_by(user_id: current_user.id)
-      if @favorite.destroy
-        format.html
-        format.json { render json: {favorite: @favorite} }
-      end
+    @favorite.destroy
+    byebug
   end
 end
